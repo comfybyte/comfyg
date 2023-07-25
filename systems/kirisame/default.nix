@@ -123,6 +123,7 @@
 
     gcc
     gnumake
+    rust-bin.beta.latest.default
     python3
     nodejs
 
