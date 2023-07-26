@@ -55,12 +55,17 @@
         "<leader>p" = ''"_dP'';
       };
     };
+    colorscheme = "rose-pine";
+    colorschemes.rose-pine = {
+      enable = true;
+      transparentBackground = true;
+      transparentFloat = true;
+    };
     plugins = {
       lualine = {
         enable = true;
         theme = "rose-pine";
       };
-
       nix.enable = true;
       treesitter = {
         enable = true;
@@ -78,7 +83,6 @@
           };
         };
       };
-
       harpoon = {
         enable = true;
         keymaps = {
@@ -94,17 +98,21 @@
           };
         };
       };
+      gitsigns.enable = true;
+      presence-nvim = {
+        enable = true;
+        mainImage = "file";
+        neovimImageText = "Hacking...";
+        buttons = null;
+        editingText = "Editing a file";
+        readingText = "Reading a file";
+        workspaceText = "In a workspace";
+        fileExplorerText = "In menu";
+        gitCommitText = "About to break git";
+      };
     };
 
     extraConfigLua = ''
-    require("rose-pine").setup {
-      variant = "moon",
-      disable_background = true,
-      disable_float_background = true
-    }
-
-    vim.cmd("colorscheme rose-pine")
-
     local telescope = require("telescope")
     local file_browser = require("telescope").extensions.file_browser
     local builtin = require("telescope.builtin")
@@ -124,6 +132,7 @@
 
     telescope.load_extension('file_browser')
 
+    -- Opens it at the current file's path (as it should)
     local browser_opts = {
       path = "%:p:h"
     }
@@ -156,25 +165,6 @@
 
     vim.keymap.set('n', '<leader>?', builtin.oldfiles)
     vim.keymap.set('n', '<leader>o', builtin.oldfiles)
-
-    local mark = require("harpoon.mark")
-    local ui = require("harpoon.ui")
-
-    vim.keymap.set("n", "<C-a>", mark.add_file)
-    vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-
-    vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
-    vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
-    vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
-    vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
-    vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
-    vim.keymap.set("n", "<leader>6", function() ui.nav_file(6) end)
     '';
-
-    extraPlugins = with pkgs.vimPlugins; [
-      telescope-nvim
-      harpoon
-      rose-pine
-    ];
   };
 }

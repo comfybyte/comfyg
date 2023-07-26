@@ -71,6 +71,7 @@
     grim
     slurp
     libnotify
+    libsForQt5.polkit-kde-agent
     imagemagick
     qt5.qtwayland
     glxinfo
@@ -138,7 +139,8 @@
     xfce.tumbler
 
     lutris
-    wineWowPackages.staging
+    wineWowPackages.stagingFull
+    wineWowPackages.waylandFull
     winetricks
   ];
 
@@ -173,6 +175,21 @@ xdg.portal = {
     (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" ]; })
     monocraft
   ];
+
+  # Adapted from the wiki page
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
+    description = "polkit-kde-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+  };
 
   networking.hostName = "kirisame";
   networking.networkmanager.enable = true;
