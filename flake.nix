@@ -19,9 +19,12 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, rust-overlay, ... }@inputs: {
+  outputs = { self, nixpkgs, home, hyprland, nixvim, rust-overlay, ... }@inputs:
+  let specialPkgs = system: callPackage: 
+    (import ./pkgs { inherit callPackage; });
+  in {
     nixosConfigurations = {
-      kirisame = nixpkgs.lib.nixosSystem {
+      kirisame = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = { inherit inputs nixvim rust-overlay; };
         modules = [
@@ -39,7 +42,11 @@
               hyprland.homeManagerModules.default
             ];
 
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            nixpkgs.overlays = [ 
+              rust-overlay.overlays.default 
+              # TODO: Move this to a separate place as it (eventually) grows.
+              (final: prev: specialPkgs system prev.callPackage)
+            ];
           })
         ];
       };

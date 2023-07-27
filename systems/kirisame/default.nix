@@ -64,99 +64,104 @@
     };
 
     environment.systemPackages = with pkgs; [
-    xdg-utils
-    glib
-    dracula-theme
-    gnome3.adwaita-icon-theme
-    grim
-    slurp
-    libnotify
-    libsForQt5.polkit-kde-agent
-    imagemagick
-    qt5.qtwayland
-    glxinfo
-    vulkan-tools
-    nix-prefetch-git
-    num-utils
-    luajit
+      xdg-utils
+      glib
+      dracula-theme
+      gnome3.adwaita-icon-theme
+      grim
+      slurp
+      libnotify
+      libsForQt5.polkit-kde-agent
+      imagemagick
+      qt5.qtwayland
+      qt6.qtwayland
+      glxinfo
+      vulkan-tools
+      nix-prefetch-git
+      num-utils
+      luajit
 
-    libpng
-    giflib
-    ncurses
-    gnutls
-    mpg123
-    openal
-    v4l-utils
-    alsa-lib
-    libjpeg
-    xorg.libXcomposite
-    xorg.libXinerama
-    libgcrypt
-    ocl-icd
-    libxslt
-    libva
-    gtk3
-    gst_all_1.gst-plugins-base
+      libpng
+      giflib
+      ncurses
+      gnutls
+      mpg123
+      openal
+      v4l-utils
+      alsa-lib
+      libjpeg
+      xorg.libXcomposite
+      xorg.libXinerama
+      libgcrypt
+      ocl-icd
+      libxslt
+      libva
+      gtk3
+      gst_all_1.gst-plugins-base
 
 
-    appimage-run
-    wofi
-    zip
-    unzip
-    unrar
-    bemenu
-    wdisplays
-    git
-    neofetch
-    dmenu
-    imv
-    parted
-    ventoy-full
+      appimage-run
+      wofi
+      zip
+      unzip
+      unrar
+      bemenu
+      wdisplays
+      git
+      neofetch
+      dmenu
+      imv
+      parted
+      ventoy-full
 
-    ripgrep
-    jq
-    gnupg
-    tree
-    exa
-    httpie
-    wget
-    htop
+      ripgrep
+      jq
+      gnupg
+      tree
+      exa
+      httpie
+      wget
+      htop
 
-    gcc
-    gnumake
-    rust-bin.beta.latest.default
-    python3
-    nodejs
+      gcc
+      gnumake
+      rust-bin.beta.latest.default
+      python3
+      nodejs
 
-    flameshot
-    deluge
-    deluge-gtk
-    firefox
+      flameshot
+      deluge
+      deluge-gtk
+      # firefox
 
-    vlc
-    xfce.thunar
-    xfce.ristretto
-    xfce.tumbler
+      vlc
+      xfce.thunar
+      xfce.ristretto
+      xfce.tumbler
 
-    lutris
-    wineWowPackages.stagingFull
-    wineWowPackages.waylandFull
-    winetricks
-  ];
+      lutris
+      wineWowPackages.stagingFull
+      wineWowPackages.waylandFull
+      winetricks
+    ];
 
-  programs.thunar.plugins = with pkgs.xfce; [
-  thunar-archive-plugin
-  thunar-volman
-];
+    programs.thunar.plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
 
-services.gvfs.enable = true;
-services.tumbler.enable = true;
+    services.gvfs.enable = true;
+    services.tumbler.enable = true;
 
-xdg.portal = {
-  enable = true;
-  wlr.enable = true;
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-};
+    xdg.portal = {
+      enable = true;
+      # -hyprland one works best.
+      # wlr.enable = true;
+      extraPortals = with pkgs; [ 
+        xdg-desktop-portal-gtk 
+        xdg-desktop-portal-hyprland
+      ];
+    };
 
   # Enables fcitx5 for Japanese input.
   i18n.inputMethod = {
@@ -183,12 +188,12 @@ xdg.portal = {
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
     serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
+      Type = "simple";
+      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
   };
 
   networking.hostName = "kirisame";

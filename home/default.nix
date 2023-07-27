@@ -72,7 +72,9 @@
     emote 
     gparted
     wmctrl
+    firefox-devedition
 
+    wine-lutris-ge-lol
     osu-lazer-bin
   ];
 
