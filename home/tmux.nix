@@ -10,6 +10,13 @@
     set -g base-index 1
     set -g pane-base-index 1
 
+    set-window-option -g mode-keys vi
+    bind h select-pane -L
+    bind j select-pane -D
+    bind k select-pane -U
+    bind l select-pane -R
+
+    # Theming
     set -g mode-style "fg=#c5a1f7,bg=#3b4261"
 
     set -g message-style "fg=#c5a1f7,bg=#3b4261"

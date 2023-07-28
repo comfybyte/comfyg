@@ -71,6 +71,7 @@
     firefox-devedition
     nerd-font-patcher
     pfetch
+    hyprpicker
 
     wine-lutris-ge-lol
     osu-lazer-bin
