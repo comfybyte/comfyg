@@ -98,7 +98,10 @@
           };
         };
       };
+
       gitsigns.enable = true;
+      fugitive.enable = true;
+
       presence-nvim = {
         enable = true;
         mainImage = "file";
@@ -165,6 +168,8 @@
 
     vim.keymap.set('n', '<leader>?', builtin.oldfiles)
     vim.keymap.set('n', '<leader>o', builtin.oldfiles)
+
+    vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     '';
   };
 }

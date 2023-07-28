@@ -80,7 +80,9 @@
       nix-prefetch-git
       num-utils
       luajit
+      speechd
 
+      # Mostly game dependencies.
       libpng
       giflib
       ncurses
@@ -132,7 +134,6 @@
       flameshot
       deluge
       deluge-gtk
-      # firefox
 
       vlc
       xfce.thunar
