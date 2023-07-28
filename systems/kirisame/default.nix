@@ -92,6 +92,9 @@
       v4l-utils
       alsa-lib
       libjpeg
+      libpulseaudio
+      alsa-plugins
+      alsa-lib
       xorg.libXcomposite
       xorg.libXinerama
       libgcrypt
@@ -100,6 +103,8 @@
       libva
       gtk3
       gst_all_1.gst-plugins-base
+      cups
+      dosbox
 
 
       appimage-run
@@ -153,6 +158,10 @@
 
     services.gvfs.enable = true;
     services.tumbler.enable = true;
+    services.samba = {
+      enable = true;
+      openFirewall = true;
+    };
 
     xdg.portal = {
       enable = true;
