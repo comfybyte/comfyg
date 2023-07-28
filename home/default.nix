@@ -4,7 +4,7 @@
   home.homeDirectory = "/home/maya";
 
   imports = [
-    ./sway.nix
+   # ./sway.nix
     ./waybar.nix
     ./nixvim.nix
     ./hyprland.nix
@@ -18,17 +18,12 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      # NixOS aliases.
       nors = "sudo nixos-rebuild switch";
-      hmb = "home-manager build";
-      hms = "home-manager switch";
 
-      # tmux aliases.
       txn = "tmux new";
       txl = "tmux list-sessions";
       txa = "tmux attach -t";
 
-      # Mic testing.
       mic-loop = "pactl load-module module-loopback";
       mic-unloop = "pactl unload-module module-loopback";
 
@@ -73,13 +68,15 @@
     gparted
     wmctrl
     firefox-devedition
+    nerd-font-patcher
+    pfetch
 
     wine-lutris-ge-lol
     osu-lazer-bin
   ];
 
   programs.alacritty = 
-  let termfont = "Monocraft Nerd Font"; 
+  let termfont = "EffectsEighty Nerd Font"; 
   in {
     enable = true;
     settings = {
@@ -132,6 +129,8 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    # pfetch configuration
+    PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
   };
 
   programs.home-manager.enable = true;

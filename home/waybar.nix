@@ -85,7 +85,7 @@
       border-top: 1px solid transparent;
       min-height: 0;
       margin: 0;
-      font-family: "Hack Nerd Font";
+      font-family: "EffectsEighty Nerd Font";
       font-size: 1rem;
     }
 
@@ -101,7 +101,7 @@
   #temperature,
   #pulseaudio,
   #tray {
-    padding: 4px 1rem;
+    padding: 2px 1rem;
     font-weight: bold;
     color: transparent;
     border-top-color: transparent;

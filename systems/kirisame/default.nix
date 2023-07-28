@@ -155,11 +155,10 @@
 
     xdg.portal = {
       enable = true;
-      # -hyprland one works best.
-      # wlr.enable = true;
+      wlr.enable = true;
       extraPortals = with pkgs; [ 
         xdg-desktop-portal-gtk 
-        xdg-desktop-portal-hyprland
+       # xdg-desktop-portal-hyprland
       ];
     };
 
@@ -177,8 +176,9 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" "Iosevka" "IosevkaTerm" ]; })
     monocraft
+    effects-eighty-nerd
   ];
 
   # Adapted from the wiki page
