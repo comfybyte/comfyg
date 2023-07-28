@@ -102,6 +102,7 @@
       gitsigns.enable = true;
       fugitive.enable = true;
 
+      # Discord presence.
       presence-nvim = {
         enable = true;
         mainImage = "file";
@@ -112,6 +113,24 @@
         workspaceText = "In a workspace";
         fileExplorerText = "In menu";
         gitCommitText = "About to break git";
+      };
+
+      # Visual indicator for indentation.
+      indent-blankline.enable = true;
+
+      # Highlight current line and word.
+      cursorline = {
+        enable = true;
+        cursorline = {
+          enable = true;
+          timeout = 1000;
+          number = false;
+        };
+        cursorword = {
+          enable = true;
+          minLength = 3;
+          hl.underline = true;
+        };
       };
     };
 
@@ -170,6 +189,84 @@
     vim.keymap.set('n', '<leader>o', builtin.oldfiles)
 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
+    -- Hop motions
+    local hop = require("hop")
+    local hint = require("hop.hint")
+
+    local before = hint.HintDirection.BEFORE_CURSOR
+    local after = hint.HintDirection.AFTER_CURSOR
+
+    hop.setup {
+      case_insensitive = false
+    }
+
+    local function set_keymap(motion, action, normal_only)
+      normal_only = normal_only or false
+
+      vim.keymap.set("n", motion, function() pcall(action) end)
+      if not normal_only then
+        vim.keymap.set("v", motion, function() pcall(action) end)
+      end
+    end
+
+    set_keymap("f", function()
+    hop.hint_char1({
+      direction = after
+    })
+    end)
+
+    set_keymap("F", function()
+    hop.hint_char1({
+      direction = before
+    })
+    end)
+
+    set_keymap("t", function()
+    hop.hint_char1({
+      direction = after,
+      hint_offset = 1
+    })
+    end)
+
+    set_keymap("T", function()
+    hop.hint_char1({
+      direction = before,
+    })
+    end)
+
+    set_keymap("<leader>w", function()
+    hop.hint_words({
+      direction = after,
+    })
+    end)
+
+    set_keymap("<leader>b", function()
+    hop.hint_words({
+      direction = before,
+    })
+    end)
+
+    set_keymap("<leader><leader>h", function()
+    hop.hint_words({
+      current_line_only = true
+    })
+    end)
+
+    set_keymap("<leader>a", function()
+    hop.hint_words()
+    end)
+
+    set_keymap("<leader>v", function()
+    hop.hint_vertical()
+    end)
+
+
+    set_keymap("<leader>p", function()
+    hop.hint_patterns()
+    end)
     '';
+
+    extraPlugins = with pkgs.vimPlugins; [ hop-nvim ];
   };
 }

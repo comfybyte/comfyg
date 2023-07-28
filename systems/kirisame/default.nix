@@ -129,6 +129,7 @@
       httpie
       wget
       htop
+      dig
 
       gcc
       gnumake
