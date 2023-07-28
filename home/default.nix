@@ -64,6 +64,7 @@
     libreoffice-fresh
     obsidian
     ulauncher 
+    authy
     emote 
     gparted
     wmctrl
