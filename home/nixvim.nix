@@ -107,12 +107,16 @@
         enable = true;
         mainImage = "file";
         neovimImageText = "Hacking...";
-        buttons = null;
         editingText = "Editing a file";
         readingText = "Reading a file";
         workspaceText = "In a workspace";
         fileExplorerText = "In menu";
         gitCommitText = "About to break git";
+        showTime = false;
+        extraOptions = {
+          # Nixvim's only accepts null, which doesn't disable it for some reason.
+          buttons = false;
+        };
       };
 
       # Visual indicator for indentation.
