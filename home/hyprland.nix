@@ -6,7 +6,7 @@
   let
     homeDir = config.home.homeDirectory;
   in ''
-    monitor=,preferred,auto,auto
+    monitor=DP-2,1920x1080@60,0x0,1
     exec-once = fcitx5
     exec-once = waybar
     exec-once = swww init
@@ -29,9 +29,9 @@
     }
 
       general {
-        gaps_in = 2
-        gaps_out = 2
-        border_size = 1
+        gaps_in = 0
+        gaps_out = 0
+        border_size = 0
         col.active_border = rgba(d14ef2ee) rgba(b03cdeee) 45deg
         col.inactive_border = rgba(ffc9cf44)
     

@@ -81,6 +81,9 @@
       num-utils
       luajit
       speechd
+      nix-index
+      toybox
+      patchelf
 
       # Mostly game dependencies.
       libpng
@@ -103,9 +106,14 @@
       libva
       gtk3
       gst_all_1.gst-plugins-base
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-plugins-bad
+      gst_all_1.gst-plugins-ugly
+
       cups
       dosbox
-
+      dxvk
 
       appimage-run
       wofi
@@ -147,8 +155,7 @@
       xfce.tumbler
 
       lutris
-      wineWowPackages.stagingFull
-      wineWowPackages.waylandFull
+      wineWowPackages.staging
       winetricks
     ];
 
@@ -205,6 +212,18 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
+  };
+
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+
+    XDG_BIN_HOME    = "$HOME/.local/bin";
+    PATH = [ 
+      "${XDG_BIN_HOME}"
+    ];
   };
 
   networking.hostName = "kirisame";
