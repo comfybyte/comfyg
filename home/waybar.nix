@@ -82,16 +82,17 @@
     @define-color green #7ae6d1;
 
     * {
-      border-top: 1px solid transparent;
       min-height: 0;
       margin: 0;
       font-family: "EffectsEighty Nerd Font";
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
   #waybar {
     background: rgba(0, 0, 0, .8);
     color: @purple;
+    border-top: 3px solid transparent;
+    padding-bottom: 1px;
   }
 
 
@@ -104,18 +105,9 @@
     padding: 2px 1rem;
     font-weight: bold;
     color: transparent;
-    border-top-color: transparent;
     background-color: rgba(30, 30, 30, .2);
     text-shadow:
     0px 0px 1px @purple;
-  }
-
-  #memory.warning {
-    border-top-color: @green;
-  }
-
-  #memory.critical {
-    border-top-color: @green;
   }
 
   #network.disconnected {
@@ -125,11 +117,6 @@
   #temperature.critical {
     font-size: .9rem;
     color: red;
-  }
-
-  #window {
-    font-weight: bold;
-    border-bottom: 2px solid transparent;
   }
 
   #workspaces {

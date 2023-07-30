@@ -11,8 +11,16 @@
       settings.experimental-features = [ "nix-command" "flakes" ];
     };
     nix.settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [
+        "https://cache.nixos.org"
+        "https://hyprland.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      ];
     };
 
     boot.loader.systemd-boot.enable = true;
@@ -28,7 +36,7 @@
       shell = pkgs.zsh;
     };
 
-    environment.shells = with pkgs; [ zsh ];
+    environment.shells = [ pkgs.zsh ];
 
     nixpkgs.config.allowUnfree = true;
 
@@ -38,6 +46,8 @@
 
     hardware.pulseaudio.enable = true;
     hardware.pulseaudio.support32Bit = true;
+
+    programs.dconf.enable = true;
 
     hardware.opengl = {
       enable = true;
@@ -55,7 +65,7 @@
       "vulkan-intel"
     ];
 
-    programs.sway.enable = true;
+    # programs.sway.enable = true;
 
     programs.steam = {
       enable = true;
@@ -84,6 +94,7 @@
       nix-index
       toybox
       patchelf
+      dpkg
 
       # Mostly game dependencies.
       libpng
