@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   wayland.windowManager.hyprland.extraConfig = 
   let
     homeDir = config.home.homeDirectory;
@@ -175,6 +179,7 @@
     windowrule = workspace 2, Vivaldi
     windowrule = workspace 2, firefox 
     windowrule = workspace 3, thunar
+    windowrule = workspace 4, Deluge
     windowrule = workspace 5, discord
     windowrule = workspace 6, krita
     windowrule = workspace 6, Audacity
@@ -189,7 +194,7 @@
     env = XDG_SESSION_TYPE=wayland
     env = XDG_SESSION_DESKTOP=Hyprland
 
-    env = GDK_SCALE,2
+   # env = GDK_SCALE,2
     env = XCURSOR_SIZE,32
   '';
 }

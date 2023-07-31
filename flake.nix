@@ -22,16 +22,28 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, rust-overlay, nixpkgs-wl, ... }@inputs:
+  outputs = { 
+    self,
+    nixpkgs,
+    home,
+    hyprland,
+    nixvim,
+    rust-overlay,
+    nixpkgs-wl,
+    nix-gaming,
+    ...
+  } @ inputs:
   let specialPkgs = system: callPackage: pkgsi686Linux: 
     (import ./pkgs { inherit callPackage pkgsi686Linux; });
   in {
     nixosConfigurations = {
       kirisame = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs nixvim rust-overlay; };
+        specialArgs = { inherit inputs nixvim rust-overlay nix-gaming; };
         modules = [
           ./systems/kirisame
           home.nixosModules.home-manager
