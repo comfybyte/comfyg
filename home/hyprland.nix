@@ -169,8 +169,9 @@
     bind = ,Print, exec, ${homeDir}/scripts/ss_area.sh
     bind = SHIFT, Print, exec, ${homeDir}/scripts/ss_screen.sh
     
-    binde=, XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindl=, XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
+    binde = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+
+    bindl = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
+    bindl = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     
     bindm = $mainMod, mouse:272, movewindow
     # Resize floating windows with Mod+Right-click

@@ -43,12 +43,21 @@ in {
 
     nixpkgs.config.allowUnfree = true;
 
-    sound.enable = true;
     services.dbus.enable = true;
     services.xserver.layout = "br-abnt2";
 
-    hardware.pulseaudio.enable = true;
-    hardware.pulseaudio.support32Bit = true;
+    # sound.enable = true;
+    # hardware.pulseaudio.enable = true;
+    # hardware.pulseaudio.support32Bit = true;
+    services.pipewire = {
+      enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+    };
 
     programs.dconf.enable = true;
 
