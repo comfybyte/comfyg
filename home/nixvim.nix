@@ -65,18 +65,22 @@
       transparentBackground = true;
       transparentFloat = true;
     };
+
     plugins = {
       lualine = {
         enable = true;
         theme = "rose-pine";
       };
+
       nix.enable = true;
+
       treesitter = {
         enable = true;
         nixGrammars = true;
         ensureInstalled = "all";
         nixvimInjections = true;
       };
+
       telescope = {
         enable = true;
         extensions = {
@@ -85,8 +89,10 @@
             hijackNetrw = true;
             respectGitignore = false;
           };
+          fzf-native.enable = true;
         };
       };
+
       harpoon = {
         enable = true;
         keymaps = {
@@ -142,6 +148,7 @@
       };
 
       comment-nvim.enable = true;
+      nvim-autopairs.enable = true;
 
       lsp = {
         enable = true;
@@ -158,7 +165,6 @@
         };
         onAttach = ''
         bufopts = { noremap = true, silent = true, buffer = bufnr }
-
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -186,14 +192,27 @@
           select = "{ behavior = cmp.SelectBehavior.Select }";
         in 
         {
+          "<C-space>" = "cmp.mapping.complete()";
           "<C-p>"  = "cmp.mapping.select_prev_item(${select})";
           "<C-n>"  = "cmp.mapping.select_next_item(${select})";
           "<cr>"  = "cmp.mapping.confirm({ select = true })";
         };
       };
+
+      null-ls = {
+        enable = true;
+        sources.formatting = {
+          nixfmt.enable = true;
+          rustfmt.enable = true;
+        };
+      };
     };
 
     extraConfigLua = ''
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+    -- Telescope
     local telescope = require("telescope")
     local file_browser = require("telescope").extensions.file_browser
     local builtin = require("telescope.builtin")
