@@ -3,6 +3,7 @@
 {
   programs.nixvim = {
     enable = true;
+
     options = {
       number = true;
       nuw = 1;
@@ -29,6 +30,7 @@
       undodir = "/home/maya/.cache/nvim/undodir";
       undofile = true;
     };
+
     globals = {
       mapleader = " ";
 
@@ -37,6 +39,7 @@
 
       ftplugin_sql_omni_key = "<C-j>";
     };
+
     maps = {
       normal = {
         "<C-d>" = "<C-d>zz";
@@ -55,6 +58,7 @@
         "<leader>p" = ''"_dP'';
       };
     };
+
     colorscheme = "rose-pine";
     colorschemes.rose-pine = {
       enable = true;
@@ -136,6 +140,57 @@
           hl.underline = true;
         };
       };
+
+      comment-nvim.enable = true;
+
+      lsp = {
+        enable = true;
+        servers = {
+          rnix-lsp.enable = true;
+          rust-analyzer.enable = true;
+          lua-ls.enable = true;
+          hls.enable = true;
+          tsserver.enable = true;
+          html.enable = true;
+          bashls.enable = true;
+          jsonls.enable = true;
+          clangd.enable = true;
+        };
+        onAttach = ''
+        bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+        '';
+      };
+
+      cmp-path.enable = true;
+      cmp-buffer.enable = true;
+      cmp_luasnip.enable = true;
+
+      nvim-cmp = {
+        enable = true;
+        mappingPresets = [ "cmdline" "insert" ];
+        snippet.expand = "luasnip";
+        sources = [ # TODO: Configure snippets.
+          { name = "nvim_lsp"; }
+          { name = "buffer"; }
+          { name = "path"; }
+        ];
+        mapping = let 
+          select = "{ behavior = cmp.SelectBehavior.Select }";
+        in 
+        {
+          "<C-p>"  = "cmp.mapping.select_prev_item(${select})";
+          "<C-n>"  = "cmp.mapping.select_next_item(${select})";
+          "<cr>"  = "cmp.mapping.confirm({ select = true })";
+        };
+      };
     };
 
     extraConfigLua = ''
@@ -208,6 +263,7 @@
     local function set_keymap(motion, action, normal_only)
       normal_only = normal_only or false
 
+      -- Hop sometimes errors from blank lines, so wrapping it with pcall silences that.
       vim.keymap.set("n", motion, function() pcall(action) end)
       if not normal_only then
         vim.keymap.set("v", motion, function() pcall(action) end)
@@ -271,6 +327,6 @@
     end)
     '';
 
-    extraPlugins = with pkgs.vimPlugins; [ hop-nvim ];
+    extraPlugins = with pkgs.vimPlugins; [ hop-nvim luasnip ];
   };
 }

@@ -24,8 +24,7 @@
       txl = "tmux list-sessions";
       txa = "tmux attach -t";
 
-      mic-loop = "pactl load-module module-loopback";
-      mic-unloop = "pactl unload-module module-loopback";
+      mic-loop = "pw-loopback";
 
       vim = "nvim";
       vi = "nvim";
@@ -60,7 +59,6 @@
     krita
     vivaldi
     vivaldi-ffmpeg-codecs
-    flameshot
     libreoffice-fresh
     obsidian
     ulauncher 
@@ -69,7 +67,6 @@
     gparted
     wmctrl
     firefox-devedition
-    nerd-font-patcher
     pfetch
     hyprpicker
 
