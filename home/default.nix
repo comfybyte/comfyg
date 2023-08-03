@@ -46,8 +46,8 @@
 
   programs.git = {
     enable = true;
-    userName = "mayaneru";
-    userEmail = "comfy.is.sleepy@gmail.com";
+    userName = "hexentia";
+    userEmail = "hexentia@proton.me";
   };
 
   home.packages = with pkgs; [
