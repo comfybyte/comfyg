@@ -1,0 +1,32 @@
+(defwidget clock []
+  (box
+    :class "clock"
+    :orientation "h"
+    :halign "center"
+    time
+  )
+)
+
+(defpoll time
+  :interval "1s"
+  "date \"+%H:%M:%S | %e %b (%a)\""
+)
+
+(defwindow system-bar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "20px"
+    :anchor "top center"
+  )
+  (box
+    :class "system-bar"
+    :orientation "h"
+    (clock)
+  )
+)

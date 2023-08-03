@@ -4,8 +4,8 @@
   home.homeDirectory = "/home/maya";
 
   imports = [
-   # ./sway.nix
-    ./waybar.nix
+    #./sway.nix
+    #./waybar.nix
     ./nixvim.nix
     ./hyprland.nix
     ./tmux.nix
@@ -75,7 +75,7 @@
   ];
 
   programs.alacritty = 
-  let termfont = "EffectsEighty Nerd Font"; 
+  let termfont = "IosevkaTerm Nerd Font"; 
   in {
     enable = true;
     settings = {
@@ -124,6 +124,12 @@
         };
       };
     };
+  };
+
+  programs.eww = {
+    enable = true;
+    package = pkgs.eww-wayland;
+    configDir = ./eww;
   };
 
   home.sessionVariables = {

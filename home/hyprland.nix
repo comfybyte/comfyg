@@ -13,7 +13,8 @@
     monitor=DP-2,1920x1080@60,0x0,1
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = fcitx5
-    exec-once = waybar
+    # exec-once = waybar
+    exec-once = eww daemon && eww open system-bar
     exec-once = swww init
     exec-once = alacritty
 

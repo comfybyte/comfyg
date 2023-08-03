@@ -1,0 +1,15 @@
+* {
+  all: unset;
+}
+
+.system-bar {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: transparent;
+}
+
+.clock {
+  padding: 0 2px;
+  margin: 0 2px;
+  background-color: rgba(0, 0, 0, 0.85);
+  text-shadow: 0 0 1px #ffffff;
+}
