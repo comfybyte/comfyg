@@ -74,6 +74,7 @@
     # wine-lutris-ge-lol
     osu-lazer-bin
     minecraft
+    prismlauncher
   ];
 
   programs.alacritty = 
