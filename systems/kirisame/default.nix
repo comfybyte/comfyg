@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nix-gaming, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   system = pkgs.system;
 in {
@@ -85,7 +85,11 @@ in {
       dedicatedServer.openFirewall = true;
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs;
+    let
+      nix-gaming = inputs.nix-gaming.packages."${system}";
+    in
+    [
       xdg-utils
       glib
       dracula-theme
@@ -182,8 +186,8 @@ in {
       lutris
       wineWowPackages.stagingFull
       wine64Packages.stagingFull
+      nix-gaming.wine-ge
       winetricks
-      nix-gaming.packages."${system}".wine-ge
       gamemode
     ]; 
 
@@ -201,10 +205,10 @@ in {
 
     xdg.portal = {
       enable = true;
-      wlr.enable = true;
+      wlr.enable = false;
       extraPortals = with pkgs; [ 
-        xdg-desktop-portal-gtk 
-       # xdg-desktop-portal-hyprland
+        # xdg-desktop-portal-gtk 
+        xdg-desktop-portal-hyprland
       ];
     };
 

@@ -3,13 +3,16 @@
 }
 
 .system-bar {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: transparent;
+  background-color: transparent;
+  color: #70faff;
+  text-shadow: 
+    -1px -1px 1px #4FC7CB,
+    1px 1px 1px #4FC7CB,
+    -1px 1px 1px #4FC7CB,
+    1px -1px 1px #4FC7CB;
 }
 
-.clock {
-  padding: 0 2px;
-  margin: 0 2px;
-  background-color: rgba(0, 0, 0, 0.85);
-  text-shadow: 0 0 1px #ffffff;
+.container {
+  padding: 2px 6px;
+  background-color: transparent;
 }

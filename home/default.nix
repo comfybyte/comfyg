@@ -5,7 +5,7 @@
 
   imports = [
     #./sway.nix
-    #./waybar.nix
+    ./waybar.nix
     ./nixvim.nix
     ./hyprland.nix
     ./tmux.nix
@@ -69,9 +69,11 @@
     firefox-devedition
     pfetch
     hyprpicker
+    betterdiscordctl
 
     # wine-lutris-ge-lol
     osu-lazer-bin
+    minecraft
   ];
 
   programs.alacritty = 

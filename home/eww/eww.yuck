@@ -1,15 +1,29 @@
-(defwidget clock []
+(defwidget time-block []
   (box
-    :class "clock"
+    :class "time-block container"
     :orientation "h"
     :halign "center"
     time
   )
 )
 
+(defwidget date-block []
+  (box
+    :class "date-block container"
+    :orientation "h"
+    :halign "center"
+    date
+  )
+)
+
 (defpoll time
   :interval "1s"
-  "date \"+%H:%M:%S | %e %b (%a)\""
+  "date \"+%H:%M:%S\""
+)
+
+(defpoll date
+  :interval "10s"
+  "date \"+%e %b [%a]\""
 )
 
 (defwindow system-bar
@@ -27,6 +41,7 @@
   (box
     :class "system-bar"
     :orientation "h"
-    (clock)
+    (time-block)
+    (date-block)
   )
 )
