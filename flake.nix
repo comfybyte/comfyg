@@ -16,14 +16,17 @@
 
     hyprland.url = "github:hyprwm/Hyprland/2bbe3aa122f242f43ac31fb85a39da48db69ca79";
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
-
     nixpkgs-wl = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -32,7 +35,7 @@
     home,
     hyprland,
     nixvim,
-    rust-overlay,
+    fenix,
     nixpkgs-wl,
     nix-gaming,
     ...
@@ -43,7 +46,7 @@
     nixosConfigurations = {
       kirisame = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs nixvim rust-overlay nix-gaming; };
+        specialArgs = { inherit inputs nixvim fenix nix-gaming; };
         modules = [
           ./systems/kirisame
           home.nixosModules.home-manager
@@ -60,7 +63,7 @@
             ];
 
             nixpkgs.overlays = [ 
-              rust-overlay.overlays.default 
+              fenix.overlays.default
               nixpkgs-wl.overlay
               # TODO: Move this to a separate place as it (eventually) grows.
               (final: prev: specialPkgs system prev.callPackage prev.pkgsi686Linux)

@@ -167,8 +167,8 @@
     bind = $mainMod, mouse_down, workspace, e+1
     bind = $mainMod, mouse_up, workspace, e-1
     
-    bind = ,Print, exec, ${homeDir}/scripts/ss_area.sh
-    bind = SHIFT, Print, exec, ${homeDir}/scripts/ss_screen.sh
+    bind = , Print, exec, ${homeDir}/scripts/ss_screen.sh
+    bind = SHIFT, Print, exec, ${homeDir}/scripts/ss_area.sh
     
     binde = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+
     bindl = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-

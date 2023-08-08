@@ -11,7 +11,7 @@
         modules-center = [ "clock" ];
         modules-right = [ "cpu" "memory" "temperature" "pulseaudio" "tray" ];
 
-        wlr-workspaces = {
+        "wlr/workspaces" = {
           format = "{icon}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
@@ -84,7 +84,7 @@
       min-height: 0;
       margin: 0;
       font-family: "Hack Nerd Font";
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
   #waybar {

@@ -17,12 +17,14 @@ in {
         "https://hyprland.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-gaming.cachix.org"
+        "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
 
@@ -46,9 +48,6 @@ in {
     services.dbus.enable = true;
     services.xserver.layout = "br-abnt2";
 
-    # sound.enable = true;
-    # hardware.pulseaudio.enable = true;
-    # hardware.pulseaudio.support32Bit = true;
     services.pipewire = {
       enable = true;
       pulse.enable = true;
@@ -170,7 +169,6 @@ in {
 
       gcc
       gnumake
-      rust-bin.beta.latest.default
       python3
       nodejs
 
@@ -189,6 +187,14 @@ in {
       nix-gaming.wine-ge
       winetricks
       gamemode
+      (fenix.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      rust-analyzer-nightly
     ]; 
 
     programs.thunar.plugins = with pkgs.xfce; [
