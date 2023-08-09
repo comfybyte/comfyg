@@ -160,8 +160,8 @@
           tsserver.enable = true;
           html.enable = true;
           bashls.enable = true;
-          jsonls.enable = true;
           clangd.enable = true;
+          jsonls.enable = true;
         };
         onAttach = ''
         bufopts = { noremap = true, silent = true, buffer = bufnr }

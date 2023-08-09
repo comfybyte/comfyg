@@ -171,6 +171,7 @@ in {
       gnumake
       python3
       nodejs
+      nodePackages_latest.pnpm
 
       flameshot
       deluge
