@@ -1,10 +1,14 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, system, ... }:
+let
+  nix-gaming = inputs.nix-gaming.packages."${system}";
+in
 {
   home.username = "maya";
   home.homeDirectory = "/home/maya";
 
   imports = [
-    #./sway.nix
+    inputs.hyprland.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
     ./waybar.nix
     ./nixvim.nix
     ./hyprland.nix
@@ -71,6 +75,7 @@
     pfetch
     hyprpicker
     betterdiscordctl
+    libsForQt5.okular
 
     # wine-lutris-ge-lol
     osu-lazer-bin
@@ -88,6 +93,7 @@
     EDITOR = "nvim";
     # pfetch configuration
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = nix-gaming.proton-ge;
   };
 
   programs.home-manager.enable = true;
