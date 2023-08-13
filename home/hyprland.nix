@@ -66,7 +66,7 @@
         animation = windowsOut, 1, 7, default, slide
         animation = border, 1, 10, default
         animation = fade, 1, 7, default
-        animation = workspaces, 1, 6, default, slide
+        animation = workspaces, 1, 6, default, fade
     }
     
     dwindle {
@@ -92,7 +92,7 @@
     bind = $mainMod, Q, killactive, 
     bind = $mainMod, N, exec, thunar
     bind = $mainMod, space, togglefloating, 
-    bind = $mainMod, D, exec, ulauncher
+    bind = $mainMod, D, exec, rofi -show run
     bind = $mainMod, P, pseudo,
     bind = $mainMod, O, togglesplit,
     bind = $mainMod, F, fullscreen

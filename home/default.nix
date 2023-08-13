@@ -89,6 +89,18 @@ in
     configDir = ./eww;
   };
 
+  programs.rofi = {
+    enable = true;
+    theme = "glue_pro_blue";
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+    ];
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
     # pfetch configuration
