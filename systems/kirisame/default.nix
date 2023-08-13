@@ -224,6 +224,7 @@ in {
     (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" "Iosevka" "IosevkaTerm" ]; })
     monocraft
     effects-eighty-nerd
+    intel-one-mono-nerd
   ];
 
   # Adapted from the wiki page
