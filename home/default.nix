@@ -59,6 +59,8 @@ in
     mako # Notifications
     swww # Wallpaper
     wl-clipboard
+    lxappearance
+    rose-pine-gtk-theme
     discord
     audacity
     krita
@@ -82,6 +84,14 @@ in
     minecraft
     prismlauncher
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "oomox-rose-pine-moon";
+      package = pkgs.rose-pine-gtk-theme;
+    };
+  };
 
   programs.eww = {
     enable = true;
