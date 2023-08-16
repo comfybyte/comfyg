@@ -57,9 +57,8 @@
     myPkgs = (final: prev:
       let
         callPackage = prev.callPackage;
-        pkgsi686Linux = prev.pkgsi686Linux;
       in
-      (import ./pkgs { inherit callPackage pkgsi686Linux; })
+      (import ./pkgs { inherit callPackage; })
     );
 
     overlays =  ({ pkgs, ... }: {
