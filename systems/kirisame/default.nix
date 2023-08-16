@@ -221,7 +221,7 @@ in {
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" "Iosevka" "IosevkaTerm" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" "Iosevka" "IosevkaTerm" "Monofur" ]; })
     monocraft
     effects-eighty-nerd
     intel-one-mono-nerd
