@@ -88,9 +88,8 @@
     }
 
   #waybar {
-    background: rgba(0, 0, 0, .8);
-    color: @purple;
-    border-top: 3px solid transparent;
+    background: rgba(0, 0, 0, .95);
+    color: @blue;
     padding-bottom: 1px;
   }
 
@@ -104,9 +103,6 @@
     padding: 2px 1rem;
     font-weight: bold;
     color: transparent;
-    background-color: rgba(30, 30, 30, .2);
-    text-shadow:
-    0px 0px 1px @purple;
   }
 
   #network.disconnected {
