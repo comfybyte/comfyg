@@ -83,7 +83,7 @@
     * {
       min-height: 0;
       margin: 0;
-      font-family: "Hack Nerd Font";
+      font-family: "Monocraft Nerd Font";
       font-size: 1rem;
     }
 
@@ -102,7 +102,6 @@
   #tray {
     padding: 2px 1rem;
     font-weight: bold;
-    color: transparent;
   }
 
   #network.disconnected {

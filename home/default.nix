@@ -88,7 +88,7 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "oomox-rose-pine-moon";
+      name = "rose-pine-moon";
       package = pkgs.rose-pine-gtk-theme;
     };
   };

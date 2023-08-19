@@ -17,6 +17,8 @@
     # exec-once = eww daemon && eww open system-bar
     exec-once = swww init
     exec-once = alacritty
+    exec-once = firefox
+    exec-once = discord
 
     input {
       kb_layout = br
