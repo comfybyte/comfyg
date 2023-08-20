@@ -120,6 +120,8 @@
         };
       };
 
+      surround.enable = true;
+
       gitsigns.enable = true;
       fugitive.enable = true;
 
@@ -222,6 +224,11 @@
     extraConfigLua = ''
     local opts = { noremap = true, silent = true }
     vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+    vim.api.nvim_create_user_command("Q", "q", {})
+    vim.api.nvim_create_user_command("W", "w", {})
+    vim.api.nvim_create_user_command("WQ", "wq", {})
+    vim.api.nvim_create_user_command("Wq", "wq", {})
 
     -- Telescope
     local telescope = require("telescope")

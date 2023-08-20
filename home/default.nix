@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, lib, inputs, system, ... }:
 let
   nix-gaming = inputs.nix-gaming.packages."${system}";
 in
@@ -9,6 +9,7 @@ in
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
+    ./starship.nix
     ./waybar.nix
     ./nixvim.nix
     ./hyprland.nix
