@@ -2,7 +2,7 @@
 
 {
   programs.alacritty = 
-  let termfont = "Monocraft Nerd Font"; 
+  let termfont = "Monofur Nerd Font"; 
   in {
     enable = true;
     settings = {

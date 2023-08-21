@@ -52,8 +52,8 @@ in
 
   programs.git = {
     enable = true;
-    userName = "hexentia";
-    userEmail = "hexentia@proton.me";
+    userName = "mayaneru";
+    userEmail = "mayaneru@proton.me";
   };
 
   home.packages = with pkgs; [

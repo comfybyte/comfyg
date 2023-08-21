@@ -83,7 +83,7 @@
     * {
       min-height: 0;
       margin: 0;
-      font-family: "Monocraft Nerd Font";
+      font-family: "Hack Nerd Font";
       font-size: 1rem;
     }
 
