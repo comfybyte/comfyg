@@ -183,7 +183,6 @@
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
         '';
       };
@@ -286,6 +285,8 @@
 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
+    vim.keymap.set({ "n", "v", }, "<leader>fa", require("actions-preview").code_actions)
+
     -- Hop motions
     local hop = require("hop")
     local hint = require("hop.hint")
@@ -364,6 +365,19 @@
     end)
     '';
 
-    extraPlugins = with pkgs.vimPlugins; [ hop-nvim luasnip ];
+    extraPlugins = with pkgs.vimPlugins; [ 
+      hop-nvim 
+      luasnip 
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "actions-preview.nvim";
+        version = "master";
+        src = pkgs.fetchFromGitHub {
+          owner = "aznhe21";
+          repo = "actions-preview.nvim";
+          rev = "5650c76abfb84d6498330dd045657ba630ecdbba";
+          sha256 = "09i6fp5kjz2dxhhfznzlrq8gvn204byk4mw23cmxlkc6hnnz4z74";
+        };
+      })
+    ];
   };
 }
