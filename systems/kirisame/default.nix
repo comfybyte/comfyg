@@ -166,6 +166,7 @@ in {
       ])
       rust-analyzer-nightly
       cargo-shuttle
+      just
 
       flameshot
       deluge
