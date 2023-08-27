@@ -208,6 +208,8 @@
           "<C-p>"  = "cmp.mapping.select_prev_item(${select})";
           "<C-n>"  = "cmp.mapping.select_next_item(${select})";
           "<cr>"  = "cmp.mapping.confirm({ select = true })";
+          "<C-u>" = "cmp.mapping.scroll_docs( -4)";
+          "<C-d>" = "cmp.mapping.scroll_docs(4)";
         };
       };
 
