@@ -221,7 +221,7 @@ in {
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" "ShareTechMono" "Iosevka" "IosevkaTerm" "Monofur" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "Iosevka" "IosevkaTerm" "Monofur" "Terminus" ]; })
     monocraft
     effects-eighty-nerd
     intel-one-mono-nerd
@@ -256,10 +256,10 @@ in {
 
   networking.hostName = "kirisame";
   networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 80 443 ];
-  };
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 80 443 ];
+  # };
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
