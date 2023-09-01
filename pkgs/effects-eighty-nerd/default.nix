@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   pname = "effects-eighty-nerd";
-  version = "2017-08-06";
+  version = "2017-08-06b";
 
   src = fetchzip {
     url = "https://fontlibrary.org/assets/downloads/effects-eighty/3b1759f5caa1e5d5bb2e9cda6850f6b0/effects-eighty.zip";
@@ -13,7 +13,7 @@ stdenv.mkDerivation {
 
   buildPhase = ''
    mkdir -p $out/share/fonts/truetype
-   for file in $(ls $src | grep .ttf); do nerd-font-patcher --out $out/share/fonts/truetype $file; done;
+   for file in $(ls $src | grep .ttf); do nerd-font-patcher -c -q --out $out/share/fonts/truetype $file; done;
   '';
 
   meta = with lib; {

@@ -2,7 +2,7 @@
 
 {
   programs.alacritty = 
-  let termfont = "Terminess Nerd Font"; 
+  let termfont = "EffectsEighty Nerd Font"; 
   in {
     enable = true;
     settings = {
@@ -14,7 +14,7 @@
       draw_bold_text_with_bright_colors = true;
       custom_cursor_colors = true;
       font = {
-        size = 16;
+        size = 20;
         normal.family = "${termfont}";
         bold.family = "${termfont}";
         italic.family = "${termfont}";
