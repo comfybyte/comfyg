@@ -65,17 +65,6 @@
       transparentBackground = true;
       transparentFloat = true;
     };
-    # colorscheme = "tokyonight";
-    # colorschemes.tokyonight = {
-    #   enable = true;
-    #   style = "storm";
-    #   transparent = true;
-    #   styles = {
-    #     sidebars = "transparent";
-    #     floats = "transparent";
-    #     functions = { bold = true; };
-    #   };
-    # };
 
     plugins = {
       lualine = {
@@ -125,7 +114,6 @@
       gitsigns.enable = true;
       fugitive.enable = true;
 
-      # Discord presence.
       presence-nvim = {
         enable = true;
         mainImage = "file";
@@ -141,11 +129,7 @@
           buttons = false;
         };
       };
-
-      # Visual indicator for indentation.
       indent-blankline.enable = true;
-
-      # Highlight current line and word.
       cursorline = {
         enable = true;
         cursorline = {
@@ -159,10 +143,8 @@
           hl.underline = true;
         };
       };
-
       comment-nvim.enable = true;
       nvim-autopairs.enable = true;
-
       lsp = {
         enable = true;
         servers = {
@@ -188,16 +170,12 @@
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
         '';
       };
-
       lspsaga = {
         enable = true;
       };
-
-      # Completion sources.
       cmp-path.enable = true;
       cmp-buffer.enable = true;
       cmp_luasnip.enable = true;
-
       nvim-cmp = {
         enable = true;
         mappingPresets = [ "cmdline" "insert" ];
@@ -219,7 +197,6 @@
           "<C-d>" = "cmp.mapping.scroll_docs(4)";
         };
       };
-
       null-ls = {
         enable = true;
         sources.formatting = {
@@ -293,8 +270,6 @@
     vim.keymap.set('n', '<leader>o', builtin.oldfiles)
 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-
-    -- vim.keymap.set({ "n", "v", }, "<leader>fa", require("actions-preview").code_actions)
 
     -- Hop motions
     local hop = require("hop")

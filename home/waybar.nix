@@ -7,7 +7,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        modules-left = [ "wlr/workspaces" ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [ "cpu" "memory" "temperature" "pulseaudio" "tray" ];
 
