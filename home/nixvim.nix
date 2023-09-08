@@ -59,28 +59,28 @@
       };
     };
 
-    # colorscheme = "rose-pine";
-    # colorschemes.rose-pine = {
-    #   enable = true;
-    #   transparentBackground = true;
-    #   transparentFloat = true;
-    # };
-    colorscheme = "tokyonight";
-    colorschemes.tokyonight = {
+    colorscheme = "rose-pine";
+    colorschemes.rose-pine = {
       enable = true;
-      style = "storm";
-      transparent = true;
-      styles = {
-        sidebars = "transparent";
-        floats = "transparent";
-        functions = { bold = true; };
-      };
+      transparentBackground = true;
+      transparentFloat = true;
     };
+    # colorscheme = "tokyonight";
+    # colorschemes.tokyonight = {
+    #   enable = true;
+    #   style = "storm";
+    #   transparent = true;
+    #   styles = {
+    #     sidebars = "transparent";
+    #     floats = "transparent";
+    #     functions = { bold = true; };
+    #   };
+    # };
 
     plugins = {
       lualine = {
         enable = true;
-        theme = "tokyonight";
+        theme = "rose-pine";
       };
 
       nix.enable = true;
@@ -178,15 +178,22 @@
         };
         onAttach = ''
         bufopts = { noremap = true, silent = true, buffer = bufnr }
+
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+        vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
         '';
       };
 
+      lspsaga = {
+        enable = true;
+      };
+
+      # Completion sources.
       cmp-path.enable = true;
       cmp-buffer.enable = true;
       cmp_luasnip.enable = true;
@@ -287,7 +294,7 @@
 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-    vim.keymap.set({ "n", "v", }, "<leader>fa", require("actions-preview").code_actions)
+    -- vim.keymap.set({ "n", "v", }, "<leader>fa", require("actions-preview").code_actions)
 
     -- Hop motions
     local hop = require("hop")
@@ -365,11 +372,38 @@
     set_keymap("<leader>p", function()
     hop.hint_patterns()
     end)
+
+    require("lsp-inlayhints").setup {
+    inlay_hints = {
+        parameter_hints = {
+            prefix = "fn"
+        }
+    }
+}
+
+vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "LspAttach_inlayhints",
+  callback = function(args)
+  if not (args.data and args.data.client_id) then
+  return
+  end
+
+  local bufnr = args.buf
+  local client = vim.lsp.get_client_by_id(args.data.client_id)
+  require("lsp-inlayhints").on_attach(client, bufnr)
+  end,
+})
+
+    require("barbecue").setup()
     '';
 
     extraPlugins = with pkgs.vimPlugins; [ 
       hop-nvim 
       luasnip 
+      barbecue-nvim
+      lsp-inlayhints-nvim
+      rust-vim
       (pkgs.vimUtils.buildVimPlugin {
         pname = "actions-preview.nvim";
         version = "master";

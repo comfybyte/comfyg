@@ -95,6 +95,7 @@ in {
       toybox
       patchelf
       dpkg
+      xorg.xhost
 
       # Mostly game dependencies.
       libpng
@@ -167,6 +168,7 @@ in {
       rust-analyzer-nightly
       cargo-shuttle
       just
+      btop
 
       flameshot
       deluge
@@ -222,7 +224,7 @@ in {
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" "Iosevka" "IosevkaTerm" "Monofur" "Terminus" ]; })
+    (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "IosevkaTerm" "Monofur" "Terminus" ]; })
     monocraft
     effects-eighty-nerd
     intel-one-mono-nerd

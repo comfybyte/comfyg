@@ -20,7 +20,6 @@ in
   home.stateVersion = "23.05";
   nixpkgs.config.allowUnfree = true;
 
-  # Use zsh as default shell.
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -57,8 +56,8 @@ in
   };
 
   home.packages = with pkgs; [
-    mako # Notifications
-    swww # Wallpaper
+    mako
+    swww
     wl-clipboard
     lxappearance
     rose-pine-gtk-theme
@@ -69,7 +68,6 @@ in
     vivaldi-ffmpeg-codecs
     libreoffice-fresh
     obsidian
-    ulauncher 
     authy
     emote 
     gparted
@@ -80,7 +78,6 @@ in
     betterdiscordctl
     libsForQt5.okular
 
-    # wine-lutris-ge-lol
     osu-lazer-bin
     minecraft
     prismlauncher
@@ -92,12 +89,6 @@ in
       name = "rose-pine-moon";
       package = pkgs.rose-pine-gtk-theme;
     };
-  };
-
-  programs.eww = {
-    enable = true;
-    package = pkgs.eww-wayland;
-    configDir = ./eww;
   };
 
   programs.rofi = {
@@ -114,7 +105,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    # pfetch configuration
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = nix-gaming.proton-ge;
   };

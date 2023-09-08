@@ -56,7 +56,7 @@
           format-muted = "MUT {format_source}";
           format-source = "{volume}% ";
           format-source-muted = "";
-          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+";
+
           on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-";
         };
         temperature = {
@@ -83,13 +83,13 @@
     * {
       min-height: 0;
       margin: 0;
-      font-family: "Hack Nerd Font";
+      font-family: "CaskaydiaCove Nerd Font";
       font-size: 1rem;
     }
 
   #waybar {
     background: rgba(0, 0, 0, .95);
-    color: @blue;
+    color: @purple;
     padding-bottom: 1px;
   }
 

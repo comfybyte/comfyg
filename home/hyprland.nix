@@ -14,7 +14,6 @@
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = fcitx5
     exec-once = waybar
-    # exec-once = eww daemon && eww open system-bar
     exec-once = swww init
     exec-once = alacritty
     exec-once = firefox
@@ -37,19 +36,19 @@
     }
 
       general {
-        gaps_in = 0
-        gaps_out = 0
-        border_size = 0
-        col.active_border = rgba(d14ef2ee) rgba(b03cdeee) 45deg
+        gaps_in = 2
+        gaps_out = 2
+        border_size = 1
+        col.active_border = rgba(daa7faaa) rgba(ce8eedaa) 45deg
         col.inactive_border = rgba(ffc9cf44)
     
         layout = dwindle
     }
     
     decoration {
-        rounding = 5
+        rounding = 3
         blur = yes
-        blur_size = 4
+        blur_size = 5
         blur_passes = 1
         blur_new_optimizations = on
     
@@ -184,6 +183,7 @@
     windowrule = workspace 2, firefox 
     windowrule = workspace 3, thunar
     windowrule = workspace 4, Deluge
+    windowrule = workspace 4, Okular
     windowrule = workspace 5, discord
     windowrule = workspace 6, krita
     windowrule = workspace 6, Audacity
@@ -199,6 +199,7 @@
     env = XDG_SESSION_DESKTOP=Hyprland
 
    # env = GDK_SCALE,2
+    env = GDK_BACKEND,wayland,x11
     env = XCURSOR_SIZE,32
   '';
 }

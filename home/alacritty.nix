@@ -1,25 +1,25 @@
 { ... }:
 
 {
-  programs.alacritty = 
-  let termfont = "EffectsEighty Nerd Font"; 
-  in {
+  programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        opacity = 0.7;
+        opacity = 0.8;
         padding.x = 2;
         padding.y = 2;
       };
       draw_bold_text_with_bright_colors = true;
       custom_cursor_colors = true;
-      font = {
-        size = 20;
-        normal.family = "${termfont}";
-        bold.family = "${termfont}";
-        italic.family = "${termfont}";
-        bold_italic.family = "${termfont}";
-      };
+      font =
+        let termfont = "CaskaydiaCove Nerd Font";
+        in {
+          size = 20;
+          normal.family = "${termfont}";
+          bold.family = "${termfont}";
+          italic.family = "${termfont}";
+          bold_italic.family = "${termfont}";
+        };
       colors = {
         primary = {
           background = "0x000000";
