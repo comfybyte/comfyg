@@ -128,16 +128,10 @@
   }
 
 
-  #workspaces button.focused {
-    color: @black;
+  #workspaces button.active {
+    color: #000;
     text-shadow: none;
     background-color: @purple;
-    padding-left: 0;
-  }
-
-  #workspaces button.urgent {
-    border-color: @purple;
-    color: @green;
   }
   '';
 };

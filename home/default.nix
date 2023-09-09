@@ -6,9 +6,9 @@ in
   home.username = "maya";
   home.homeDirectory = "/home/maya";
 
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
+  imports = with inputs; [
+    hyprland.homeManagerModules.default
+    nixvim.homeManagerModules.nixvim
     ./starship.nix
     ./waybar.nix
     ./nixvim.nix
@@ -28,6 +28,9 @@ in
       txn = "tmux new";
       txl = "tmux list-sessions";
       txa = "tmux attach -t";
+
+      ls = "exa";
+      lls = "ls";
 
       mic-loop = "pw-loopback";
 

@@ -22,7 +22,7 @@ in {
     users.users.maya = {
       isNormalUser = true;
       home = "/home/maya";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
       shell = pkgs.zsh;
     };
 
@@ -32,6 +32,8 @@ in {
 
     services.dbus.enable = true;
     services.xserver.layout = "br-abnt2";
+
+    virtualisation.docker.enable = true;
 
     services.pipewire = {
       enable = true;
