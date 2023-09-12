@@ -1,0 +1,45 @@
+commit ea8b203c5add772629e8b9a5452ae5b12a1c00de
+Author: Jalil David Salamé Messina <jalil.salame@gmail.com>
+Date:   Fri Sep 8 21:37:25 2023 +0200
+
+    fix: cargo-auditable build error
+    
+    Use `prodash` instead of `dep:prodash` in gix-features and `tracing`
+    instead of `dep:tracing` in gitoxide-core.
+    
+    The `dep:mydep` syntax removes the implicit `mydep` feature for optional
+    dependencies, this triggers a bug in cargo that affects
+    `cargo-auditable`. See https://github.com/rust-lang/cargo/issues/12336
+    
+    This affects some Linux distributions like NixOS which use
+    `cargo-auditable` by default. Related issues:
+    
+    - https://github.com/NixOS/nixpkgs/issues/253911
+    - https://github.com/rust-secure-code/cargo-auditable/issues/124
+
+diff --git a/gitoxide-core/Cargo.toml b/gitoxide-core/Cargo.toml
+index 1d76bcc0a..d42add962 100644
+--- a/gitoxide-core/Cargo.toml
++++ b/gitoxide-core/Cargo.toml
+@@ -23,7 +23,7 @@ estimate-hours = ["dep:itertools", "dep:fs-err", "dep:crossbeam-channel", "dep:s
+ query = ["dep:rusqlite"]
+ ## Run algorithms on a corpus of repositories and store their results for later comparison and intelligence gathering.
+ ## *Note that* `organize` we need for finding git repositories fast.
+-corpus = [ "dep:rusqlite", "dep:sysinfo", "organize", "dep:crossbeam-channel", "dep:serde_json", "dep:tracing-forest", "dep:tracing-subscriber", "dep:tracing", "dep:parking_lot" ]
++corpus = [ "dep:rusqlite", "dep:sysinfo", "organize", "dep:crossbeam-channel", "dep:serde_json", "dep:tracing-forest", "dep:tracing-subscriber", "tracing", "dep:parking_lot" ]
+ 
+ ## The ability to create archives from virtual worktrees, similar to `git archive`.
+ archive = ["dep:gix-archive-for-configuration-only", "gix/worktree-archive"]
+diff --git a/gix-features/Cargo.toml b/gix-features/Cargo.toml
+index df27af35d..506c495d0 100644
+--- a/gix-features/Cargo.toml
++++ b/gix-features/Cargo.toml
+@@ -17,7 +17,7 @@ test = false
+ default = []
+ ## Provide traits and utilities for providing progress information. These can then be rendered
+ ## using facilities of the `prodash` crate.
+-progress = ["dep:prodash"]
++progress = ["prodash"]
+ ## Provide human-readable numbers as well as easier to read byte units for progress bars.
+ progress-unit-human-numbers = ["prodash?/unit-human"]
+ ## Provide human readable byte units for progress bars.

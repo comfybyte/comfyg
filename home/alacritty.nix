@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       window = {
-        opacity = 0.8;
+        opacity = 0.75;
         padding.x = 2;
         padding.y = 2;
       };
