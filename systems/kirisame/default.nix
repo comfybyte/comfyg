@@ -30,7 +30,7 @@ in {
     isNormalUser = true;
     home = "/home/maya";
     extraGroups = [ "wheel" "docker" ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   environment.shells = with pkgs; [ zsh nushell ];
