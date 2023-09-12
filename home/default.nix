@@ -11,7 +11,8 @@ in
     imports = with inputs; [
       hyprland.homeManagerModules.default
       nixvim.homeManagerModules.nixvim
-      ./nu.nix
+      # ./nu.nix
+      ./zsh.nix
       ./starship.nix
       ./waybar.nix
       ./nixvim.nix
@@ -53,37 +54,6 @@ in
 
     programs = {
       home-manager.enable = true;
-      zsh = {
-        enable = true;
-        shellAliases = {
-          nors = "sudo nixos-rebuild switch";
-
-          txn = "tmux new";
-          txl = "tmux list-sessions";
-          txa = "tmux attach -t";
-
-          ls = "exa";
-          lls = "ls";
-
-          mic-loop = "pw-loopback";
-
-          vim = "nvim";
-          vi = "nvim";
-        };
-
-        history = {
-          size = 10000;
-          path = "${config.xdg.dataHome}/zsh/history";
-        };
-
-        oh-my-zsh = {
-          enable = true;
-          theme = "intheloop";
-          plugins = [
-            "git"
-          ];
-        };
-      };
       git = {
         enable = true;
         userName = "mayaneru";
