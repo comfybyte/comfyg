@@ -4,11 +4,14 @@ let
   system = pkgs.system;
 in {
   imports = [ ./hardware-configuration.nix ];
+
   nix = {
     package = pkgs.nixFlakes;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
   nixpkgs.config.allowUnfree = true;
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
   boot.loader.systemd-boot.enable = true;
   security = {
     rtkit.enable = true;
