@@ -46,6 +46,7 @@ in
       hyprpicker
       betterdiscordctl
       libsForQt5.okular
+      xplr
 
       osu-lazer-bin
       minecraft
@@ -56,8 +57,8 @@ in
       home-manager.enable = true;
       git = {
         enable = true;
-        userName = "mayaneru";
-        userEmail = "mayaneru@proton.me";
+        userName = "comfybyte";
+        userEmail = "comfybyte@proton.me";
       };
       rofi = {
         enable = true;
