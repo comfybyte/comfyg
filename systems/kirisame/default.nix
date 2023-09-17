@@ -59,6 +59,8 @@ in {
     };
   };
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+
   programs = {
     zsh.enable = true;
     dconf.enable = true;
@@ -96,6 +98,8 @@ in {
     patchelf
     dpkg
     xorg.xhost
+    busybox
+    qemu_full
 
     libpng
     giflib
@@ -160,6 +164,7 @@ in {
     wiki-tui
     gitoxide
     handlr-regex
+    zenith
 
     gcc
     gnumake
@@ -181,6 +186,7 @@ in {
     flameshot
     deluge
     deluge-gtk
+    virt-manager
 
     vlc
     xfce.thunar
@@ -230,7 +236,7 @@ in {
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "IosevkaTerm" "Monofur" "Terminus" ]; })
+    (nerdfonts.override { fonts = [ "CascadiaCode" "SpaceMono" "Terminus" "FantasqueSansMono" ]; })
     monocraft
     effects-eighty-nerd
     intel-one-mono-nerd
