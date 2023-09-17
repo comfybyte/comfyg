@@ -37,6 +37,7 @@
       loaded_netrw = 1;
       loaded_netrwPlugin = 1;
 
+      rustfmt_autosave = 1;
       ftplugin_sql_omni_key = "<C-j>";
     };
 
