@@ -1,4 +1,5 @@
 { config, pkgs, lib, inputs, system, ... }:
+
 let
   nix-gaming = inputs.nix-gaming.packages."${system}";
 in
@@ -11,7 +12,7 @@ in
     imports = with inputs; [
       hyprland.homeManagerModules.default
       nixvim.homeManagerModules.nixvim
-      # ./nu.nix
+      agenix.homeManagerModules.default
       ./zsh.nix
       ./starship.nix
       ./waybar.nix
@@ -55,17 +56,25 @@ in
 
     programs = {
       home-manager.enable = true;
+
       git = {
         enable = true;
         userName = "comfybyte";
         userEmail = "comfybyte@proton.me";
+        signing = {
+          signByDefault = true;
+          key = "61143F72A8F3440A";
+        };
       };
+
       rofi = {
         enable = true;
         theme = "glue_pro_blue";
       };
+
       bat.enable = true;
       zellij.enable = true;
+
       obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [

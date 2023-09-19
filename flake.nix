@@ -3,24 +3,32 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
       url = "github:nix-community/nixvim/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland.url = "github:hyprwm/Hyprland";
+
     nixpkgs-wl = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-gaming.url = "github:fufexan/nix-gaming";
+
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix.url = "github:ryantm/agenix";
   };
 
   nixConfig = {
@@ -49,6 +57,7 @@
     fenix,
     nixpkgs-wl,
     nix-gaming,
+    agenix,
     ...
   } @ inputs:
   let 
@@ -85,6 +94,7 @@
               inherit inputs system;
             };
           }
+          agenix.nixosModules.default
           overlays
         ];
       };

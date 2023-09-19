@@ -34,7 +34,6 @@
         "rust"
       ];
     };
-
     syntaxHighlighting.enable = true;
   };
 }

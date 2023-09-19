@@ -12,7 +12,7 @@
       draw_bold_text_with_bright_colors = true;
       custom_cursor_colors = true;
       font =
-        let termfont = "SpaceMono Nerd Font";
+        let termfont = "Mononoki Nerd Font";
         in {
           size = 20;
           normal.family = "${termfont}";
