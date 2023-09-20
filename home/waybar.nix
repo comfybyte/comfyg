@@ -79,6 +79,7 @@
     @define-color blue #10a5db;
     @define-color red #e82424;
     @define-color green #7ae6d1;
+    @define-color pink #F97673;
 
     * {
       min-height: 0;
@@ -89,7 +90,7 @@
 
   #waybar {
     background: rgba(0, 0, 0, .95);
-    color: @purple;
+    color: @pink;
     padding-bottom: 1px;
   }
 
@@ -118,8 +119,8 @@
   }
 
   #workspaces button {
-    color: @purple;
-    border-top-color: @purple;
+    color: @pink;
+    border-top-color: @pink;
     border-radius: 0;
     font-size: .5em;
     margin-bottom: 0px;
@@ -131,7 +132,7 @@
   #workspaces button.active {
     color: #000;
     text-shadow: none;
-    background-color: @purple;
+    background-color: @pink;
   }
   '';
 };

@@ -9,10 +9,10 @@
 
       format = lib.concatStrings [
         "[░▒▓](#a3aed2)"
-        "[ 󰄛 ](bg:#c5a1f7 fg:#090c0c)"
-        "[](bg:#c5a1f7 fg:#c5a1f7)"
+        "[ 󰄛 ](bg:#ffe8db fg:#090c0c)"
+        "[](bg:#ffe8db fg:#ffe8db)"
         "$directory"
-        "[](fg:#c5a1f7 bg:#394260)"
+        "[](fg:#ffe8db bg:#394260)"
         "$git_branch"
         "$git_status"
         "[](fg:#394260 bg:#212736)"
@@ -25,7 +25,7 @@
       ];
 
       directory = {
-        style = "fg:#090c0c bg:#c5a1f7";
+        style = "fg:#090c0c bg:#ffe8db";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = ".../";
@@ -34,24 +34,24 @@
       git_branch = {
         symbol = "";
         style = "bg:#394260";
-        format = "[[ $symbol $branch ](fg:#c5a1f7 bg:#394260)]($style)";
+        format = "[[ $symbol $branch ](fg:#ffe8db bg:#394260)]($style)";
       };
 
       git_status = {
         style = "bg:#394260";
-        format = "[[($all_status$ahead_behind )](fg:#c5a1f7 bg:#394260)]($style)";
+        format = "[[($all_status$ahead_behind )](fg:#ffe8db bg:#394260)]($style)";
       };
 
       rust = {
         symbol = "";
         style = "bg:#212736";
-        format = "[[ $symbol ($version) ](fg:#c5a1f7 bg:#212736)]($style)";
+        format = "[[ $symbol ($version) ](fg:#ffe8db bg:#212736)]($style)";
       };
 
       nodejs = {
         symbol = "";
         style = "bg:#212736";
-        format = "[[ $symbol ($version) ](fg:#c5a1f7 bg:#212736)]($style)";
+        format = "[[ $symbol ($version) ](fg:#ffe8db bg:#212736)]($style)";
       };
 
       time = {
