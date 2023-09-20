@@ -12,6 +12,8 @@
       txa = "tmux attach -t";
 
       ls = "exa";
+      la = "exa -a";
+      tree = "exa -T";
       cat = "bat";
       grep = "rg";
 
