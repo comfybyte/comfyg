@@ -241,16 +241,16 @@
     path = "%:p:h"
   }
 
-  vim.keymap.set("n", "<leader>pv", function()
+  vim.keymap.set("n", "<leader>pp", function()
   file_browser.file_browser(browser_opts)
   end)
 
-  vim.keymap.set("n", "<leader>px", function()
+  vim.keymap.set("n", "<leader>pv", function()
   vim.cmd("vsplit")
   file_browser.file_browser(browser_opts)
   end)
 
-  vim.keymap.set("n", "<leader>pz", function()
+  vim.keymap.set("n", "<leader>px", function()
   vim.cmd("split")
   file_browser.file_browser(browser_opts)
   end)
