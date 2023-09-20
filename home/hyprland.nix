@@ -189,6 +189,8 @@
     windowrule = workspace 6, krita
     windowrule = workspace 6, Audacity
     windowrule = workspace 7, lutris
+    windowrule = workspace 7, Steam
+    windowrule = workspace 9, Obsidian
 
     env = QT_QPA_PLATFORM,wayland;xcb
     env = SDL_VIDEODRIVER,wayland
