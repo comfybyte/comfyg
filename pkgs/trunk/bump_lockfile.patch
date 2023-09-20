@@ -1,0 +1,14 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 743a4e0..de218ed 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2643,7 +2643,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "trunk"
+-version = "0.17.3"
++version = "0.17.5"
+ dependencies = [
+  "ansi_term",
+  "anyhow",
+

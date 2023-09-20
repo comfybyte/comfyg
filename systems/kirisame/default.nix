@@ -145,7 +145,7 @@ in {
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "tty";
   };
 
   console = {

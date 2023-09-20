@@ -56,7 +56,6 @@
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
-
     cups
     dosbox
     dxvk
@@ -76,11 +75,13 @@
     ventoy-full
     gtk-layer-shell
     agenix.default
+    keychain
+    cachix
 
     ripgrep
     jq
     gnupg
-    pinentry
+    pinentry-curses
     tree
     exa
     httpie
@@ -115,6 +116,7 @@
     cargo-shuttle
     cargo-info
     just
+    trunk
 
     flameshot
     deluge

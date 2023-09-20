@@ -23,7 +23,7 @@ rustPlatform.buildRustPackage {
 
   patches = [ ./fix-cargo-auditable.patch ];
 
-  meta = with lib; {
+  meta = {
     description = "An idiomatic, lean, fast & safe pure Rust implementation of Git.";
     homepage = "https://github.com/Byron/gitoxide";
   };
