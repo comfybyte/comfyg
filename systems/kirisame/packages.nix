@@ -115,6 +115,7 @@
     rust-analyzer-nightly
     cargo-shuttle
     cargo-info
+    cargo-leptos
     just
     trunk
 
