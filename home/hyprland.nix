@@ -36,9 +36,9 @@
     }
 
       general {
-        gaps_in = 2
-        gaps_out = 2
-        border_size = 1
+        gaps_in = 0
+        gaps_out = 0
+        border_size = 0
         col.active_border = rgba(000000dd) rgba(444444ee) 45deg
         col.inactive_border = rgba(000000aa)
     
@@ -50,7 +50,7 @@
 
         blur {
           enabled = true
-          size = 4
+          size = 5
         }
     
         drop_shadow = yes

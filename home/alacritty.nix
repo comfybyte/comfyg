@@ -5,14 +5,14 @@
     enable = true;
     settings = {
       window = {
-        opacity = 0.7;
+        opacity = 0.75;
         padding.x = 2;
         padding.y = 2;
       };
       draw_bold_text_with_bright_colors = true;
       custom_cursor_colors = true;
       font =
-        let termfont = "Mononoki Nerd Font";
+        let termfont = "Terminess Nerd Font";
         in {
           size = 20;
           normal.family = "${termfont}";
