@@ -46,7 +46,7 @@
     }
     
     decoration {
-        rounding = 3
+        rounding = 0
 
         blur {
           enabled = true
