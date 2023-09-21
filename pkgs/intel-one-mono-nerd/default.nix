@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
    mkdir -p $out/share/fonts/truetype
-   for file in $(ls $src | grep .ttf); do nerd-font-patcher --out $out/share/fonts/truetype $file; done;
+   for file in $(ls $src | grep .ttf); do nerd-font-patcher -c -q --out $out/share/fonts/truetype $file; done;
   '';
 
   meta = with lib; {
