@@ -1,4 +1,4 @@
-{ config, ... }: 
+{ config, lib, ... }: 
 
 {
   programs.zsh = {
@@ -37,5 +37,8 @@
       ];
     };
     syntaxHighlighting.enable = true;
+    initExtra = lib.concatStrings [
+      "bindkey '^b' history-incremental-pattern-search-backward"
+    ];
   };
 }
