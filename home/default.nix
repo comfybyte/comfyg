@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, system, ... }:
+{ pkgs, inputs, system, ... }:
 
 let
   nix-gaming = inputs.nix-gaming.packages."${system}";
@@ -74,13 +74,20 @@ in
 
       bat.enable = true;
       zellij.enable = true;
-
       obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
           wlrobs
           obs-vkcapture
         ];
+      };
+      neomutt = {
+        enable = true;
+        vimKeys = true;
+      };
+      newsboat = {
+        enable = true;
+        urls = [];
       };
     };
 
