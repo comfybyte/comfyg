@@ -15,19 +15,14 @@
       la = "exa -a";
       tree = "exa -T";
       cat = "bat";
-      grep = "rg";
-
-      mic-loop = "pw-loopback";
 
       vim = "nvim";
       vi = "nvim";
     };
-
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-
     oh-my-zsh = {
       enable = true;
       theme = "intheloop";
@@ -38,6 +33,7 @@
     };
     syntaxHighlighting.enable = true;
     initExtra = lib.concatStrings [
+      # Rebinding since I use ^s as my tmux prefix.
       "bindkey '^b' history-incremental-pattern-search-backward"
     ];
   };
