@@ -118,6 +118,7 @@
     cargo-leptos
     just
     trunk
+    nixfmt
 
     flameshot
     deluge

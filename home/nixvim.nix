@@ -36,6 +36,8 @@
 
       rustfmt_autosave = 1;
       ftplugin_sql_omni_key = "<C-j>";
+      neoformat_run_all_formatters = 1;
+      neoformat_enabled_nix = [ "nixfmt" "rustfmt" ];
     };
 
     maps = {
@@ -57,6 +59,15 @@
         "<leader>p" = ''"_dP'';
       };
     };
+
+    autoCmd = [
+      # Formattin on save.
+      {
+        event = ["BufWritePre" "BufRead"];
+        pattern = [ "*.nix" "*.rs" ];
+        command = "Neoformat"; # Let neoformat choose a formatter.
+      }
+    ];
 
     colorscheme = "rose-pine";
     colorschemes.rose-pine = {
@@ -199,13 +210,13 @@
         "<C-d>" = "cmp.mapping.scroll_docs(4)";
       };
     };
-    null-ls = {
-      enable = true;
-      sources.formatting = {
-        nixfmt.enable = true;
-        rustfmt.enable = true;
-      };
-    };
+    # null-ls = {
+    #   enable = true;
+    #   sources.formatting = {
+    #     nixfmt.enable = true;
+    #     rustfmt.enable = true;
+    #   };
+    # };
   };
 
   extraConfigLua = ''
@@ -382,6 +393,7 @@
     lsp-inlayhints-nvim
     rust-vim
     vim-rhubarb
+    neoformat
   ];
 };
 }
