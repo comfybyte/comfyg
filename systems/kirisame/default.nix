@@ -1,8 +1,6 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 
-let
-  system = pkgs.system;
-in {
+{
   imports = [ 
     ./hardware-configuration.nix
     ./packages.nix
@@ -16,7 +14,11 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    # Prevents boot menu from being flooded with entries.
+    configurationLimit = 10;
+  };
   security = {
     rtkit.enable = true;
     polkit.enable = true;
@@ -135,10 +137,7 @@ in {
   networking = {
     hostName = "kirisame";
     networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 80 443 ];
-    };
+    firewall.enable = true;
   };
 
   services.openssh.enable = true;
