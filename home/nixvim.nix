@@ -1,33 +1,30 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.nixvim = {
     enable = true;
-
-    options = {
+    options = let homeDir = config.home.homeDirectory; in {
       number = true;
       nuw = 1;
       relativenumber = true;
+      cursorcolumn = true;
 
       tabstop = 2;
       softtabstop = 2;
       shiftwidth = 2;
       expandtab = true;
 
-      hlsearch = false;
+      hlsearch = true;
       smartindent = true;
 
       wrap = false;
-
       termguicolors = true;
       scrolloff = 10;
       sidescrolloff = 10;
-
       updatetime = 1000;
-
       completeopt = "menuone,noselect";
 
-      undodir = "/home/maya/.cache/nvim/undodir";
+      undodir = "${homeDir}/.cache/nvim/undodir";
       undofile = true;
     };
 
@@ -49,6 +46,7 @@
         "N" = "Nzzzv";
         "G" = "Gzz";
 
+        # Yank into system clipboard.
         "<leader>y" = ''"+y'';
         "<leader>Y" = ''"+Y'';
       };
@@ -149,7 +147,7 @@
       lsp = {
         enable = true;
         servers = {
-          rnix-lsp.enable = true;
+          nil_ls.enable = true;
           rust-analyzer.enable = true;
           lua-ls.enable = true;
           hls.enable = true;
@@ -173,6 +171,9 @@
       };
       lspsaga = {
         enable = true;
+        extraOptions = {
+          lightbulb.enable = false;
+        };
       };
       cmp-path.enable = true;
       cmp-buffer.enable = true;
@@ -380,6 +381,7 @@
     barbecue-nvim
     lsp-inlayhints-nvim
     rust-vim
+    vim-rhubarb
   ];
 };
 }
