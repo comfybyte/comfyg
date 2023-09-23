@@ -1,4 +1,4 @@
-{ config, lib, ... }: 
+{ config, lib, ... }:
 
 {
   programs.zsh = {
@@ -26,10 +26,7 @@
     oh-my-zsh = {
       enable = true;
       theme = "intheloop";
-      plugins = [
-        "git"
-        "rust"
-      ];
+      plugins = [ "git" "rust" "direnv" ];
     };
     syntaxHighlighting.enable = true;
     initExtra = lib.concatStrings [

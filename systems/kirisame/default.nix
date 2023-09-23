@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ 
-    ./hardware-configuration.nix
-    ./packages.nix
-    ./fonts.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./packages.nix ./fonts.nix ];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -28,11 +24,7 @@
     enable = true;
     driSupport32Bit = true;
     driSupport = true;
-    extraPackages = with pkgs; [
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+    extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
   };
 
   users.users.maya = {
@@ -48,11 +40,7 @@
     dbus.enable = true;
     xserver = {
       layout = "br-abnt2";
-      drivers = [
-        "video-intel"
-        "mesa"
-        "vulkan-intel"
-      ];
+      drivers = [ "video-intel" "mesa" "vulkan-intel" ];
     };
     pipewire = {
       enable = true;
@@ -92,18 +80,12 @@
   xdg.portal = {
     enable = true;
     wlr.enable = false;
-    extraPortals = with pkgs; [ 
-      xdg-desktop-portal-hyprland
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-      fcitx5-mozc
-      fcitx5-configtool
-    ];
+    fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-mozc fcitx5-configtool ];
   };
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
@@ -113,7 +95,8 @@
     after = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+      ExecStart =
+        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
@@ -121,15 +104,13 @@
   };
 
   environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-    XDG_BIN_HOME    = "$HOME/.local/bin";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    XDG_BIN_HOME = "$HOME/.local/bin";
 
-    PATH = [ 
-      "${XDG_BIN_HOME}"
-    ];
+    PATH = [ "${XDG_BIN_HOME}" ];
     NIXOS_OZONE_WL = "1";
     GPG_TTY = "$(tty)";
   };
@@ -155,4 +136,3 @@
   time.timeZone = "America/Sao_Paulo";
   system.stateVersion = "23.11";
 }
-

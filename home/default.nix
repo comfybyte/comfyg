@@ -64,25 +64,26 @@ in {
         key = "61143F72A8F3440A";
       };
     };
-
     rofi = {
       enable = true;
       theme = "glue_pro_blue";
     };
-
     bat.enable = true;
-    zellij.enable = true;
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [ wlrobs obs-vkcapture ];
     };
-    neomutt = {
-      enable = true;
-      vimKeys = true;
-    };
     newsboat = {
       enable = true;
-      urls = [ ];
+      urls = [{
+        title = "NixOS - Mastodon";
+        url = "https://mastodon.social/tags/nixos.rss";
+      }];
+    };
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
     };
   };
 
