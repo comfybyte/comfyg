@@ -35,7 +35,7 @@
         };
 
         cpu = {
-          interval =  5;
+          interval = 5;
           format = "CPU {usage}%";
           states = {
             warning = 70;
@@ -75,65 +75,65 @@
     };
 
     style = ''
-    @define-color purple #c5a1f7;
-    @define-color blue #10a5db;
-    @define-color red #e82424;
-    @define-color green #7ae6d1;
-    @define-color pink #F97673;
+        @define-color purple #c5a1f7;
+        @define-color blue #10a5db;
+        @define-color red #e82424;
+        @define-color green #7ae6d1;
+        @define-color pink #F97673;
 
-    * {
-      min-height: 0;
-      margin: 0;
-      font-family: "CaskaydiaCove Nerd Font";
-      font-size: 1rem;
-    }
+        * {
+          min-height: 0;
+          margin: 0;
+          font-family: "Terminess Nerd Font";
+          font-size: 1rem;
+        }
 
-  #waybar {
-    background: rgba(0, 0, 0, .95);
-    color: @pink;
-    padding-bottom: 1px;
-  }
-
-
-  #clock,
-  #memory,
-  #cpu,
-  #temperature,
-  #pulseaudio,
-  #tray {
-    padding: 2px 1rem;
-    font-weight: bold;
-  }
-
-  #network.disconnected {
-    color: orange;
-  }
-
-  #temperature.critical {
-    font-size: .9rem;
-    color: red;
-  }
-
-  #workspaces {
-    padding: 0;
-  }
-
-  #workspaces button {
-    color: @pink;
-    border-top-color: @pink;
-    border-radius: 0;
-    font-size: .5em;
-    margin-bottom: 0px;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
+      #waybar {
+        background: rgba(0, 0, 0, .95);
+        color: @pink;
+        padding-bottom: 1px;
+      }
 
 
-  #workspaces button.active {
-    color: #000;
-    text-shadow: none;
-    background-color: @pink;
-  }
-  '';
-};
+      #clock,
+      #memory,
+      #cpu,
+      #temperature,
+      #pulseaudio,
+      #tray {
+        padding: 2px 1rem;
+        font-weight: bold;
+      }
+
+      #network.disconnected {
+        color: orange;
+      }
+
+      #temperature.critical {
+        font-size: .9rem;
+        color: red;
+      }
+
+      #workspaces {
+        padding: 0;
+      }
+
+      #workspaces button {
+        color: @pink;
+        border-top-color: @pink;
+        border-radius: 0;
+        font-size: .5em;
+        margin-bottom: 0px;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+
+      #workspaces button.active {
+        color: #000;
+        text-shadow: none;
+        background-color: @pink;
+      }
+    '';
+  };
 }
