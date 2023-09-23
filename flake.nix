@@ -20,13 +20,9 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
 
     agenix.url = "github:ryantm/agenix";
   };
@@ -38,6 +34,7 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://nix-gaming.cachix.org"
       "https://nix-community.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -45,16 +42,20 @@
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, fenix, nixpkgs-wl
+  outputs = { self, nixpkgs, home, hyprland, nixvim, rust-overlay, nixpkgs-wl
     , nix-gaming, agenix, ... }@inputs:
     let
       system = "x86_64-linux";
       overlays = ({ pkgs, ... }: {
-        nixpkgs.overlays =
-          [ fenix.overlays.default nixpkgs-wl.overlay (import ./pkgs pkgs) ];
+        nixpkgs.overlays = [
+          rust-overlay.overlays.default
+          nixpkgs-wl.overlay
+          (import ./pkgs pkgs)
+        ];
       });
     in {
       nixosConfigurations = {
