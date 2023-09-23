@@ -116,6 +116,7 @@
       deluge
       deluge-gtk
       virt-manager
+      nixos-shell
 
       vlc
       xfce.thunar
