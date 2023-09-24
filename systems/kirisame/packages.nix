@@ -30,6 +30,7 @@
       xorg.xhost
       busybox
       qemu_full
+      nodePackages.serve
 
       libpng
       giflib
