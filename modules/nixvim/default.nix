@@ -161,6 +161,11 @@ in {
           enable = true;
           extraOptions = { lightbulb.enable = false; };
         };
+        fidget.enable = true;
+        luasnip = {
+          enable = true;
+          fromVscode = [ { } ];
+        };
         cmp-path.enable = true;
         cmp-buffer.enable = true;
         cmp_luasnip.enable = true;
@@ -171,6 +176,7 @@ in {
           sources = [ # TODO: Configure snippets.
             { name = "nvim_lsp"; }
             { name = "buffer"; }
+            { name = "luasnip"; }
             { name = "path"; }
           ];
           mapping = let select = "{ behavior = cmp.SelectBehavior.Select }";
@@ -188,6 +194,7 @@ in {
         hop-nvim
         luasnip
         barbecue-nvim
+        friendly-snippets
         lsp-inlayhints-nvim
         rust-vim
         vim-rhubarb
