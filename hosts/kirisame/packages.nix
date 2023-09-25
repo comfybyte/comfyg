@@ -3,9 +3,12 @@
 {
   environment.systemPackages = with pkgs;
     let
-      nix-gaming = inputs.nix-gaming.packages."${system}";
+      gaming = inputs.gaming.packages."${system}";
       agenix = inputs.agenix.packages."${system}";
     in [
+      mako
+      swww
+      wl-clipboard
       xdg-utils
       glib
       dracula-theme
@@ -23,7 +26,6 @@
       num-utils
       luajit
       speechd
-      nix-index
       toybox
       patchelf
       dpkg
@@ -96,7 +98,6 @@
       mprocs
       gitui
       wiki-tui
-      gitoxide
       handlr-regex
       zenith
 
@@ -127,10 +128,31 @@
       lutris
       wineWowPackages.stagingFull
       wine64Packages.stagingFull
-      nix-gaming.wine-ge
-      nix-gaming.proton-ge
+      gaming.wine-ge
+      gaming.proton-ge
       winetricks
       gamemode
 
+      discord
+      audacity
+      krita
+      vivaldi
+      vivaldi-ffmpeg-codecs
+      libreoffice-fresh
+      obsidian
+      authy
+      emote
+      gparted
+      wmctrl
+      firefox-devedition
+      pfetch
+      hyprpicker
+      betterdiscordctl
+      libsForQt5.okular
+      xplr
+
+      osu-lazer-bin
+      minecraft
+      prismlauncher
     ];
 }

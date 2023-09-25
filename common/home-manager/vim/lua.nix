@@ -8,11 +8,9 @@
     vim.api.nvim_create_user_command("WQ", "wq", {})
     vim.api.nvim_create_user_command("Wq", "wq", {})
 
-    -- Telescope
     local telescope = require("telescope")
     local file_browser = require("telescope").extensions.file_browser
     local builtin = require("telescope.builtin")
-
     telescope.setup {
       defaults = {
         file_ignore_patterns = { "node_modules", "yarn.lock", "target/debug", "dist" }
@@ -25,12 +23,10 @@
         }
       }
     }
-
     telescope.load_extension('file_browser')
 
-    -- Opens it at the current file's path (as it should)
     local browser_opts = {
-      path = "%:p:h"
+      path = "%:p:h" -- Current path instead of project root
     }
 
     vim.keymap.set("n", "<leader>pp", function()
@@ -55,6 +51,8 @@
     vim.keymap.set("n", "<leader>fq", builtin.quickfix, {})
     vim.keymap.set("n", "<leader>fo", builtin.vim_options, {})
     vim.keymap.set("n", "<leader>fc", builtin.command_history, {})
+    vim.keymap.set("n", "<leader>fm", builtin.marks, {})
+    vim.keymap.set("n", "<leader>f'", builtin.registers, {})
 
     vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
     vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, {})
@@ -64,7 +62,6 @@
 
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-    -- Hop motions
     local hop = require("hop")
     local hint = require("hop.hint")
 
@@ -78,7 +75,6 @@
     local function set_keymap(motion, action, normal_only)
     normal_only = normal_only or false
 
-    -- Hop sometimes errors from blank lines, so wrapping it with pcall silences that.
     vim.keymap.set("n", motion, function() pcall(action) end)
     if not normal_only then
     vim.keymap.set("v", motion, function() pcall(action) end)
@@ -144,7 +140,7 @@
     require("lsp-inlayhints").setup {
       inlay_hints = {
         parameter_hints = {
-          prefix = "fn"
+          prefix = "f"
         }
       }
     }
@@ -165,5 +161,4 @@
 
     require("barbecue").setup()
   '';
-
 }

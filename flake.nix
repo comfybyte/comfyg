@@ -1,8 +1,12 @@
 {
-  description = "My NixOS configuration.";
+  description = "My Nix flake configurations.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    gaming.url = "github:fufexan/nix-gaming";
+    rust.url = "github:oxalica/rust-overlay";
+    agenix.url = "github:ryantm/agenix";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -14,50 +18,33 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
     nixpkgs-wl = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    rust-overlay.url = "github:oxalica/rust-overlay";
-
-    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, rust-overlay, nixpkgs-wl
-    , nix-gaming, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home, hyprland, nixvim, rust, nixpkgs-wl, agenix
+    , ... }@inputs:
     let
-      system = "x86_64-linux";
-      overlays = ({ pkgs, ... }: {
-        nixpkgs.overlays = [
-          rust-overlay.overlays.default
-          nixpkgs-wl.overlay
-          (import ./pkgs pkgs)
-        ];
-      });
-    in {
-      nixosConfigurations = {
-        kirisame = nixpkgs.lib.nixosSystem rec {
-          inherit system;
+      mkSystem = extraModules:
+        nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./systems/kirisame
             home.nixosModules.home-manager
-            {
+            agenix.nixosModules.default
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust.overlays.default nixpkgs-wl.overlay ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.maya = import ./home;
+              home-manager.users = import ./common/users;
               home-manager.extraSpecialArgs = { inherit inputs system; };
-            }
-            agenix.nixosModules.default
-            overlays
-          ];
+
+            })
+          ] ++ extraModules;
         };
-      };
-    };
+    in { nixosConfigurations = { kirisame = mkSystem [ ./hosts/kirisame ]; }; };
 
   nixConfig = {
     connect-timeout = 20; # seconds.
