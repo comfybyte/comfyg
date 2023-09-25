@@ -9,9 +9,9 @@
       txl = "tmux list-sessions";
       txa = "tmux attach -t";
 
-      ls = "exa";
-      la = "exa -a";
-      tree = "exa -T";
+      ls = "eza";
+      la = "eza -a";
+      tree = "eza -T";
       cat = "bat";
 
       vim = "nvim";
