@@ -11,8 +11,6 @@
       wl-clipboard
       xdg-utils
       glib
-      dracula-theme
-      gnome3.adwaita-icon-theme
       grim
       slurp
       libnotify
@@ -62,20 +60,17 @@
       dosbox
       dxvk
 
-      appimage-run
-      wofi
       zip
       unzip
       unrar
-      bemenu
       wdisplays
       git
       neofetch
+      ranger
       dmenu
       imv
       parted
       ventoy-full
-      gtk-layer-shell
       agenix.default
       keychain
       cachix
@@ -84,14 +79,12 @@
       jq
       gnupg
       pinentry-curses
-      tree
-      exa
+      eza
       httpie
       wget
       htop
       btop
       dig
-      bandwhich
       uutils-coreutils
       du-dust
       bat
@@ -103,7 +96,6 @@
 
       gcc
       gnumake
-      python3
       nodejs
       nodePackages_latest.pnpm
       (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
@@ -114,7 +106,6 @@
       trunk
       nixfmt
 
-      flameshot
       deluge
       deluge-gtk
       virt-manager
@@ -149,7 +140,6 @@
       hyprpicker
       betterdiscordctl
       libsForQt5.okular
-      xplr
 
       osu-lazer-bin
       minecraft
