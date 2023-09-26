@@ -31,7 +31,7 @@
     isNormalUser = true;
     home = "/home/maya";
     extraGroups = [ "wheel" "docker" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   environment.shells = with pkgs; [ zsh nushell ];

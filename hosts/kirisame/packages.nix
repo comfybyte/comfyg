@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
+  programs.fish.enable = true;
   environment.systemPackages = with pkgs;
     let
       gaming = inputs.gaming.packages."${system}";

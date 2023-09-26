@@ -1,1 +1,1 @@
-{ imports = [ ./zsh.nix ./starship.nix ]; }
+{ imports = [ ./fish.nix ./starship.nix ]; }

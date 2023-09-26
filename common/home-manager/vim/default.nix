@@ -24,6 +24,12 @@
 
       undodir = "${config.home.homeDirectory}/.cache/nvim/undodir";
       undofile = true;
+
+      list = true;
+      listchars = {
+        space = "⋅";
+        eol = "↴";
+      };
     };
 
     globals = {
@@ -99,29 +105,34 @@
       presence-nvim = {
         enable = true;
         mainImage = "file";
-        neovimImageText = "Hacking...";
-        editingText = "Editing a file";
-        readingText = "Reading a file";
-        workspaceText = "In a workspace";
+        neovimImageText = "=w=";
+        editingText = "Editing %s";
+        readingText = "Reading %s";
+        workspaceText = "In %s";
         fileExplorerText = "In menu";
         gitCommitText = "About to break git";
         showTime = false;
         extraOptions.buttons = false;
       };
-      indent-blankline.enable = true;
+      indent-blankline = {
+        enable = true;
+        char = "¦";
+        showEndOfLine = true;
+        showCurrentContext = true;
+      };
       cursorline = {
         enable = true;
-        cursorline = {
-          enable = true;
-          timeout = 1000;
-          number = false;
-        };
         cursorword = {
           enable = true;
           minLength = 3;
           hl.underline = true;
         };
+        cursorline = {
+          enable = true;
+          timeout = 0;
+        };
       };
+
       comment-nvim.enable = true;
       nvim-autopairs.enable = true;
       lsp = {
