@@ -48,16 +48,26 @@
       command = "Neoformat";
       description = "Formatting on save.";
     }];
-    colorscheme = "rose-pine";
-    colorschemes.rose-pine = {
+    # colorscheme = "rose-pine";
+    # colorschemes.rose-pine = {
+    #   enable = true;
+    #   transparentBackground = true;
+    #   transparentFloat = true;
+    # };
+    colorscheme = "tokyonight";
+    colorschemes.tokyonight = {
       enable = true;
-      transparentBackground = true;
-      transparentFloat = true;
+      transparent = true;
+      styles = {
+        functions = { bold = true; };
+        sidebars = "transparent";
+        floats = "transparent";
+      };
     };
     plugins = {
       lualine = {
         enable = true;
-        theme = "rose-pine";
+        theme = "tokyonight";
       };
 
       nix.enable = true;
@@ -116,7 +126,6 @@
       };
       indent-blankline = {
         enable = true;
-        char = "¦";
         showEndOfLine = true;
         showCurrentContext = true;
       };
