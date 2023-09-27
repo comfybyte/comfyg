@@ -1,25 +1,18 @@
 { pkgs, ... }: {
+  home.packages = with pkgs.fishPlugins; [ fzf-fish forgit ];
+
   programs.fish = {
     enable = true;
 
-    plugins = with pkgs; [
-      {
-        name = "fzf-fish";
-        src = fishPlugins.fzf-fish;
-      }
-      {
-        name = "forgit";
-        src = fishPlugins.forgit;
-      }
-    ];
-
-    shellAliases = {
+    shellAbbrs = {
       nors = "sudo nixos-rebuild switch";
 
       txn = "tmux new";
       txl = "tmux list-sessions";
       txa = "tmux attach -t";
+    };
 
+    shellAliases = {
       ls = "eza";
       la = "eza -a";
       tree = "eza -T";
@@ -28,5 +21,9 @@
       vim = "nvim";
       vi = "nvim";
     };
+
+    shellInit = ''
+      set -g fish_greeting "<< Welcome, $(whoami). >>"
+    '';
   };
 }

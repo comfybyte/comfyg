@@ -10,7 +10,6 @@ in {
     username = "maya";
     homeDirectory = "/home/maya";
   };
-  home.packages = with pkgs; [ rose-pine-gtk-theme ];
   home.sessionVariables = {
     EDITOR = "nvim";
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";

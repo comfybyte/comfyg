@@ -147,15 +147,20 @@
       lsp = {
         enable = true;
         servers = {
-          nil_ls.enable = true;
-          rust-analyzer.enable = true;
+          nil_ls.enable = true; # Nix.
           lua-ls.enable = true;
-          hls.enable = true;
+          hls.enable = true; # Haskell.
           tsserver.enable = true;
           html.enable = true;
           bashls.enable = true;
           clangd.enable = true;
           jsonls.enable = true;
+          cssls.enable = true;
+          taplo.enable = true; # TOML.
+          rust-analyzer = {
+            enable = true;
+            extraOptions = { procMacro.enable = false; };
+          };
         };
         onAttach = ''
           bufopts = { noremap = true, silent = true, buffer = bufnr }

@@ -32,6 +32,11 @@
       busybox
       qemu_full
       nodePackages.serve
+      nmap
+
+      rose-pine-gtk-theme
+      rose-pine-icon-theme
+      catppuccin-cursors
 
       libpng
       giflib
@@ -78,6 +83,8 @@
 
       ripgrep
       jq
+      fzf
+      fd
       gnupg
       pinentry-curses
       eza
@@ -99,12 +106,11 @@
       gnumake
       nodejs
       nodePackages_latest.pnpm
-      (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
+      (rust-bin.selectLatestNightlyWith (toolchain: toolchain.minimal))
       cargo-shuttle
       cargo-info
       cargo-leptos
       just
-      trunk
       nixfmt
 
       deluge
