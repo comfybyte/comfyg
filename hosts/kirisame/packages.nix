@@ -6,6 +6,7 @@
     let
       gaming = inputs.gaming.packages."${system}";
       agenix = inputs.agenix.packages."${system}";
+      inotify-info = inputs.inotify.packages."${system}";
     in [
       mako
       swww
@@ -33,6 +34,8 @@
       qemu_full
       nodePackages.serve
       nmap
+      wireshark
+      inotify-info.default
 
       rose-pine-gtk-theme
       rose-pine-icon-theme

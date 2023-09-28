@@ -10,10 +10,11 @@
   nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
+
   boot.loader.systemd-boot = {
     enable = true;
-    # Prevents boot menu from being flooded with entries.
-    configurationLimit = 10;
+    configurationLimit = 8;
   };
   security = {
     rtkit.enable = true;
@@ -30,7 +31,7 @@
   users.users.maya = {
     isNormalUser = true;
     home = "/home/maya";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "wireshark" ];
     shell = pkgs.fish;
   };
 
@@ -85,7 +86,12 @@
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-mozc fcitx5-configtool ];
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+      fcitx5-mozc
+      libsForQt5.fcitx5-qt
+      fcitx5-configtool # TODO: Configure it declaratively.
+    ];
   };
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {

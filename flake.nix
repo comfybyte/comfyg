@@ -22,6 +22,8 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    inotify.url = "github:mikesart/inotify-info";
   };
 
   outputs = { self, nixpkgs, home, hyprland, nixvim, rust, nixpkgs-wl, agenix
