@@ -1,5 +1,10 @@
 { pkgs, ... }: {
-  home.packages = with pkgs.fishPlugins; [ fzf-fish forgit ];
+  home.packages = with pkgs.fishPlugins; [
+    fzf-fish
+    forgit
+    autopair
+    puffer # Auto-expanding.
+  ];
 
   programs.fish = {
     enable = true;
@@ -23,7 +28,9 @@
     };
 
     shellInit = ''
-      set -g fish_greeting "<< Welcome, $(whoami). >>"
+      set -g fish_greeting "<<< Welcome, $(whoami). >>>"
+
+      direnv hook fish | source
     '';
   };
 }

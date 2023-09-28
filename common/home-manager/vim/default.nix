@@ -6,25 +6,20 @@
       nuw = 1;
       relativenumber = true;
       cursorcolumn = true;
-
       tabstop = 2;
       softtabstop = 2;
       shiftwidth = 2;
       expandtab = true;
-
       hlsearch = true;
       smartindent = true;
-
       wrap = false;
       termguicolors = true;
       scrolloff = 10;
       sidescrolloff = 10;
       updatetime = 1000;
       completeopt = "menuone,noselect";
-
       undodir = "${config.home.homeDirectory}/.cache/nvim/undodir";
       undofile = true;
-
       list = true;
       listchars = {
         space = "⋅";
@@ -34,10 +29,8 @@
 
     globals = {
       mapleader = " ";
-
       loaded_netrw = 1;
       loaded_netrwPlugin = 1;
-
       ftplugin_sql_omni_key = "<C-j>";
       neoformat_run_all_formatters = 1;
       neoformat_enabled_nix = [ "nixfmt" "rustfmt" ];
