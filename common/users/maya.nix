@@ -39,8 +39,25 @@ in {
   gtk = {
     enable = true;
     theme = {
-      name = "rose-pine-moon";
-      package = pkgs.rose-pine-gtk-theme;
+      name = "Catppuccin-Macchiato-Compact-Mauve-dark";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "macchiato";
+        accents = [ "mauve" ];
+        size = "compact";
+      };
     };
   };
+
+  home.pointerCursor = with pkgs; {
+    name = "Catppuccin-Macchiato-Mauve";
+    package = catppuccin-cursors.mochaMauve;
+  };
+
+  home.packages = with pkgs;
+    [
+      (catppuccin-papirus-folders.override {
+        flavor = "macchiato";
+        accent = "mauve";
+      })
+    ];
 }

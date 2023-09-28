@@ -37,10 +37,6 @@
       wireshark
       inotify-info.default
 
-      rose-pine-gtk-theme
-      rose-pine-icon-theme
-      catppuccin-cursors
-
       libpng
       giflib
       ncurses

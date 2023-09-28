@@ -41,26 +41,16 @@
       command = "Neoformat";
       description = "Formatting on save.";
     }];
-    # colorscheme = "rose-pine";
-    # colorschemes.rose-pine = {
-    #   enable = true;
-    #   transparentBackground = true;
-    #   transparentFloat = true;
-    # };
-    colorscheme = "tokyonight";
-    colorschemes.tokyonight = {
+    colorscheme = "catppuccin";
+    colorschemes.catppuccin = {
       enable = true;
-      transparent = true;
-      styles = {
-        functions = { bold = true; };
-        sidebars = "transparent";
-        floats = "transparent";
-      };
+      flavour = "macchiato";
+      transparentBackground = true;
     };
     plugins = {
       lualine = {
         enable = true;
-        theme = "tokyonight";
+        theme = "catppuccin";
       };
 
       nix.enable = true;

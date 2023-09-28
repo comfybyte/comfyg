@@ -79,16 +79,21 @@
         @define-color green #7ae6d1;
         @define-color pink #F97673;
 
+        @define-color crust #181926;
+        @define-color mantle #1e2030;
+        @define-color base #24273a;
+        @define-color mauve #c6a0f6;
+
         * {
           min-height: 0;
           margin: 0;
-          font-family: "Terminess Nerd Font";
+          font-family: "Ubuntu Nerd Font";
           font-size: 1rem;
         }
 
       #waybar {
-        background: rgba(0, 0, 0, .95);
-        color: @pink;
+        background: @crust;
+        color: @mauve;
         padding-bottom: 1px;
       }
 
@@ -117,20 +122,20 @@
       }
 
       #workspaces button {
-        color: @pink;
-        border-top-color: @pink;
+        color: @mauve;
+        border: 1px solid transparent;
         border-radius: 0;
         font-size: .5em;
         margin-bottom: 0px;
         padding-left: 6px;
         padding-right: 6px;
+        background-color: @mantle;
       }
 
 
       #workspaces button.active {
-        color: #000;
-        text-shadow: none;
-        background-color: @pink;
+        border-color: @mauve;
+        background-color: @base;
       }
     '';
   };
