@@ -31,11 +31,6 @@ in {
     nix-direnv.enable = true;
   };
 
-  programs.rofi = {
-    enable = true;
-    theme = "glue_pro_blue";
-  };
-
   gtk = {
     enable = true;
     theme = {

@@ -11,5 +11,6 @@
     ./terminal
     ./hyprland
     ./vim
+    ./rofi
   ];
 }
