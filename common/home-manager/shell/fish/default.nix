@@ -33,4 +33,7 @@
       direnv hook fish | source
     '';
   };
+
+  home.file.".config/fish/themes/catppuccin_macchiato.theme".source =
+    ./catpuccin_macchiato.theme;
 }

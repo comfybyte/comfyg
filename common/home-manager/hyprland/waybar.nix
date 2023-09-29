@@ -87,7 +87,7 @@
         * {
           min-height: 0;
           margin: 0;
-          font-family: "Ubuntu Nerd Font";
+          font-family: "UbuntuMono Nerd Font";
           font-size: 1rem;
         }
 
