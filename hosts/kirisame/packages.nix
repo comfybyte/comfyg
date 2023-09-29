@@ -2,6 +2,8 @@
 
 {
   programs.fish.enable = true;
+  programs.wireshark.enable = true;
+
   environment.systemPackages = with pkgs;
     let
       gaming = inputs.gaming.packages."${system}";
@@ -34,7 +36,6 @@
       qemu_full
       nodePackages.serve
       nmap
-      wireshark
       inotify-info.default
 
       libpng
