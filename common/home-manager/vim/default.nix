@@ -32,15 +32,8 @@
       loaded_netrw = 1;
       loaded_netrwPlugin = 1;
       ftplugin_sql_omni_key = "<C-j>";
-      neoformat_run_all_formatters = 1;
       neoformat_enabled_nix = [ "nixfmt" "rustfmt" ];
     };
-    autoCmd = [{
-      event = [ "BufWritePre" "BufRead" ];
-      pattern = [ "*.nix" "*.rs" ];
-      command = "Neoformat";
-      description = "Formatting on save.";
-    }];
     colorscheme = "catppuccin";
     colorschemes.catppuccin = {
       enable = true;
@@ -99,9 +92,9 @@
         enable = true;
         mainImage = "file";
         neovimImageText = "=w=";
-        editingText = "Editing %s";
-        readingText = "Reading %s";
-        workspaceText = "In %s";
+        editingText = "Editing something";
+        readingText = "Reading something";
+        workspaceText = "In a project";
         fileExplorerText = "In menu";
         gitCommitText = "About to break git";
         showTime = false;

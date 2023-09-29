@@ -8,6 +8,7 @@
       "G" = "Gzz";
       "<leader>y" = ''"+y'';
       "<leader>Y" = ''"+Y'';
+      "<leader>ft" = "<cmd>Neoformat<cr>";
     };
     visual = { "<leader>y" = ''"+y''; };
     select = { "<leader>po" = ''"_dP''; };
