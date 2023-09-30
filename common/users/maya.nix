@@ -49,8 +49,10 @@ in {
   };
 
   home.pointerCursor = with pkgs; {
-    name = "Catppuccin-Macchiato-Mauve";
-    package = catppuccin-cursors.mochaMauve;
+    name = "Catppuccin-Macchiato-Mauve-Cursors";
+    package = catppuccin-cursors.macchiatoMauve;
+    gtk.enable = true;
+    x11.enable = true;
   };
 
   home.packages = with pkgs;
