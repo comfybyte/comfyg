@@ -24,6 +24,11 @@ in {
       signByDefault = true;
       key = "61143F72A8F3440A";
     };
+    extraConfig = {
+      core.editor = "vim";
+      init.defaultBranch = "main";
+      push.default = "current";
+    };
   };
 
   programs.direnv = {

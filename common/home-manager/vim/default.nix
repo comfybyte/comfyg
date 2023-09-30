@@ -143,7 +143,7 @@
 
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-          vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, bufops)
           vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
           vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
