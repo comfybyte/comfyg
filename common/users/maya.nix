@@ -6,6 +6,18 @@ let
 in {
   imports = [ ../home-manager ];
 
+  inner = {
+    rofi.enable = true;
+    alacritty.enable = true;
+    vim.enable = true;
+    fish.enable = true;
+    starship.enable = true;
+    hyprland = {
+      enable = true;
+      waybar = true;
+    };
+  };
+
   home = {
     username = "maya";
     homeDirectory = "/home/maya";

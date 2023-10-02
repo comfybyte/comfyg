@@ -35,7 +35,7 @@
     shell = pkgs.fish;
   };
 
-  environment.shells = with pkgs; [ zsh nushell ];
+  environment.shells = with pkgs; [ zsh fish nushell ];
 
   services = {
     dbus.enable = true;
