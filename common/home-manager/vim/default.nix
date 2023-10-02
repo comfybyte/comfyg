@@ -60,6 +60,8 @@ in with lib; {
           nixvimInjections = true;
         };
 
+        treesitter-context.enable = true;
+
         telescope = {
           enable = true;
           extensions = {
@@ -122,6 +124,8 @@ in with lib; {
             timeout = 0;
           };
         };
+
+        markdown-preview.enable = true;
 
         comment-nvim.enable = true;
         nvim-autopairs.enable = true;
@@ -187,6 +191,8 @@ in with lib; {
             "<C-d>" = "cmp.mapping.scroll_docs(4)";
           };
         };
+        nvim-colorizer.enable = true;
+        ts-autotag.enable = true;
       };
       extraPlugins = with pkgs.vimPlugins; [
         hop-nvim

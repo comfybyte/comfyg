@@ -90,7 +90,6 @@
       fcitx5-gtk
       fcitx5-mozc
       libsForQt5.fcitx5-qt
-      fcitx5-configtool # TODO: Configure it declaratively.
     ];
   };
 
