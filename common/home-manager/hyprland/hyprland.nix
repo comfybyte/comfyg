@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let cfg = config.inner.hyprland;
 in with lib; {
-  imports = [ ./waybar.nix ];
+  imports = [ ./waybar ];
 
   options.inner.hyprland.enable = mkEnableOption "Enable Hyprland.";
 
@@ -39,10 +39,10 @@ in with lib; {
                 }
 
                 general {
-                  gaps_in = 0
+                  gaps_in = 1
                   gaps_out = 0
-                  border_size = 0
-                  col.active_border = rgba(000000dd) rgba(444444ee) 45deg
+                  border_size = 1
+                  col.active_border = rgba(eeeeee88) rgba(ffffffbb) 45deg
                   col.inactive_border = rgba(000000aa)
 
                   layout = dwindle

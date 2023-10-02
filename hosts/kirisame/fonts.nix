@@ -5,7 +5,10 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Terminus" "Ubuntu" "UbuntuMono" ]; })
+    (nerdfonts.override {
+      fonts =
+        [ "Terminus" "UbuntuMono" "JetBrainsMono" "IosevkaTerm"];
+    })
     monocraft
   ];
 }

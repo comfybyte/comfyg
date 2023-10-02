@@ -1,0 +1,57 @@
+* {
+  min-height: 0;
+  margin: 0;
+  font-family: "IosevkaTerm Nerd Font";
+  font-size: 1rem;
+}
+
+#waybar {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network {
+  font-weight: bolder;
+  padding: 0 10px;
+}
+
+#tray {
+  margin: 6px 20px;
+}
+
+#clock {
+  font-weight: bolder;
+  margin-right: 8px;
+}
+
+#temperature.critical {
+  color: red;
+}
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button {
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-size: .5em;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+
+#workspaces button.active {
+  border-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+

@@ -8,15 +8,13 @@ in with lib; {
       enable = true;
       settings = {
         window = {
-          opacity = 0.75;
-          padding.x = 2;
-          padding.y = 2;
+          opacity = 0.7;
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "UbuntuMono Nerd Font";
+        font = let font = "IosevkaTerm Nerd Font";
         in {
-          size = 20;
+          size = 16;
           normal.family = "${font}";
           bold.family = "${font}";
           italic.family = "${font}";

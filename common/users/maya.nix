@@ -12,6 +12,7 @@ in {
     vim.enable = true;
     fish.enable = true;
     starship.enable = true;
+    tmux.enable = true;
     hyprland = {
       enable = true;
       waybar = true;
