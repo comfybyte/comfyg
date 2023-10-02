@@ -86,7 +86,7 @@ in with lib; {
           network = {
             interface = "enp2s0";
             interval = 2;
-            format = "{bandwidthUpBytes}    {bandwidthDownBytes} ";
+            format = "{bandwidthDownBytes}    {bandwidthUpBytes} ";
           };
 
           tray = {
