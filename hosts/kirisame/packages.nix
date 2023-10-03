@@ -83,6 +83,7 @@
       agenix.default
       keychain
       cachix
+      cloc
 
       ripgrep
       jq

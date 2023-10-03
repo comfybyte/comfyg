@@ -7,7 +7,7 @@ in with lib; {
     programs.rofi = {
       enable = true;
       theme = "catppuccin-macchiato";
-      location = "bottom-right";
+      location = "top-right";
     };
 
     home.file.".local/share/rofi/themes/catppuccin-macchiato.rasi".source =
