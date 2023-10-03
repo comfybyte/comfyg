@@ -194,6 +194,7 @@ in with lib; {
         nvim-colorizer.enable = true;
         ts-autotag.enable = true;
       };
+      extraConfigLua = builtins.readFile ./init.lua;
       extraPlugins = with pkgs.vimPlugins; [
         hop-nvim
         luasnip
@@ -204,6 +205,6 @@ in with lib; {
         vim-rhubarb
         neoformat
       ];
-    } // (import ./lua.nix) // (import ./maps.nix);
+    } // (import ./maps.nix);
   };
 }

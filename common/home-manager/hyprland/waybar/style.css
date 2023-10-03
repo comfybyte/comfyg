@@ -8,7 +8,7 @@
 #waybar {
   background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.9);
-  color: #ffffff;
+  color: #fff;
   margin-top: 2px;
 }
 
@@ -19,7 +19,7 @@
 #pulseaudio,
 #network {
   font-weight: bolder;
-  padding: 0 10px;
+  padding: 0 22px;
 }
 
 #tray {
@@ -28,11 +28,11 @@
 
 #clock {
   font-weight: bolder;
-  margin-right: 8px;
+  margin-right: 12px;
 }
 
 #temperature.critical {
-  color: red;
+  color: #f00;
 }
 
 #workspaces {
@@ -40,7 +40,7 @@
 }
 
 #workspaces button {
-  color: #ffffff;
+  color: #fff;
   border: 1px solid transparent;
   border-radius: 0;
   font-size: .5em;
@@ -51,7 +51,7 @@
 
 
 #workspaces button.active {
-  border-color: #ffffff;
+  border-color: #fff;
   background-color: rgba(0, 0, 0, 0.75);
 }
 

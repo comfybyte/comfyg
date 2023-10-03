@@ -13,7 +13,7 @@ in with lib; {
       settings = {
         mainBar = {
           layer = "top";
-          position = "top";
+          position = "bottom";
           modules-left = [ "hyprland/workspaces" ];
           modules-right = [
             "network"
