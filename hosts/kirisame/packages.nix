@@ -78,6 +78,7 @@
       ranger
       dmenu
       imv
+      mpv
       parted
       ventoy-full
       agenix.default
@@ -116,6 +117,7 @@
       cargo-leptos
       just
       nixfmt
+      ghc
 
       deluge
       deluge-gtk
