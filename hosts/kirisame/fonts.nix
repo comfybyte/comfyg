@@ -10,5 +10,6 @@
         [ "Terminus" "UbuntuMono" "JetBrainsMono" "IosevkaTerm"];
     })
     monocraft
+    lotion-nerd-font
   ];
 }

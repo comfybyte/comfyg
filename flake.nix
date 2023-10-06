@@ -14,7 +14,8 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/05b77732e3babaa95d73cbffca83029784a64cdd";
+      url =
+        "github:nix-community/nixvim/05b77732e3babaa95d73cbffca83029784a64cdd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -37,7 +38,11 @@
             home.nixosModules.home-manager
             agenix.nixosModules.default
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [ rust.overlays.default nixpkgs-wl.overlay ];
+              nixpkgs.overlays = [
+                rust.overlays.default
+                nixpkgs-wl.overlay
+                (final: prev: (import ./pkgs pkgs))
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users = import ./common/users;

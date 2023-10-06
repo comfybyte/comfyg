@@ -12,7 +12,7 @@ in with lib; {
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "IosevkaTerm Nerd Font";
+        font = let font = "Lotion Nerd Font";
         in {
           size = 16;
           normal.family = "${font}";
