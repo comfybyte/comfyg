@@ -11,5 +11,6 @@
     })
     monocraft
     lotion-nerd-font
+    fixedsys-nerd-font
   ];
 }
