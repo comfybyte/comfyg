@@ -41,7 +41,7 @@
               nixpkgs.overlays = [
                 rust.overlays.default
                 nixpkgs-wl.overlay
-                (final: prev: (import ./pkgs pkgs))
+                (import ./common/overlays/font-overlay)
               ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
