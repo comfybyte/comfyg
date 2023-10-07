@@ -158,3 +158,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 require("barbecue").setup()
+
+require("toggle_lsp_diagnostics").init()

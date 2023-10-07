@@ -193,6 +193,7 @@ in with lib; {
         };
         nvim-colorizer.enable = true;
         ts-autotag.enable = true;
+        trouble.enable = true;
       };
       extraConfigLua = builtins.readFile ./init.lua;
       extraPlugins = with pkgs.vimPlugins; [
@@ -204,6 +205,16 @@ in with lib; {
         rust-vim
         vim-rhubarb
         neoformat
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "toggle-lsp-diagnostics-nvim";
+          version = "master";
+          src = pkgs.fetchFromGitHub {
+            owner = "WhoIsSethDaniel";
+            repo = "toggle-lsp-diagnostics.nvim";
+            rev = "a896a95851fe5c5adf71a50030d60f8fa488fa7e";
+            sha256 = "sha256-coedGERDTVmAD3+/QaEaq4peK7cCaOPo5ooKEalqasI=";
+          };
+        })
       ];
     } // (import ./maps.nix);
   };
