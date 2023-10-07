@@ -13,6 +13,7 @@ in {
     fish.enable = true;
     starship.enable = true;
     tmux.enable = true;
+    obs.enable = true;
     hyprland = {
       enable = true;
       waybar = true;

@@ -12,5 +12,6 @@
     ./hyprland
     ./vim
     ./rofi
+    ./obs.nix
   ];
 }
