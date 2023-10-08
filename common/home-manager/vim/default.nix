@@ -175,7 +175,7 @@ in with lib; {
           enable = true;
           mappingPresets = [ "cmdline" "insert" ];
           snippet.expand = "luasnip";
-          sources = [ # TODO: Configure snippets.
+          sources = [
             { name = "nvim_lsp"; }
             { name = "buffer"; }
             { name = "luasnip"; }

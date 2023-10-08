@@ -14,7 +14,7 @@ in with lib; {
         custom_cursor_colors = true;
         font = let font = "FixedsysExcelsior Nerd Font";
         in {
-          size = 16;
+          size = 19;
           normal.family = "${font}";
           bold.family = "${font}";
           italic.family = "${font}";
