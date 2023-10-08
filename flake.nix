@@ -38,11 +38,8 @@
             home.nixosModules.home-manager
             agenix.nixosModules.default
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [
-                rust.overlays.default
-                nixpkgs-wl.overlay
-                (import ./common/overlays/font-overlay)
-              ];
+              nixpkgs.overlays =
+                [ rust.overlays.default nixpkgs-wl.overlay self.overlays.font ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users = import ./common/users;
@@ -51,7 +48,10 @@
             })
           ] ++ extraModules;
         };
-    in { nixosConfigurations = { kirisame = mkSystem [ ./hosts/kirisame ]; }; };
+    in {
+      nixosConfigurations = { kirisame = mkSystem [ ./hosts/kirisame ]; };
+      overlays = { font = (import ./common/overlays/font-overlay); };
+    };
 
   nixConfig = {
     connect-timeout = 20; # seconds.
