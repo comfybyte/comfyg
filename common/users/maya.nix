@@ -52,14 +52,20 @@ in {
 
   gtk = {
     enable = true;
-    theme = {
-      name = "Catppuccin-Macchiato-Compact-Mauve-dark";
-      package = pkgs.catppuccin-gtk.override {
-        variant = "macchiato";
-        accents = [ "mauve" ];
-        size = "compact";
-      };
+    iconTheme = {
+      name = "breeze-dark";
+      package = pkgs.libsForQt5.breeze-icons;
     };
+    theme = {
+      name = "Breeze-Dark";
+      package = pkgs.libsForQt5.breeze-gtk;
+    };
+  };
+
+  qt = {
+    enable = true;
+    style.package = pkgs.libsForQt5.breeze-qt5;
+    style.name = "BreezeDark";
   };
 
   home.pointerCursor = with pkgs; {
@@ -68,12 +74,4 @@ in {
     gtk.enable = true;
     x11.enable = true;
   };
-
-  home.packages = with pkgs;
-    [
-      (catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "mauve";
-      })
-    ];
 }

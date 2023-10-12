@@ -78,6 +78,7 @@
       ranger
       dmenu
       imv
+      feh
       mpv
       parted
       ventoy-full
@@ -157,5 +158,6 @@
       osu-lazer-bin
       minecraft
       prismlauncher
+      sshot
     ];
 }
