@@ -38,7 +38,7 @@ if [[ -z $out ]]; then
   out=$HOME
 fi
 
-filename="$out/$(date -Ins)"
+filename="$out/$(date -Ins).png"
 
 if [[ $mode == "screen" ]]; then
   grim "$filename"
