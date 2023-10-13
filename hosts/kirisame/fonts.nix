@@ -12,5 +12,6 @@
     monocraft
     lotion-nerd-font
     fixedsys-nerd-font
+    scientifica-nerd-font
   ];
 }

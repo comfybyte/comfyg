@@ -12,9 +12,9 @@ in with lib; {
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "FixedsysExcelsior Nerd Font";
+        font = let font = "Scientifica Nerd Font";
         in {
-          size = 19;
+          size = 20;
           normal.family = "${font}";
           bold.family = "${font}";
           italic.family = "${font}";
