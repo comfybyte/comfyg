@@ -13,5 +13,6 @@
     ./vim
     ./rofi
     ./obs.nix
+    ./git.nix
   ];
 }

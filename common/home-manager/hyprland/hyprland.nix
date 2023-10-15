@@ -53,7 +53,7 @@ in with lib; {
 
                   blur {
                     enabled = true
-                    size = 5
+                    size = 6
                   }
 
                   drop_shadow = yes

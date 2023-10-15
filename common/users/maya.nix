@@ -1,7 +1,5 @@
 { pkgs, inputs, system, ... }:
 let
-  name = "Maya Lira";
-  email = "comfybyte@proton.me";
   gaming = inputs.gaming.packages."${system}";
 in {
   imports = [ ../home-manager ];
@@ -14,6 +12,7 @@ in {
     starship.enable = true;
     tmux.enable = true;
     obs.enable = true;
+    git.enable = true;
     hyprland = {
       enable = true;
       waybar = true;
@@ -28,21 +27,6 @@ in {
     EDITOR = "nvim";
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = gaming.proton-ge;
-  };
-
-  programs.git = {
-    enable = true;
-    userName = name;
-    userEmail = email;
-    signing = {
-      signByDefault = true;
-      key = "61143F72A8F3440A";
-    };
-    extraConfig = {
-      core.editor = "vim";
-      init.defaultBranch = "main";
-      push.default = "current";
-    };
   };
 
   programs.direnv = {
@@ -60,6 +44,9 @@ in {
       name = "Breeze-Dark";
       package = pkgs.libsForQt5.breeze-gtk;
     };
+    font.package = pkgs.scientifica-nerd-font;
+    font.name = "Scientifica Nerd Font";
+    font.size = 14;
   };
 
   qt = {
