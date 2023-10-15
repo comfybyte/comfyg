@@ -56,21 +56,6 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
-  programs = {
-    zsh.enable = true;
-    dconf.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-  };
-
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-
   services.gvfs.enable = true;
   services.tumbler.enable = true;
   services.samba = {
@@ -86,11 +71,7 @@
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-      fcitx5-mozc
-      libsForQt5.fcitx5-qt
-    ];
+    fcitx5.addons = with pkgs; [ fcitx5-gtk fcitx5-mozc libsForQt5.fcitx5-qt ];
   };
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
@@ -127,11 +108,6 @@
   };
 
   services.openssh.enable = true;
-
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "tty";
-  };
 
   console = {
     font = "Lat2-Terminus16";

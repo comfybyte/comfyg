@@ -6,6 +6,21 @@
     enable = true;
     package = pkgs.wireshark;
   };
+  programs.zsh.enable = true;
+  programs.dconf.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+  };
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "tty";
+  };
 
   environment.systemPackages = with pkgs;
     let
@@ -110,9 +125,9 @@
 
       gcc
       gnumake
-      nodejs
+      nodejs_18
       nodePackages_latest.pnpm
-      (rust-bin.selectLatestNightlyWith (toolchain: toolchain.minimal))
+      cargo
       cargo-shuttle
       cargo-info
       cargo-leptos
@@ -126,7 +141,6 @@
       nixos-shell
 
       vlc
-      xfce.thunar
       xfce.ristretto
       xfce.tumbler
 

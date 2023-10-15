@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     gaming.url = "github:fufexan/nix-gaming";
-    rust.url = "github:oxalica/rust-overlay";
     agenix.url = "github:ryantm/agenix";
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -27,7 +26,7 @@
     inotify.url = "github:mikesart/inotify-info";
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, rust, nixpkgs-wl, agenix
+  outputs = { self, nixpkgs, home, hyprland, nixvim, nixpkgs-wl, agenix
     , ... }@inputs:
     let
       mkSystem = extraModules:
@@ -39,7 +38,6 @@
             agenix.nixosModules.default
             ({ pkgs, ... }: {
               nixpkgs.overlays = [
-                rust.overlays.default
                 nixpkgs-wl.overlay
                 self.overlays.font
                 self.overlays.script
