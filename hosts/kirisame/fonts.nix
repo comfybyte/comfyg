@@ -12,13 +12,10 @@
     kochi-substitute
 
     # Nerd fonts.
-    (nerdfonts.override {
-      fonts =
-        [ "Terminus" "IosevkaTerm"];
-    })
+    (nerdfonts.override { fonts = [ "Terminus" ]; })
     monocraft
-    lotion-nerd-font
     fixedsys-nerd-font
     scientifica-nerd-font
+    bedstead-nerd-font
   ];
 }

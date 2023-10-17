@@ -21,6 +21,5 @@ in with lib; {
         push.default = "current";
       };
     };
-
   };
 }

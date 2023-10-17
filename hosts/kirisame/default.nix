@@ -1,7 +1,12 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./packages.nix ./fonts.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./packages.nix
+    ./fonts.nix
+    ../../common/users
+  ];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -14,7 +19,7 @@
 
   boot.loader.systemd-boot = {
     enable = true;
-    configurationLimit = 8;
+    configurationLimit = 10;
   };
   security = {
     rtkit.enable = true;
@@ -26,13 +31,6 @@
     driSupport32Bit = true;
     driSupport = true;
     extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
-  };
-
-  users.users.maya = {
-    isNormalUser = true;
-    home = "/home/maya";
-    extraGroups = [ "wheel" "docker" "wireshark" ];
-    shell = pkgs.fish;
   };
 
   environment.shells = with pkgs; [ zsh fish nushell ];

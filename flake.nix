@@ -26,8 +26,8 @@
     inotify.url = "github:mikesart/inotify-info";
   };
 
-  outputs = { self, nixpkgs, home, hyprland, nixvim, nixpkgs-wl, agenix
-    , ... }@inputs:
+  outputs =
+    { self, nixpkgs, home, hyprland, nixvim, nixpkgs-wl, agenix, ... }@inputs:
     let
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem rec {
@@ -37,14 +37,10 @@
             home.nixosModules.home-manager
             agenix.nixosModules.default
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [
-                nixpkgs-wl.overlay
-                self.overlays.font
-                self.overlays.script
-              ];
+              nixpkgs.overlays =
+                [ nixpkgs-wl.overlay self.overlays.font self.overlays.script ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users = import ./common/users;
               home-manager.extraSpecialArgs = { inherit inputs system; };
 
             })
@@ -59,7 +55,7 @@
     };
 
   nixConfig = {
-    connect-timeout = 20; # seconds.
+    connect-timeout = 20;
     substituters = [
       "https://cache.nixos.org"
       "https://hyprland.cachix.org"

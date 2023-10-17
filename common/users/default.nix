@@ -1,1 +1,3 @@
-{ maya = import ./maya.nix; }
+{
+  imports = [ ./maya.nix ];
+}
