@@ -52,6 +52,9 @@
         font = (import ./common/overlays/font-overlay);
         script = (import ./common/overlays/script-overlay);
       };
+      homeManagerModules = {
+        xyprland = (import ./modules/xyprland);
+      };
     };
 
   nixConfig = {

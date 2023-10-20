@@ -12,7 +12,7 @@ in with lib; {
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "Scientifica Nerd Font";
+        font = let font = "Victor Mono Nerd Font";
         in {
           size = 20;
           normal.family = "${font}";

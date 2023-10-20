@@ -13,10 +13,6 @@ in {
     tmux.enable = true;
     obs.enable = true;
     git.enable = true;
-    hyprland = {
-      enable = true;
-      waybar = true;
-    };
   };
 
   home = {

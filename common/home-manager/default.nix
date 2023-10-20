@@ -7,12 +7,13 @@
     hyprland.homeManagerModules.default
     nixvim.homeManagerModules.nixvim
     agenix.homeManagerModules.default
+    self.homeManagerModules.xyprland
+    ./xyprland
     ./shell
     ./terminal
-    ./hyprland
     ./vim
     ./rofi
     ./obs.nix
     ./git.nix
   ];
-}
+} 

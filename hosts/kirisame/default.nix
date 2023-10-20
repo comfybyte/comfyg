@@ -16,6 +16,7 @@
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 
   boot.loader.systemd-boot = {
     enable = true;

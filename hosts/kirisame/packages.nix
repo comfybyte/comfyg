@@ -168,6 +168,7 @@
       hyprpicker
       betterdiscordctl
       libsForQt5.okular
+      p7zip
 
       osu-lazer-bin
       minecraft
