@@ -39,16 +39,21 @@ in with lib; {
         ftplugin_sql_omni_key = "<C-j>";
         neoformat_enabled_nix = [ "nixfmt" "rustfmt" ];
       };
-      colorscheme = "catppuccin";
-      colorschemes.catppuccin = {
+      colorscheme = "tokyonight";
+      colorschemes.tokyonight = {
         enable = true;
-        flavour = "macchiato";
-        transparentBackground = true;
+        transparent = true;
+        lualineBold = true;
+        styles = {
+          functions = { bold = true; };
+          sidebars = "transparent";
+          floats = "transparent";
+        };
       };
       plugins = {
         lualine = {
           enable = true;
-          theme = "catppuccin";
+          theme = "tokyonight";
         };
 
         nix.enable = true;

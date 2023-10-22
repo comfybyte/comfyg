@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./waybar.nix ];
+  imports = [ ./waybar ];
 
   programs.xyprland = let
     mkMonitor = name: resolution: position: scale: {
@@ -14,29 +14,21 @@
   in {
     enable = true;
     xwayland.enable = true;
-    extraConfig.pre = builtins.readFile ./hyprland.conf;
-    extraConfig.post = with builtins; ''
-      ${concatStringsSep "\n" (genList (i:
-        let
-          kc = toString i;
-          ws = toString (if i == 0 then 10 else i);
-        in ''
-          bind = $mod, ${kc}, workspace, ${ws}
-          bind = $mod SHIFT, ${kc}, movetoworkspace, ${ws}
-        '') 10)}
+    extraConfig.pre = import ./options.nix;
+    extraConfig.post = import ./ws_switchers.nix;
 
-      ${let keyCodes = [ 90 87 88 89 83 84 85 79 80 81 ];
-      in concatStringsSep "\n" (genList (i:
-        let
-          kc = toString (elemAt keyCodes i);
-          ws = toString (if i == 0 then 10 else i);
-        in ''
-          bind = $mod, ${kc}, workspace, ${ws}
-          bind = $mod SHIFT, ${kc}, movetoworkspace, ${ws}
-        '') (length keyCodes))}
-    '';
+    options = {
+      general = {
+        gaps_in = 1;
+        gaps_out = 0;
+        layout = "dwindle";
+        "col.active_border" = "rgba(eeeeee88) rgba(ffffffbb) 45deg";
+        "col.inactive_border" = "rgba(000000aa)";
+      };
+    };
 
     monitors = [ (mkMonitor "DP-2" "1920x1080@60" "0x0" "1") ];
+
     env = [
       (mkVar "QT_QPA_PLATFORM" "wayland;xcb")
       (mkVar "SDL_VIDEODRIVER" "wayland")
@@ -49,14 +41,19 @@
       (mkVar "XCURSOR_SIZE" "32")
     ];
 
-    defaultWorkspaces = {
+    defaultWorkspaces = let
+      mkSilent = text: {
+        inherit text;
+        silent = true;
+      };
+    in {
       "2" = [ "firefox" ];
       "3" = [ "Thunar" ];
-      "4" = [ "Okular" "Deluge" ];
+      "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
       "5" = [ "discord" ];
       "6" = [ "Audacity" "krita" ];
-      "7" = [ "lutris" "Steam" ];
-      "9" = [ "Obsidian" ];
+      "7" = [ (mkSilent "lutris") (mkSilent "Steam") ];
+      "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
     };
 
     binds = (map (bind: mkBind bind) [

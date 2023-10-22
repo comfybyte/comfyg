@@ -37,8 +37,8 @@
             home.nixosModules.home-manager
             agenix.nixosModules.default
             ({ pkgs, ... }: {
-              nixpkgs.overlays =
-                [ nixpkgs-wl.overlay self.overlays.font self.overlays.script ];
+              nixpkgs.overlays = [ nixpkgs-wl.overlay ]
+                ++ builtins.attrValues self.overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs system; };
@@ -52,9 +52,7 @@
         font = (import ./common/overlays/font-overlay);
         script = (import ./common/overlays/script-overlay);
       };
-      homeManagerModules = {
-        xyprland = (import ./modules/xyprland);
-      };
+      homeManagerModules = { xyprland = (import ./modules/xyprland); };
     };
 
   nixConfig = {

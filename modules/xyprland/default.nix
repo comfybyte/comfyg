@@ -14,7 +14,7 @@ let
       };
     };
 
-    var = types.submodule {
+    envVar = types.submodule {
       options = {
         name = mkOption { type = types.str; };
         value = mkOption { type = types.str; };
@@ -27,13 +27,15 @@ let
 
     bind = types.submodule {
       options = {
+        enable = mkEnableOption "Whether to enable this keybind." // {
+          default = true;
+        };
         flags = mkOption {
           type = with types; nullOr str;
           description =
             "A string of bind flags to add (<https://wiki.hyprland.org/Configuring/Binds/#bind-flags>).";
           default = "";
         };
-
         text = mkOption {
           type = types.str;
           description = "This bind's contents.";
@@ -47,8 +49,16 @@ let
         window = mkOption { type = types.str; };
       };
     };
-  };
 
+    defaultWorkspace = types.submodule {
+      options = {
+        text = mkOption { type = types.str; };
+        silent = mkEnableOption "Whether to not switch to it when opened." // {
+          default = false;
+        };
+      };
+    };
+  };
 in {
   options.programs.xyprland = {
     enable = mkEnableOption "Whether to enable this module.";
@@ -69,6 +79,35 @@ in {
       };
     };
 
+    options = let
+      mkNullOption = (option:
+        mkOption option // {
+          type = with types; nullOr (option.type);
+          default = null;
+        });
+    in {
+      general = {
+        border_size = mkNullOption { type = types.ints.unsigned; };
+        no_border_on_floating = mkNullOption { type = types.bool; };
+        gaps_in = mkNullOption { type = types.ints.unsigned; };
+        gaps_out = mkNullOption { type = types.ints.unsigned; };
+        cursor_inactive_timeout = mkNullOption { type = types.ints.unsigned; };
+        layout =
+          mkNullOption { type = with types; enum [ "dwindle" "master" ]; };
+        no_cursor_wraps = mkNullOption { type = types.bool; };
+        no_focus_fallback = mkNullOption { type = types.bool; };
+        apply_sens_to_raw = mkNullOption { type = types.bool; };
+        resize_on_border = mkNullOption { type = types.bool; };
+        extend_border_grab_area = mkNullOption { type = types.ints.unsigned; };
+        hover_icon_on_border = mkNullOption { type = types.bool; };
+        allow_tearing = mkNullOption { type = types.bool; };
+        "col.inactive_border" = mkNullOption { type = types.str; };
+        "col.active_border" = mkNullOption { type = types.str; };
+        "col.no_group_border " = mkNullOption { type = types.str; };
+        "col.no_group_border_active" = mkNullOption { type = types.str; };
+      };
+    };
+
     monitors = mkOption {
       type = types.listOf customTypes.monitor;
       description = "A list of monitor configurations.";
@@ -76,7 +115,7 @@ in {
     };
 
     env = mkOption {
-      type = types.listOf customTypes.var;
+      type = types.listOf customTypes.envVar;
       description = "A list of environment variables.";
       default = [ ];
     };
@@ -89,7 +128,10 @@ in {
 
     submaps = mkOption {
       type = with types; attrsOf (listOf customTypes.bind);
-      description = "A set of submap names mapped to a list of their binds.";
+      description = ''
+        A set of submap names mapped to a list of their binds.
+        Automatically binds exiting to Escape.
+      '';
       default = { };
     };
 
@@ -100,9 +142,10 @@ in {
     };
 
     defaultWorkspaces = mkOption {
-      type = with types; attrsOf (listOf str);
+      type = with types;
+        attrsOf (listOf (either str customTypes.defaultWorkspace));
       description =
-        "A set of workspace names mapped to lists of window titles.";
+        "A set of workspace names mapped to a list of windows that should be moved to them.";
       default = { };
     };
 
@@ -114,13 +157,13 @@ in {
 
     extraConfig = {
       pre = mkOption {
-        type = types.separatedString "\n";
-        description = "Lines to add to the start of the configuration file.";
+        type = types.lines;
+        description = "Lines to add before module configuration.";
         default = "";
       };
       post = mkOption {
-        type = types.separatedString "\n";
-        description = "Lines to add to the end of the configuration file.";
+        type = types.lines;
+        description = "Lines to add after module configuration.";
         default = "";
       };
     };
@@ -128,13 +171,13 @@ in {
     waybar = {
       enable = mkEnableOption "Enable Waybar.";
       style = mkOption {
-        type = types.separatedString "\n";
+        type = types.lines;
         description = "CSS styling.";
         default = "";
       };
       settings = mkOption {
         type = with types; attrsOf anything;
-        default = {};
+        default = { };
       };
     };
   };
@@ -146,6 +189,7 @@ in {
       extraConfig = with helpers; ''
         ${cfg.extraConfig.pre}
 
+        ${writeOpts.general cfg.options.general}
         ${"$" + cfg.mod.name} = ${cfg.mod.key}
         ${writeMonitors cfg.monitors}
         ${writeOnceStart cfg.onceStart}

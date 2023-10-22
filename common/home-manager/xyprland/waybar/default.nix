@@ -1,7 +1,7 @@
 {
   programs.xyprland.waybar = {
     enable = true;
-    style = builtins.readFile ./waybar.style.css;
+    style = builtins.readFile ./style.css;
     settings = {
       mainBar = {
         layer = "top";
