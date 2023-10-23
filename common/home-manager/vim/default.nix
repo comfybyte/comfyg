@@ -112,11 +112,11 @@ in with lib; {
           showTime = false;
           extraOptions.buttons = false;
         };
-        indent-blankline = {
-          enable = true;
-          showEndOfLine = true;
-          showCurrentContext = true;
-        };
+        # indent-blankline = {
+        #   enable = true;
+        #   showEndOfLine = true;
+        #   showCurrentContext = true;
+        # };
         cursorline = {
           enable = true;
           cursorword = {
@@ -210,6 +210,7 @@ in with lib; {
         rust-vim
         vim-rhubarb
         neoformat
+        indent-blankline-nvim
         (pkgs.vimUtils.buildVimPlugin {
           pname = "toggle-lsp-diagnostics-nvim";
           version = "master";

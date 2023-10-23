@@ -135,6 +135,10 @@ set_keymap("<leader>p", function()
   hop.hint_patterns()
 end)
 
+require("ibl").setup {
+  scope = { enabled = true }
+}
+
 require("lsp-inlayhints").setup {
   inlay_hints = {
     parameter_hints = {
@@ -158,5 +162,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 require("barbecue").setup()
-
 require("toggle_lsp_diagnostics").init()

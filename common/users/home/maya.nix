@@ -8,7 +8,7 @@ in {
     rofi.enable = true;
     alacritty.enable = true;
     vim.enable = true;
-    fish.enable = true;
+    zsh.enable = true;
     starship.enable = true;
     tmux.enable = true;
     obs.enable = true;

@@ -3,7 +3,7 @@
     isNormalUser = true;
     home = "/home/maya";
     extraGroups = [ "wheel" "docker" "wireshark" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
   home-manager.users.maya = (import ./home/maya.nix);
 }
