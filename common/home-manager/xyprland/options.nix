@@ -53,8 +53,4 @@
   gestures {
     workspace_swipe = off
   }
-
-  device:epic mouse V1 {
-           sensitivity = -0.5
-         }
 ''

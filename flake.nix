@@ -6,6 +6,7 @@
     gaming.url = "github:fufexan/nix-gaming";
     agenix.url = "github:ryantm/agenix";
     hyprland.url = "github:hyprwm/Hyprland";
+    xyprland.url = "github:comfybyte/xyprland/main";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -52,7 +53,6 @@
         font = (import ./common/overlays/font-overlay);
         script = (import ./common/overlays/script-overlay);
       };
-      homeManagerModules = { xyprland = (import ./modules/xyprland); };
     };
 
   nixConfig = {
