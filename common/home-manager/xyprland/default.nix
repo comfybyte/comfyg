@@ -2,10 +2,6 @@
   imports = [ ./waybar ];
 
   programs.xyprland = let
-    mkMonitor = name: resolution: position: scale: {
-      inherit name resolution position scale;
-    };
-    mkVar = name: value: { inherit name value; };
     mkBind = text: {
       inherit text;
       flags = null;
@@ -25,21 +21,43 @@
         "col.active_border" = "rgba(eeeeee88) rgba(ffffffbb) 45deg";
         "col.inactive_border" = "rgba(000000aa)";
       };
+
+      input = {
+        kb_layout = "br";
+        follow_mouse = 1;
+      };
+
+      decoration = {
+        drop_shadow = true;
+        shadow_range = 4;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(1a1a1aee)";
+
+        blur = {
+          enabled = true;
+          size = 6;
+        };
+      };
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+      };
     };
 
-    monitors = [ (mkMonitor "DP-2" "1920x1080@60" "0x0" "1") ];
+    monitors = [[ "DP-2" "1920x1080@60" "0x0" "1" ]];
 
-    env = [
-      (mkVar "QT_QPA_PLATFORM" "wayland;xcb")
-      (mkVar "SDL_VIDEODRIVER" "wayland")
-      (mkVar "MOZ_ENABLE_WAYLAND" "1")
-      (mkVar "WLR_RENDERER_ALLOW_SOFTWARE" "1")
-      (mkVar "XDG_CURRENT_DESKTOP" "Hyprland")
-      (mkVar "XDG_SESSION_TYPE" "wayland")
-      (mkVar "XDG_SESSION_DESKTOP" "Hyprland")
-      (mkVar "GDK_BACKEND" "wayland,x11")
-      (mkVar "XCURSOR_SIZE" "32")
-    ];
+    env = {
+      "QT_QPA_PLATFORM" = "wayland;xcb";
+      "SDL_VIDEODRIVER" = "wayland";
+      "MOZ_ENABLE_WAYLAND" = "1";
+      "WLR_RENDERER_ALLOW_SOFTWARE" = "1";
+      "XDG_CURRENT_DESKTOP" = "Hyprland";
+      "XDG_SESSION_TYPE" = "wayland";
+      "XDG_SESSION_DESKTOP" = "Hyprland";
+      "GDK_BACKEND" = "wayland,x11";
+      "XCURSOR_SIZE" = "32";
+    };
 
     defaultWorkspaces = let
       mkSilent = text: {
@@ -56,7 +74,7 @@
       "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
     };
 
-    binds = (map (bind: mkBind bind) [
+    binds = map (bind: mkBind bind) [
       "$mod, return, exec, alacritty"
       "$mod, Q, killactive, "
       "$mod, N, exec, thunar"
@@ -78,7 +96,7 @@
       ", Print, exec, sshot --screen -o $HOME/imgs/screenshots"
       "SHIFT, Print, exec, sshot --area -o $HOME/imgs/screenshots"
       "$mod, r, submap, resize"
-    ]) ++ [
+    ] ++ [
       (mkFlagBind
         ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+"
         "le")

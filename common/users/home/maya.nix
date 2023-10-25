@@ -1,6 +1,5 @@
 { pkgs, inputs, system, ... }:
-let
-  gaming = inputs.gaming.packages."${system}";
+let gaming = inputs.gaming.packages."${system}";
 in {
   imports = [ ../../home-manager ];
 
@@ -40,8 +39,8 @@ in {
       name = "Breeze-Dark";
       package = pkgs.libsForQt5.breeze-gtk;
     };
-    font.package = pkgs.scientifica-nerd-font;
-    font.name = "Scientifica Nerd Font";
+    font.package = pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; };
+    font.name = "Ubuntu Nerd Font";
     font.size = 14;
   };
 

@@ -9,7 +9,7 @@
     grey: #6e738d;
 
     width: 600;
-    font: "Scientifica Nerd Font 18";
+    font: "Ubuntu Nerd Font 18";
 }
 
 element-text, element-icon , mode-switcher {

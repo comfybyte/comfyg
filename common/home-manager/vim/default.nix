@@ -112,11 +112,6 @@ in with lib; {
           showTime = false;
           extraOptions.buttons = false;
         };
-        # indent-blankline = {
-        #   enable = true;
-        #   showEndOfLine = true;
-        #   showCurrentContext = true;
-        # };
         cursorline = {
           enable = true;
           cursorword = {

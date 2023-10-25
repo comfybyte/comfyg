@@ -135,9 +135,7 @@ set_keymap("<leader>p", function()
   hop.hint_patterns()
 end)
 
-require("ibl").setup {
-  scope = { enabled = true }
-}
+require("ibl").setup()
 
 require("lsp-inlayhints").setup {
   inlay_hints = {
