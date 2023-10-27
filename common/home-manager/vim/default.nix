@@ -15,7 +15,7 @@ in with lib; {
         softtabstop = 2;
         shiftwidth = 2;
         expandtab = true;
-        hlsearch = true;
+        hlsearch = false;
         smartindent = true;
         wrap = false;
         termguicolors = true;

@@ -93,7 +93,6 @@
       ranger
       dmenu
       imv
-      feh
       mpv
       parted
       ventoy-full
@@ -101,6 +100,7 @@
       keychain
       cachix
       cloc
+      shellcheck
 
       ripgrep
       jq

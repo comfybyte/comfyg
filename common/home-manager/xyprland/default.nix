@@ -9,8 +9,7 @@
     mkFlagBind = text: flags: mkBind text // { inherit flags; };
   in {
     enable = true;
-    xwayland.enable = true;
-    extraConfig.pre = import ./options.nix;
+    hyprland.xwayland.enable = true;
     extraConfig.post = import ./ws_switchers.nix;
 
     options = {
@@ -58,6 +57,15 @@
       "GDK_BACKEND" = "wayland,x11";
       "XCURSOR_SIZE" = "32";
     };
+
+    animation.enable = true;
+    animation.animations = [
+      "windows, 1, 7, default, slide"
+      "windowsOut, 1, 7, default, slide"
+      "border, 1, 10, default"
+      "fade, 1, 7, default"
+      "workspaces, 1, 6, default, fade"
+    ];
 
     defaultWorkspaces = let
       mkSilent = text: {
