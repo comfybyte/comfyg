@@ -10,7 +10,7 @@ in with lib; {
       location = "top-right";
     };
 
-    home.file.".local/share/rofi/themes/catppuccin-macchiato.rasi".source =
-      ./catppuccin-macchiato.rasi;
+    home.file.".local/share/rofi/themes/catppuccin-macchiato.rasi".text =
+      import ./theme.nix;
   };
 }
