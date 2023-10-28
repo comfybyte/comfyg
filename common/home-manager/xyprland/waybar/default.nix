@@ -1,5 +1,5 @@
 {
-  programs.xyprland.waybar = {
+  programs.waybar = {
     enable = true;
     style = builtins.readFile ./style.css;
     settings = {
