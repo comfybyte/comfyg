@@ -39,8 +39,13 @@
   services = {
     dbus.enable = true;
     xserver = {
-      layout = "br-abnt2";
-      drivers = [ "video-intel" "mesa" "vulkan-intel" ];
+      enable = true;
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = with pkgs; [ dmenu i3status ];
+      };
+      layout = "br";
+      videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
     };
     pipewire = {
       enable = true;

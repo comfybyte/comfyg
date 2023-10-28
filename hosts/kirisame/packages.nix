@@ -117,9 +117,7 @@
       uutils-coreutils
       du-dust
       bat
-      mprocs
       gitui
-      wiki-tui
       handlr-regex
       zenith
 
@@ -139,6 +137,7 @@
       deluge-gtk
       virt-manager
       nixos-shell
+      nix-tree
 
       vlc
       xfce.ristretto
