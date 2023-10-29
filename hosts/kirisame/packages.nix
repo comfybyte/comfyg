@@ -36,7 +36,6 @@
       grim
       slurp
       libnotify
-      libsForQt5.polkit-kde-agent
       imagemagick
       qt5.qtwayland
       qt6.qtwayland
@@ -102,6 +101,10 @@
       cloc
       shellcheck
 
+      libsForQt5.polkit-kde-agent
+      libsForQt5.okular
+      libsForQt5.neochat
+
       ripgrep
       jq
       fzf
@@ -166,12 +169,13 @@
       pfetch
       hyprpicker
       betterdiscordctl
-      libsForQt5.okular
       p7zip
 
       osu-lazer-bin
       minecraft
       prismlauncher
+
+      evremap
       sshot
     ];
 }
