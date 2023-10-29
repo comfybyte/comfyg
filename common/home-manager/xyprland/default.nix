@@ -73,6 +73,7 @@
       "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
     };
     binds = import ./keybinds.nix;
+
     submaps = {
       resize = map (bind: mkFlagBind bind "e") [
         ", l, resizeactive, 12 0"
@@ -86,12 +87,9 @@
         ", q, submap, reset"
       ];
     };
-    windowRules = [
-      {
-        rule = "float";
-        window = "title:^(.*)Library(.*)$";
-      }
-    ];
+
+    windowRules = { float = [ "title:^(.*)Library(.*)$" ]; };
+
     onceStart = [
       "fcitx5"
       "waybar"

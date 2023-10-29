@@ -838,11 +838,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1698387578,
-        "narHash": "sha256-+L/HMTkcQHdqq12feonP/H9GAlsE+VflCVks2io8sv8=",
+        "lastModified": 1698589067,
+        "narHash": "sha256-ecQ40hf/1TXQK/ngfQx8TY4uGDDLmwTsX0EA4JELr1k=",
         "owner": "comfybyte",
         "repo": "xyprland",
-        "rev": "cbb0b5a44b09e46753843f8b36b25c3c76a79952",
+        "rev": "3e0a573a57071c9b8d20e6a3277572153736eff5",
         "type": "github"
       },
       "original": {
