@@ -1,47 +1,38 @@
-''
+# This pseudo-CSS syntax is absolutely cursed.
+let
+  sapphire = "#74c7ec";
+  cloudy = "#cff0ff";
+  mint = "#a1fff4";
+  red = "#f38ba8";
+  black = "#000000";
+  grey = "#6e738d";
+  font = "Ubuntu Nerd Font 18";
+in ''
   * {
-      bg-col:  #000000;
-      bg-col-light: #000000;
-      border-col: #000000;
-      selected-col: #000000;
-      blue: #8aadf4;
-      fg-col: #cad3f5;
-      fg-col2: #ed8796;
-      grey: #6e738d;
-
       width: 600;
-      font: "Ubuntu Nerd Font 18";
+      font: "${font}";
   }
 
   element-text, element-icon , mode-switcher {
       background-color: inherit;
-      text-color:       inherit;
+      text-color: inherit;
   }
 
   window {
       height: 360px;
-      border: 3px;
-      border-color: @border-col;
-      background-color: @bg-col;
+      border: 2px;
+      border-color: ${sapphire};
+      background-color: ${black};
   }
 
   mainbox {
-      background-color: @bg-col;
+      background-color: ${black};
   }
 
   inputbar {
       children: [prompt,entry];
-      background-color: @bg-col;
-      border-radius: 5px;
+      background-color: transparent;
       padding: 2px;
-  }
-
-  prompt {
-      background-color: @blue;
-      padding: 6px;
-      text-color: @bg-col;
-      border-radius: 3px;
-      margin: 20px 0px 0px 20px;
   }
 
   textbox-prompt-colon {
@@ -49,11 +40,17 @@
       str: ":";
   }
 
+  prompt {
+    enabled: false;
+  }
+
   entry {
       padding: 6px;
-      margin: 20px 0px 0px 10px;
-      text-color: @fg-col;
-      background-color: @bg-col;
+      margin: 16px 12px;
+      text-color: ${sapphire};
+      border: 1px;
+      border-color: ${mint};
+      background-color: ${black};
   }
 
   listview {
@@ -62,13 +59,13 @@
       margin: 10px 0px 0px 20px;
       columns: 2;
       lines: 5;
-      background-color: @bg-col;
+      background-color: ${black};
   }
 
   element {
       padding: 5px;
-      background-color: @bg-col;
-      text-color: @fg-col  ;
+      background-color: ${black};
+      text-color: ${cloudy}  ;
   }
 
   element-icon {
@@ -76,8 +73,8 @@
   }
 
   element selected {
-      background-color:  @selected-col ;
-      text-color: @fg-col2  ;
+      background-color: transparent;
+      text-color: ${mint};
   }
 
   mode-switcher {
@@ -86,19 +83,14 @@
 
   button {
       padding: 10px;
-      background-color: @bg-col-light;
-      text-color: @grey;
+      background-color: ${black};
+      text-color: ${grey};
       vertical-align: 0.5; 
       horizontal-align: 0.5;
   }
 
-  button selected {
-    background-color: @bg-col;
-    text-color: @blue;
-  }
-
   message {
-      background-color: @bg-col-light;
+      background-color: ${black};
       margin: 2px;
       padding: 2px;
       border-radius: 5px;
@@ -106,8 +98,7 @@
 
   textbox {
       padding: 6px;
-      margin: 20px 0px 0px 20px;
-      text-color: @blue;
-      background-color: @bg-col-light;
+      text-color: ${red};
+      background-color: ${black};
   }
 ''

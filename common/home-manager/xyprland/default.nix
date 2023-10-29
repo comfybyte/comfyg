@@ -86,6 +86,12 @@
         ", q, submap, reset"
       ];
     };
+    windowRules = [
+      {
+        rule = "float";
+        window = "title:^(.*)Library(.*)$";
+      }
+    ];
     onceStart = [
       "fcitx5"
       "waybar"
