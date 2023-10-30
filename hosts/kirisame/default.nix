@@ -36,6 +36,7 @@
 
   environment.shells = with pkgs; [ zsh fish nushell ];
 
+  environment.pathsToLink = [ "/libexec" ];
   services = {
     dbus.enable = true;
     xserver = {
@@ -44,6 +45,7 @@
         enable = true;
         extraPackages = with pkgs; [ dmenu i3status ];
       };
+      displayManager.lightdm.enable = false;
       layout = "br";
       videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
     };

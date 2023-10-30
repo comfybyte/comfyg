@@ -67,7 +67,7 @@
       "2" = [ "firefox" ];
       "3" = [ "Thunar" ];
       "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
-      "5" = [ "discord" ];
+      "5" = [ (mkSilent "discord") ];
       "6" = [ "Audacity" "krita" ];
       "7" = [ (mkSilent "lutris") (mkSilent "Steam") ];
       "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
