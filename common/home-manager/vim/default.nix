@@ -103,8 +103,8 @@ in with lib; {
         presence-nvim = {
           enable = true;
           mainImage = "file";
-          neovimImageText = "the game";
-          editingText = "Editing %s";
+          neovimImageText = "🌙";
+          editingText = "Editing something";
           readingText = "Reading something";
           workspaceText = "In a project";
           fileExplorerText = "In menu";

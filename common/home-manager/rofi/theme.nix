@@ -6,7 +6,7 @@ let
   red = "#f38ba8";
   black = "#000000";
   grey = "#6e738d";
-  font = "Ubuntu Nerd Font 18";
+  font = "GohuFont 11 Nerd Font 18";
 in ''
   * {
       width: 600;

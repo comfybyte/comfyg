@@ -170,6 +170,7 @@
       hyprpicker
       betterdiscordctl
       p7zip
+      localsend
 
       osu-lazer-bin
       minecraft
