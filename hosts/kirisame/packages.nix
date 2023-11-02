@@ -101,7 +101,6 @@
       cloc
       shellcheck
 
-      libsForQt5.polkit-kde-agent
       libsForQt5.okular
       libsForQt5.neochat
 
@@ -123,6 +122,7 @@
       gitui
       handlr-regex
       zenith
+      qpwgraph
 
       gcc
       gnumake

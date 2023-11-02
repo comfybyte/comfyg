@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./fonts.nix
+    ./polkit.nix
     ../../common/users
   ];
 
@@ -17,15 +18,12 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
   boot.kernel.sysctl."kernel.sysrq" = 1;
-
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 10;
   };
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-  };
+
+  security.rtkit.enable = true;
 
   hardware.opengl = {
     enable = true;
@@ -83,21 +81,6 @@
       fcitx5-hangul
       libsForQt5.fcitx5-qt
     ];
-  };
-
-  systemd.user.services.polkit-kde-authentication-agent-1 = {
-    description = "polkit-kde-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart =
-        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
   };
 
   environment.sessionVariables = rec {

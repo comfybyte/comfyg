@@ -69,7 +69,7 @@
       "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
       "5" = [ (mkSilent "discord") ];
       "6" = [ "Audacity" "krita" ];
-      "7" = [ (mkSilent "lutris") (mkSilent "Steam") ];
+      "7" = [ (mkSilent "lutris") (mkSilent "class:(steam)") ];
       "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
     };
     binds = import ./keybinds.nix;

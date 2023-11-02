@@ -1,5 +1,4 @@
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command("Q", "q", {})
 vim.api.nvim_create_user_command("W", "w", {})
@@ -161,3 +160,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("barbecue").setup()
 require("toggle_lsp_diagnostics").init()
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.md"},
+  callback = function ()
+    vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreview<cr>")
+  end
+})
