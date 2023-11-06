@@ -2,7 +2,7 @@ mode=""
 silent=0
 out=""
 
-for ((i=1; i <= $#; i++)); do
+for ((i=0; i <= $#; i++)); do
   arg="${!i}"
 
   if [[ $arg == "--screen" ]]; then
@@ -12,7 +12,7 @@ for ((i=1; i <= $#; i++)); do
   elif [[ $arg == "-s" ]]; then
     silent=1
   elif [[ $arg == "-o" ]]; then
-    fname_i=$((++i))
+    fname_i=$((i+1))
     fname="${!fname_i}"
 
     if [[ -n $fname ]]; then

@@ -177,6 +177,8 @@
       prismlauncher
 
       evremap
+    
       sshot
+      retag
     ];
 }

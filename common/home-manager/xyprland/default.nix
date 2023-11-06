@@ -14,9 +14,9 @@
     options = {
       general = {
         gaps_in = 1;
-        gaps_out = 0;
+        gaps_out = 2;
         layout = "dwindle";
-        "col.active_border" = "rgba(eeeeee88) rgba(ffffffbb) 45deg";
+        "col.active_border" = "rgba(444444ee) rgba(111122ee) 45deg";
         "col.inactive_border" = "rgba(000000aa)";
       };
       input = {

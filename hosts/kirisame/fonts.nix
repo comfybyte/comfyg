@@ -16,6 +16,5 @@
     monocraft
     fixedsys-nerd-font
     scientifica-nerd-font
-    bedstead-nerd-font
   ];
 }
