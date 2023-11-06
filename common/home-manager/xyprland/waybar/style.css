@@ -1,15 +1,15 @@
 * {
   min-height: 0;
   margin: 0;
-  font-family: "Ubuntu Nerd Font";
+  font-family: "Agave Nerd Font";
   font-size: .85rem;
+  color: #fff;
+  text-shadow: 0 0 2px #fff;
 }
 
 #waybar {
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid #000;
-  color: #ddf;
-  margin-top: 2px;
 }
 
 
@@ -19,7 +19,7 @@
 #pulseaudio,
 #network {
   font-weight: bolder;
-  padding: 2px 22px;
+  padding: 2px 16px;
 }
 
 #cpu.warning, #cpu.critical {
@@ -53,17 +53,16 @@
 }
 
 #workspaces button {
-  color: #fff;
-  border: 1px solid transparent;
+  font-size: .4em;
+
+  border-bottom: 2px solid transparent;
   border-radius: 0;
-  font-size: .5em;
-  padding: 0 8px;
-  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
 }
 
 
 #workspaces button.active {
-  border-color: #fff;
-  background-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 2px solid #fff;
+  transition: border-bottom .75s;
 }
 

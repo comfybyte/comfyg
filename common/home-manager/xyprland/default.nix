@@ -30,7 +30,7 @@
         "col.shadow" = "rgba(1a1a1aee)";
         blur = {
           enabled = true;
-          size = 6;
+          size = 5;
         };
       };
       dwindle = {

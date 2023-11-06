@@ -12,7 +12,7 @@
     kochi-substitute
 
     # Nerd fonts.
-    (nerdfonts.override { fonts = [ "Terminus" "Gohu" "Ubuntu" "UbuntuMono" ]; })
+    (nerdfonts.override { fonts = [ "Terminus" "Agave" "Ubuntu" "UbuntuMono" "Monofur" ]; })
     monocraft
     fixedsys-nerd-font
     scientifica-nerd-font

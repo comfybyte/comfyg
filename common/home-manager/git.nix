@@ -19,6 +19,7 @@ in with lib; {
         core.editor = "vim";
         init.defaultBranch = "main";
         push.default = "current";
+        merge.conflictStyle = "diff3";
       };
     };
   };

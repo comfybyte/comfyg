@@ -1,4 +1,3 @@
-# This pseudo-CSS syntax is absolutely cursed.
 let
   sapphire = "#74c7ec";
   cloudy = "#cff0ff";
@@ -6,7 +5,7 @@ let
   red = "#f38ba8";
   black = "#000000";
   grey = "#6e738d";
-  font = "GohuFont 11 Nerd Font 18";
+  font = "Agave Nerd Font 16";
 in ''
   * {
       width: 600;
