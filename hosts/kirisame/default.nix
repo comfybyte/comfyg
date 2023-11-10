@@ -15,12 +15,13 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
   boot.kernel.sysctl."kernel.sysrq" = 1;
+  # Usa o systemd-boot como bootloader.
   boot.loader.systemd-boot = {
     enable = true;
-    configurationLimit = 10;
+    configurationLimit = 10; # Máximo de 10 gerações no menu.
   };
 
   security.rtkit.enable = true;
@@ -67,18 +68,12 @@
     openFirewall = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    wlr.enable = false;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-  };
-
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
-      fcitx5-mozc
-      fcitx5-hangul
+      fcitx5-mozc # Entrada em japonês.
+      fcitx5-hangul # Entrada em coreano.
       libsForQt5.fcitx5-qt
     ];
   };

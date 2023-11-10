@@ -33,7 +33,7 @@ in with lib; {
       };
       syntaxHighlighting.enable = true;
       initExtra = lib.concatStrings [
-        # Rebinding since I use ^s as my tmux prefix.
+        # ^s é o meu prefix no tmux.
         "bindkey '^b' history-incremental-pattern-search-backward"
       ];
     };

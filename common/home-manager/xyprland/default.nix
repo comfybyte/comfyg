@@ -10,28 +10,26 @@
   in {
     enable = true;
     hyprland.xwayland.enable = true;
+    enablePortal = true;
     extraConfig.post = import ./ws_switchers.nix;
+
     options = {
       general = {
-        gaps_in = 1;
-        gaps_out = 2;
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 4;
         layout = "dwindle";
-        "col.active_border" = "rgba(444444ee) rgba(111122ee) 45deg";
-        "col.inactive_border" = "rgba(000000aa)";
+        "col.active_border" =
+          "rgba(22222222) rgba(00000033) rgba(22222222) 45deg";
+        "col.inactive_border" = "rgb(000000)";
       };
       input = {
         kb_layout = "br";
         follow_mouse = 1;
       };
-      decoration = {
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
-        blur = {
-          enabled = true;
-          size = 5;
-        };
+      decoration.blur = {
+        enabled = true;
+        size = 5;
       };
       dwindle = {
         pseudotile = true;
@@ -50,6 +48,7 @@
       "GDK_BACKEND" = "wayland,x11";
       "XCURSOR_SIZE" = "32";
     };
+
     animation.enable = true;
     animation.animations = [
       "windows, 1, 7, default, slide"
@@ -58,6 +57,7 @@
       "fade, 1, 7, default"
       "workspaces, 1, 6, default, fade"
     ];
+
     defaultWorkspaces = let
       mkSilent = text: {
         inherit text;
@@ -69,7 +69,7 @@
       "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
       "5" = [ (mkSilent "discord") ];
       "6" = [ "Audacity" "krita" ];
-      "7" = [ (mkSilent "lutris") (mkSilent "class:(steam)") ];
+      "7" = [ (mkSilent "lutris") (mkSilent "title:^Steam$") ];
       "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
     };
     binds = import ./keybinds.nix;

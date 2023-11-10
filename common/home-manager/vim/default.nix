@@ -104,11 +104,11 @@ in with lib; {
           enable = true;
           mainImage = "file";
           neovimImageText = "🌙";
-          editingText = "Editing something";
-          readingText = "Reading something";
-          workspaceText = "In a project";
-          fileExplorerText = "In menu";
-          gitCommitText = "About to break git";
+          editingText = "Editando arquivo";
+          readingText = "Lendo arquivo";
+          workspaceText = "Num projeto";
+          fileExplorerText = "Num menu";
+          gitCommitText = "Quebrando o Git";
           showTime = false;
           extraOptions.buttons = false;
         };

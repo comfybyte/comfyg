@@ -124,8 +124,6 @@
       zenith
       qpwgraph
 
-      gcc
-      gnumake
       nodejs_18
       nodePackages_latest.pnpm
       cargo

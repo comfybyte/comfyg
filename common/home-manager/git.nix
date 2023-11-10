@@ -1,8 +1,8 @@
 { config, lib, ... }:
 let
   cfg = config.inner.git;
-  name = "comfybyte";
-  email = "comfybyte@proton.me";
+  name = "mayaneru";
+  email = "mayaneru@proton.me";
 in with lib; {
   options.inner.git.enable = mkEnableOption "Enable git.";
 

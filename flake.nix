@@ -1,34 +1,38 @@
 {
-  description = "My Nix flake configurations.";
-
   inputs = {
+    # O rolling release do NixOS + Home Manager.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    gaming.url = "github:fufexan/nix-gaming";
-    agenix.url = "github:ryantm/agenix";
-
-    hyprland.url = "github:hyprwm/Hyprland";
-    xyprland = {
-      url = "github:comfybyte/xyprland";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     home = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Vários pacotes relacionados a jogos.
+    gaming.url = "github:fufexan/nix-gaming";
+    # Sistema de secrets no NixOS.
+    agenix.url = "github:ryantm/agenix";
+    # Configuração do Neovim com Nix.
     nixvim = {
       url =
         "github:nix-community/nixvim/05b77732e3babaa95d73cbffca83029784a64cdd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    # Vários pacotes relacionados ao Wayland.
     nixpkgs-wl = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    # Utilitário pra monitorar o inotify do kernel.
     inotify.url = "github:mikesart/inotify-info";
+
+    # O rolling release do Hyprland.
+    hyprland.url = "github:hyprwm/Hyprland";
+    # Configuração do Hyprland com Nix.
+    xyprland = {
+      url = "github:mayaneru/xyprland";
+      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, agenix, ... }@inputs:
@@ -56,7 +60,7 @@
     };
 
   nixConfig = {
-    connect-timeout = 20;
+    connect-timeout = 20; # Evita esperar pelo cache por uma eternidade.
     substituters = [
       "https://cache.nixos.org"
       "https://nixpkgs-wayland.cachix.org"
