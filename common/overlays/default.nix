@@ -1,5 +1,5 @@
 {
-  font = import ./font-overlay;
-  script = import ./script-overlay;
+  fonts = import ./fonts;
+  scripts = import ./scripts;
   pkgs = import ./pkgs;
 }
