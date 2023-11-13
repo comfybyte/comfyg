@@ -56,7 +56,7 @@
         };
     in {
       nixosConfigurations = { kirisame = mkSystem [ ./hosts/kirisame ]; };
-      overlays = import ./common/overlays;
+      overlays = import ./overlays;
     };
 
   nixConfig = {

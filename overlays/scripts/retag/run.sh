@@ -1,45 +1,60 @@
-# Lê imagens de um diretório, renomeando cada uma.
-# -d <path>: Lê os arquivos em <path>.
-# -o <path>: Coloca os arquivos renomeados em <path>.
-# -c: Mantêm uma cópia do original (i.e. copia ao invés de mover).
-# -v: Verbose.
-
 target=$(pwd)
 out=$(pwd)
 verbose=0
 copy=0
 
 function abort () {
-  echo "error: $1"
+  echo "[!]: $1"
   exit 1
 }
 
-for ((i=0; i < $#; i++)); do
+function show_help () {
+  echo "
+  retag - Renomeia imagens baseado no conteúdo.
+
+  Flags: (<path> é o diretório atual por padrão.)
+  -d <path>: Lê os arquivos em <path>.
+  -o <path>: Coloca os arquivos em <path>.
+  -c: Mantém uma cópia do original.
+  -v: Exibe verbose.
+  --help / -h: Exibe essa mensagem.
+  "
+}
+
+for ((i=0; i <= $#; i++)); do
   arg="${!i}"
   next_i=$((i+1))
-  next="${!next_i}"
+  next=""
+  if [[ $next_i -lt $# ]]; then
+    next="${!next_i}"
+  fi
+
+  if [[ $arg == "--help" || $arg == "-h" ]]; then
+    show_help
+    exit 0
+  fi
 
   if [[ $arg == "-d" ]]; then
     if [[ $next ]]; then
       if [[ ! -d $next ]]; then
-        abort "'-d' must be a directory."
+        abort "'-d' deve ser um diretório."
       fi
 
       target=$next
     else
-      abort "'-d' missing directory."
+      abort "'-d' requer valor."
     fi
   fi
 
   if [[ $arg == "-o" ]]; then
     if [[ $next ]]; then
       if [[ ! -d $next ]]; then
-        abort "'-o' must be a directory."
+        abort "'-o' deve ser um diretório."
       fi
 
       out=$next
     else
-      abort "'-o' missing directory."
+      abort "'-o' requer valor."
     fi
   fi
 
@@ -54,9 +69,9 @@ done
 
 function get_rename () {
   zenity --entry \
-    --title="Renaming '$1'" \
-    --text="Type in new name" \
-    --cancel-label="Stop" 2> /dev/null
+    --title="Renomeando '$1'" \
+    --text="Novo nome:" \
+    --cancel-label="Cancelar" 2> /dev/null
 }
 
 function may_be_image () {
@@ -78,7 +93,7 @@ for filepath in "$target"/*; do
 
   new_name=$(get_rename "$file")
   if [[ -z $new_name ]]; then
-    echo "done."
+    echo "feito."
     exit
   fi
 
@@ -90,9 +105,9 @@ for filepath in "$target"/*; do
 
   if [[ $verbose -eq 1 ]]; then
     if [[ $copy -eq 1 ]]; then
-      echo "copied '$file' into '$new_name'."
+      echo "copiado '$file' pra '$new_name'."
     else
-      echo "moved '$file' to '$new_name'."
+      echo "movido '$file' pra '$new_name'."
     fi
   fi
 done
