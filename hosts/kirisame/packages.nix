@@ -151,6 +151,7 @@
       gaming.proton-ge
       winetricks
       gamemode
+      bottles
 
       discord
       audacity

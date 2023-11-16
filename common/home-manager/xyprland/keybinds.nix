@@ -7,7 +7,6 @@ let
 in (map (bind: mkBind bind) [
   "$mod, return, exec, alacritty"
   "$mod, q, killactive, "
-  "$mod, n, exec, thunar"
   "$mod, space, togglefloating, "
   "$mod, d, exec, rofi -show run"
   "$mod, p, pseudo,"

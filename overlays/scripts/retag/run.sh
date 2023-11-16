@@ -70,7 +70,7 @@ done
 function get_rename () {
   zenity --entry \
     --title="Renomeando '$1'" \
-    --text="Novo nome:" \
+    --text="Novo nome (branco pra pular):" \
     --cancel-label="Cancelar" 2> /dev/null
 }
 
@@ -93,8 +93,8 @@ for filepath in "$target"/*; do
 
   new_name=$(get_rename "$file")
   if [[ -z $new_name ]]; then
-    echo "feito."
-    exit
+    echo "pulando '$file'."
+    continue
   fi
 
   if [[ $copy -eq 1 ]]; then

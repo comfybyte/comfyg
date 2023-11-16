@@ -1,4 +1,6 @@
 ## ❄️⚙️ flake-config
+*README and comments are in 🇧🇷 Portuguese, since there's barely any Nix guides or content in it.*
+
 Esse repositório é um [flake](https://nixos.wiki/wiki/Flakes) com a configuração do meu sistema
 [NixOS]( https://nixos.org ), [Home Manager](https://github.com/nix-community/home-manager),
 e [overlays]( https://nixos.wiki/wiki/Overlays ).
