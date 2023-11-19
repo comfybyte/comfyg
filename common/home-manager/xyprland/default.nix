@@ -94,7 +94,7 @@
       "fcitx5"
       "waybar"
       "swww init"
-      "alacritty"
+      "alacritty -e tmux new"
       "firefox"
       "discord"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

@@ -24,12 +24,17 @@
 
   environment.systemPackages = with pkgs;
     let
+      pinned = import inputs.pinned {
+        inherit system;
+        config.allowUnfree = true;
+      };
       gaming = inputs.gaming.packages."${system}";
       agenix = inputs.agenix.packages."${system}";
       inotify-info = inputs.inotify.packages."${system}";
     in [
       mako
       swww
+      wob
       wl-clipboard
       xdg-utils
       glib
@@ -121,15 +126,13 @@
       bat
       gitui
       handlr-regex
-      zenith
+      pinned.zenith
       qpwgraph
 
       nodejs_18
       nodePackages_latest.pnpm
       cargo
-      cargo-shuttle
       cargo-info
-      cargo-leptos
       just
       nixfmt
       ghc
@@ -159,7 +162,7 @@
       vivaldi
       vivaldi-ffmpeg-codecs
       libreoffice-fresh
-      obsidian
+      pinned.obsidian
       authy
       emote
       gparted
@@ -176,7 +179,7 @@
       prismlauncher
 
       evremap
-    
+
       sshot
       retag
     ];
