@@ -88,7 +88,10 @@
       ];
     };
 
-    windowRules = { float = [ "title:^(.*)Library(.*)$" ]; };
+    windowRules = {
+      float = [ "title:^(.*)Library(.*)$" ];
+      noborder = [ "title:Alacritty" ];
+    };
 
     onceStart = [
       "fcitx5"

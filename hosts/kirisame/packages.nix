@@ -60,6 +60,7 @@
       nmap
       inotify-info.default
 
+      # TODO: Purge useless deps.
       libpng
       giflib
       ncurses
@@ -163,11 +164,13 @@
       vivaldi-ffmpeg-codecs
       libreoffice-fresh
       pinned.obsidian
+      logseq
       authy
       emote
       gparted
       wmctrl
       firefox-devedition
+      librewolf
       pfetch
       hyprpicker
       betterdiscordctl

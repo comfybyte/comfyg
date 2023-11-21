@@ -12,7 +12,7 @@ in with lib; {
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "Agave Nerd Font";
+        font = let font = "FixedsysExcelsior Nerd Font";
         in {
           size = 18;
           normal.family = "${font}";
