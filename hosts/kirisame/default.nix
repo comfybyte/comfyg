@@ -3,9 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./packages.nix
     ./fonts.nix
-    ./polkit.nix
+    ./security.nix
+    ./packages
     ../../common/users
   ];
 
@@ -18,13 +18,13 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
   boot.kernel.sysctl."kernel.sysrq" = 1;
-  # Usa o systemd-boot como bootloader.
   boot.loader.systemd-boot = {
     enable = true;
-    configurationLimit = 10; # Máximo de 10 gerações no menu.
+    configurationLimit = 10;
   };
 
-  security.rtkit.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
   hardware.opengl = {
     enable = true;
@@ -36,28 +36,29 @@
   environment.shells = with pkgs; [ zsh fish nushell ];
 
   environment.pathsToLink = [ "/libexec" ];
-  services = {
-    dbus.enable = true;
-    xserver = {
+
+  services.dbus.enable = true;
+  services.flatpak.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.i3 = {
       enable = true;
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [ dmenu i3status ];
-      };
-      displayManager.lightdm.enable = false;
-      layout = "br";
-      videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
+      extraPackages = with pkgs; [ dmenu i3status ];
     };
-    pipewire = {
+    displayManager.lightdm.enable = false;
+    layout = "br";
+    videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
+  };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    alsa = {
       enable = true;
-      pulse.enable = true;
-      jack.enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
+      support32Bit = true;
     };
   };
+
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
@@ -72,8 +73,8 @@
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
-      fcitx5-mozc # Entrada em japonês.
-      fcitx5-hangul # Entrada em coreano.
+      fcitx5-mozc
+      fcitx5-hangul
       libsForQt5.fcitx5-qt
     ];
   };

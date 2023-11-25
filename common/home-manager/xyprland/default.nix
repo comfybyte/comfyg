@@ -10,14 +10,13 @@
   in {
     enable = true;
     hyprland.xwayland.enable = true;
-    enablePortal = true;
     extraConfig.post = import ./ws_switchers.nix;
 
     options = {
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 4;
+        border_size = 2;
         layout = "dwindle";
         "col.active_border" =
           "rgba(22222222) rgba(00000033) rgba(22222222) 45deg";
@@ -36,7 +35,7 @@
         preserve_split = true;
       };
     };
-    monitors = [[ "DP-2" "1920x1080@60" "0x0" "1" ]];
+    monitors = [ "DP-2,1920x1080@60,0x0,1" ];
     env = {
       "QT_QPA_PLATFORM" = "wayland;xcb";
       "SDL_VIDEODRIVER" = "wayland";
@@ -65,7 +64,7 @@
       };
     in {
       "2" = [ "firefox" ];
-      "3" = [ "Thunar" ];
+      "3" = [ "Nautilus" ];
       "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
       "5" = [ (mkSilent "discord") ];
       "6" = [ "Audacity" "krita" ];
@@ -88,9 +87,9 @@
       ];
     };
 
-    windowRules = {
+    windowRulesV2 = {
       float = [ "title:^(.*)Library(.*)$" ];
-      noborder = [ "title:Alacritty" ];
+      noborder = [ "class:^(.*)Alacritty(.*)$" ];
     };
 
     onceStart = [
@@ -99,7 +98,6 @@
       "swww init"
       "alacritty -e tmux new"
       "firefox"
-      "discord"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     ];
   };

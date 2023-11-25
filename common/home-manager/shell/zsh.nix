@@ -8,7 +8,8 @@ in with lib; {
       enable = true;
       enableAutosuggestions = true;
       shellAliases = {
-        nors = "sudo nixos-rebuild switch";
+        nors = "doas nixos-rebuild switch";
+        norb = "doas nixos-rebuild boot";
 
         txn = "tmux new";
         txl = "tmux list-sessions";

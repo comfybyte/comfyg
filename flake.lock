@@ -862,15 +862,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1699456930,
-        "narHash": "sha256-079DbEqlBOK8JDzxsEc3qL27DVMrpmOQ6janTnjY3Ig=",
-        "owner": "mayaneru",
+        "lastModified": 1700709701,
+        "narHash": "sha256-UCksKo3YRfGTdnHIJF1mG2pmCKyeB0PJrLJZ2EN2xA8=",
+        "owner": "comfybyte",
         "repo": "xyprland",
-        "rev": "e3b6f4d0efe7b6fcbe4873ec9e1d6bc6c49a2152",
+        "rev": "bc77f840a0df0a779a82162537460c8e58908b06",
         "type": "github"
       },
       "original": {
-        "owner": "mayaneru",
+        "owner": "comfybyte",
         "repo": "xyprland",
         "type": "github"
       }

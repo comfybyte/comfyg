@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Pinned rev of Nixpkgs before a lockfile update, in case something breaks.
-    pinned.url = "github:nixos/nixpkgs/a08d6979dd7c82c4cef0dcc6ac45ab16051c1169";
+    pinned.url =
+      "github:nixos/nixpkgs/a08d6979dd7c82c4cef0dcc6ac45ab16051c1169";
 
     home = {
       url = "github:nix-community/home-manager/master";
@@ -12,6 +13,7 @@
     agenix.url = "github:ryantm/agenix";
     nixvim = {
       url =
+        # TODO: Fix maps and unpin.
         "github:nix-community/nixvim/05b77732e3babaa95d73cbffca83029784a64cdd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -23,7 +25,7 @@
     inotify.url = "github:mikesart/inotify-info";
     hyprland.url = "github:hyprwm/Hyprland";
     xyprland = {
-      url = "github:mayaneru/xyprland";
+      url = "github:comfybyte/xyprland";
       inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -34,7 +36,13 @@
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs system;
+            pinned = import inputs.pinned {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
           modules = [
             home.nixosModules.home-manager
             agenix.nixosModules.default
@@ -53,7 +61,7 @@
       overlays = import ./overlays;
     };
 
-  nixConfig = {
+  nixConfig = rec {
     connect-timeout = 20;
     substituters = [
       "https://cache.nixos.org"
@@ -63,6 +71,8 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://hyprland.cachix.org"
     ];
+    trusted-users = [ "@wheel" ];
+    trusted-substituters = substituters;
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="

@@ -1,5 +1,11 @@
 { pkgs, inputs, system, ... }:
-let gaming = inputs.gaming.packages."${system}";
+let
+  gaming = inputs.gaming.packages."${system}";
+  gtk-theme = {
+    pkg = pkgs.tokyo-night-gtk;
+    theme = "Tokyonight-Storm-B";
+    icons = "Tokyonight-Dark-Cyan";
+  };
 in {
   imports = [ ../../home-manager ];
 
@@ -22,6 +28,7 @@ in {
     EDITOR = "nvim";
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = gaming.proton-ge;
+    GTK_THEME = gtk-theme.theme;
   };
 
   programs.direnv = {
@@ -32,16 +39,16 @@ in {
   gtk = {
     enable = true;
     iconTheme = {
-      name = "breeze-dark";
-      package = pkgs.libsForQt5.breeze-icons;
+      name = gtk-theme.icons;
+      package = gtk-theme.pkg;
     };
     theme = {
-      name = "Breeze-Dark";
-      package = pkgs.libsForQt5.breeze-gtk;
+      name = gtk-theme.theme;
+      package = gtk-theme.pkg;
     };
-    font.package = pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; };
-    font.name = "Ubuntu Nerd Font";
-    font.size = 14;
+    font.package = pkgs.nerdfonts.override { fonts = [ "3270" ]; };
+    font.name = "3270 Nerd Font";
+    font.size = 16;
   };
 
   qt = {

@@ -5,7 +5,7 @@ let
   red = "#f38ba8";
   black = "#000000";
   grey = "#6e738d";
-  font = "Agave Nerd Font 16";
+  font = "3270 Nerd Font 18";
 in ''
   * {
       width: 600;

@@ -2,6 +2,7 @@ target=$(pwd)
 out=$(pwd)
 verbose=0
 copy=0
+all=0
 
 function abort () {
   echo "[!]: $1"
@@ -10,14 +11,15 @@ function abort () {
 
 function show_help () {
   echo "
-  retag - Renomeia imagens baseado no conteúdo.
+  retag - Tool for renaming files based on content (peek and prompt rename).
 
-  Flags: (<path> é o diretório atual por padrão.)
-  -d <path>: Lê os arquivos em <path>.
-  -o <path>: Coloca os arquivos em <path>.
-  -c: Mantém uma cópia do original.
-  -v: Exibe verbose.
-  --help / -h: Exibe essa mensagem.
+  Flags: (<path> defaults to current)
+  -d <path>: Where to read files from.
+  -o <path>: Where to place files.
+  -c: Copy instead of move.
+  -a: Reads all files at -d, instead of only files with commonly used image extensions (.png, .jpg, ...).
+  -v: Verbose.
+  --help / -h: Displays this message.
   "
 }
 
@@ -37,24 +39,24 @@ for ((i=0; i <= $#; i++)); do
   if [[ $arg == "-d" ]]; then
     if [[ $next ]]; then
       if [[ ! -d $next ]]; then
-        abort "'-d' deve ser um diretório."
+        abort "'-d' expected directory."
       fi
 
       target=$next
     else
-      abort "'-d' requer valor."
+      abort "'-d' expected value."
     fi
   fi
 
   if [[ $arg == "-o" ]]; then
     if [[ $next ]]; then
       if [[ ! -d $next ]]; then
-        abort "'-o' deve ser um diretório."
+        abort "'-o' expected directory."
       fi
 
       out=$next
     else
-      abort "'-o' requer valor."
+      abort "'-o' expected value."
     fi
   fi
 
@@ -65,13 +67,17 @@ for ((i=0; i <= $#; i++)); do
   if [[ $arg == "-c" ]]; then
     copy=1
   fi
+
+  if [[ $arg == "-a" ]]; then
+    all=1
+  fi
 done
 
 function get_rename () {
   zenity --entry \
-    --title="Renomeando '$1'" \
-    --text="Novo nome (branco pra pular):" \
-    --cancel-label="Cancelar" 2> /dev/null
+    --title="Renaming '$1'" \
+    --text="New name (leave empty to skip):" \
+    --cancel-label="Stop" 2> /dev/null
 }
 
 function may_be_image () {
@@ -79,10 +85,14 @@ function may_be_image () {
   [ "$ext" ] && { [ "$ext" == "png" ] || [ "$ext" == "jpg" ] || [ "$ext" == "jpeg" ] || [ "$ext" == "gif" ]; }
 }
 
+if [[ all -eq 1 && verbose -eq 1 ]]; then
+  echo "'-a' flag in use, reading all files."
+fi
+
 for filepath in "$target"/*; do
   file=$(basename "$filepath")
 
-  if ! may_be_image "$file"; then
+  if [[ all -eq 0 ]] && ! may_be_image "$file"; then
     if [[ $verbose -eq 1 ]]; then
       echo "ignoring '$file'."
     fi
@@ -93,7 +103,7 @@ for filepath in "$target"/*; do
 
   new_name=$(get_rename "$file")
   if [[ -z $new_name ]]; then
-    echo "pulando '$file'."
+    echo "skipping '$file'."
     continue
   fi
 
@@ -105,9 +115,9 @@ for filepath in "$target"/*; do
 
   if [[ $verbose -eq 1 ]]; then
     if [[ $copy -eq 1 ]]; then
-      echo "copiado '$file' pra '$new_name'."
+      echo "copied '$file' into '$new_name'."
     else
-      echo "movido '$file' pra '$new_name'."
+      echo "moved '$file' to '$new_name'."
     fi
   fi
 done

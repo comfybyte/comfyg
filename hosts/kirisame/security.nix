@@ -1,4 +1,13 @@
 { pkgs, ... }: {
+  security.rtkit.enable = true;
+  security.doas.enable = true;
+  security.doas.extraRules = [ 
+    {
+      groups = [ "wheel" ];
+      noPass = true;
+      cmd = "nixos-rebuild";
+    }
+  ];
   security.polkit.enable = true;
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     description = "polkit-kde-authentication-agent-1";
