@@ -79,12 +79,15 @@
       nixos-shell
       nix-tree
 
+      # should be devshells but oh well
       nodejs_18
       cargo
       cargo-info
       just
       nixfmt
       ghc
+      clojure
+      clj-kondo
 
       sshot
       retag

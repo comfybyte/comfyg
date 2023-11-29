@@ -1,11 +1,11 @@
 let
   sapphire = "#74c7ec";
   cloudy = "#cff0ff";
-  mint = "#a1fff4";
   red = "#f38ba8";
   black = "#000000";
   grey = "#6e738d";
-  font = "3270 Nerd Font 18";
+  jade = "#5FD7D7";
+  font = "Ubuntu Nerd Font 18";
 in ''
   * {
       width: 600;
@@ -48,7 +48,7 @@ in ''
       margin: 16px 12px;
       text-color: ${sapphire};
       border: 1px;
-      border-color: ${mint};
+      border-color: ${jade};
       background-color: ${black};
   }
 
@@ -73,7 +73,7 @@ in ''
 
   element selected {
       background-color: transparent;
-      text-color: ${mint};
+      text-color: ${jade};
   }
 
   mode-switcher {

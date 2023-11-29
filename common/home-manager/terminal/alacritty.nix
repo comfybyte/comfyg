@@ -8,11 +8,11 @@ in with lib; {
       enable = true;
       settings = {
         window = {
-          opacity = 0.75;
+          opacity = 0.8;
         };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "3270 Nerd Font";
+        font = let font = "Terminess Nerd Font";
         in {
           size = 18;
           normal.family = "${font}";

@@ -85,14 +85,14 @@ function may_be_image () {
   [ "$ext" ] && { [ "$ext" == "png" ] || [ "$ext" == "jpg" ] || [ "$ext" == "jpeg" ] || [ "$ext" == "gif" ]; }
 }
 
-if [[ all -eq 1 && verbose -eq 1 ]]; then
+if [[ $all -eq 1 && $verbose -eq 1 ]]; then
   echo "'-a' flag in use, reading all files."
 fi
 
 for filepath in "$target"/*; do
   file=$(basename "$filepath")
 
-  if [[ all -eq 0 ]] && ! may_be_image "$file"; then
+  if [[ $all -eq 0 ]] && ! may_be_image "$file"; then
     if [[ $verbose -eq 1 ]]; then
       echo "ignoring '$file'."
     fi

@@ -12,9 +12,7 @@
     gaming.url = "github:fufexan/nix-gaming";
     agenix.url = "github:ryantm/agenix";
     nixvim = {
-      url =
-        # TODO: Fix maps and unpin.
-        "github:nix-community/nixvim/05b77732e3babaa95d73cbffca83029784a64cdd";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-wl = {

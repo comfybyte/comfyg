@@ -1,17 +1,15 @@
 * {
   min-height: 0;
   margin: 0;
-  font-family: "3270 Nerd Font";
-  font-size: .9rem;
-  color: #fff;
-  text-shadow: 0 0 2px #fff;
+  font-family: "Ubuntu Nerd Font";
+  font-size: .75rem;
+  color: #5FD7D7;
 }
 
 #waybar {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.98);
   border: 1px solid #000;
 }
-
 
 #cpu,
 #memory,
@@ -24,7 +22,7 @@
 
 #cpu.warning, #cpu.critical {
   background: transparent;
-  color: #fff;
+  color: #5FD7D7;
 }
 
 #memory.warning {

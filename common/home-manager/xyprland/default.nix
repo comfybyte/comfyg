@@ -16,7 +16,7 @@
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 2;
+        border_size = 0;
         layout = "dwindle";
         "col.active_border" =
           "rgba(22222222) rgba(00000033) rgba(22222222) 45deg";

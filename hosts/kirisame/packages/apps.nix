@@ -30,5 +30,6 @@
       deluge-gtk
       qpwgraph
       gnome.nautilus
+      fractal
   ];
 }

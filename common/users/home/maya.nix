@@ -46,8 +46,8 @@ in {
       name = gtk-theme.theme;
       package = gtk-theme.pkg;
     };
-    font.package = pkgs.nerdfonts.override { fonts = [ "3270" ]; };
-    font.name = "3270 Nerd Font";
+    font.package = pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; };
+    font.name = "Ubuntu Nerd Font";
     font.size = 16;
   };
 
