@@ -861,11 +861,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1700709701,
-        "narHash": "sha256-UCksKo3YRfGTdnHIJF1mG2pmCKyeB0PJrLJZ2EN2xA8=",
+        "lastModified": 1701312145,
+        "narHash": "sha256-QW9iNTFbHMpNwUTjAe9PFvoGzO9hi3H7vrrbsp+6oOY=",
         "owner": "comfybyte",
         "repo": "xyprland",
-        "rev": "bc77f840a0df0a779a82162537460c8e58908b06",
+        "rev": "afa8da021c15730fe1b82b5781639327be408e3a",
         "type": "github"
       },
       "original": {

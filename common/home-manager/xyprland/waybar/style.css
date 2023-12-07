@@ -3,7 +3,7 @@
   margin: 0;
   font-family: "Ubuntu Nerd Font";
   font-size: .75rem;
-  color: #5FD7D7;
+  color: #C8C093;
 }
 
 #waybar {
@@ -22,7 +22,7 @@
 
 #cpu.warning, #cpu.critical {
   background: transparent;
-  color: #5FD7D7;
+  color: #C8C093;
 }
 
 #memory.warning {
@@ -53,14 +53,14 @@
 #workspaces button {
   font-size: .4em;
 
-  border-bottom: 2px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0;
   padding: 8px 12px;
 }
 
 
 #workspaces button.active {
-  border-bottom: 2px solid #fff;
-  transition: border-bottom .75s;
+  border: 2px solid #E6C384;
+  transition: border .75s;
 }
 

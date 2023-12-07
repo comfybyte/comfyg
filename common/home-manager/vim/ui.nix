@@ -1,15 +1,10 @@
 { pkgs, ... }: {
   programs.nixvim = {
-    colorscheme = "poimandres";
-    colorschemes.poimandres = {
-      enable = true;
-      disableBackground = true;
-      disableFloatBackground = true;
-    };
+    colorscheme = "kanagawa";
     plugins = {
       lualine = {
         enable = true;
-        theme = "poimandres";
+        theme = "kanagawa";
       };
       cursorline = {
         enable = true;
@@ -22,8 +17,10 @@
       nvim-colorizer.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
+      kanagawa-nvim
       barbecue-nvim
       indent-blankline-nvim
     ];
+    extraConfigLuaPre = builtins.readFile ./ui.lua;
   };
 }

@@ -22,11 +22,11 @@ in with lib; {
         scrolloff = 10;
         sidescrolloff = 10;
         updatetime = 1000;
-        completeopt = "menuone,preview";
+        completeopt = "menuone,noselect";
         undodir = "${config.home.homeDirectory}/.cache/nvim/undodir";
         undofile = true;
         list = true;
-        listchars.space = "⋅";
+        # listchars.space = "⋅";
       };
 
       globals.mapleader = " ";

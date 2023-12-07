@@ -7,14 +7,12 @@ in with lib; {
     programs.alacritty = {
       enable = true;
       settings = {
-        window = {
-          opacity = 0.8;
-        };
+        window = { opacity = 0.9; };
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "Terminess Nerd Font";
+        font = let font = "Fairfax Nerd Font";
         in {
-          size = 18;
+          size = 22;
           normal.family = "${font}";
           bold.family = "${font}";
           italic.family = "${font}";
@@ -23,31 +21,35 @@ in with lib; {
         colors = {
           primary = {
             background = "0x000000";
-            foreground = "0xcbe1e7";
+            foreground = "0xdcd7ba";
           };
           cursor = {
             text = "0xff271d";
             cursor = "0xfbfcfc";
           };
           normal = {
-            black = "0x141228";
-            red = "0xff5458";
-            green = "0x62d196";
-            yellow = "0xffb378";
-            blue = "0x65b2ff";
-            magenta = "0x906cff";
-            cyan = "0x63f2f1";
-            white = "0xa6b3cc";
+            black = "0x090618";
+            red = "0xc34043";
+            green = "0x76946a";
+            yellow = "0xc0a36e";
+            blue = "0x7e9cd8";
+            magenta = "0x957fb8";
+            cyan = "0x6a9589";
+            white = "0xc8c093";
           };
           bright = {
-            black = "0x565575";
-            red = "0xff8080";
-            green = "0x95ffa4";
-            yellow = "0xffe9aa";
-            blue = "0x91ddff";
-            magenta = "0xc991e1";
-            cyan = "0xaaffe4";
-            white = "0xcbe3e7";
+            black = "0x727169";
+            red = "0xe82424";
+            green = "0x98bb6c";
+            yellow = "0xe6c384";
+            blue = "0x7fb4ca";
+            magenta = "0x938aa9";
+            cyan = "0x7aa89f";
+            white = "0xdcd7ba";
+          };
+          selection = {
+            background = "0x2d4f67";
+            foreground = "0xc8c093";
           };
         };
       };

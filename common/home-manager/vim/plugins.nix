@@ -18,7 +18,10 @@
     };
     markdown-preview.enable = true;
     comment-nvim.enable = true;
-    nvim-autopairs.enable = true;
+    nvim-autopairs = {
+      enable = true;
+      disabledFiletypes = [ "clj" ];
+    };
     ts-autotag.enable = true;
     trouble.enable = true;
   };

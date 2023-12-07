@@ -25,9 +25,10 @@
           clojure-lsp.enable = true;
           rust-analyzer = {
             enable = true;
-            installCargo = true;
-            installRustc = true;
-            extraOptions = { procMacro.enable = false; };
+            # Use from nix-shell env instead.
+            installCargo = false;
+            installRustc = false;
+            # extraOptions = { procMacro.enable = false; };
           };
         };
         onAttach = ''
