@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   fonts.packages = with pkgs; [
     # General fonts.
     noto-fonts
@@ -12,10 +10,11 @@
     kochi-substitute
 
     # Nerd fonts.
-    (nerdfonts.override { fonts = [ "Terminus" "Ubuntu" "UbuntuMono" "SpaceMono" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "Ubuntu" "UbuntuMono" "Gohu" ]; })
     monocraft
     fixedsys-nerd-font
     scientifica-nerd-font
     fairfax-nerd-font
+    monaspace-krypton-nerd-font
   ];
 }

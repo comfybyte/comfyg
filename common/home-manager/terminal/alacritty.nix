@@ -7,10 +7,10 @@ in with lib; {
     programs.alacritty = {
       enable = true;
       settings = {
-        window = { opacity = 0.9; };
+        window.opacity = 0.875;
         draw_bold_text_with_bright_colors = true;
         custom_cursor_colors = true;
-        font = let font = "Fairfax Nerd Font";
+        font = let font = "MonaspiceKr Nerd Font";
         in {
           size = 22;
           normal.family = "${font}";

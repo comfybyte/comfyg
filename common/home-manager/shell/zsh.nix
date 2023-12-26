@@ -22,6 +22,7 @@ in with lib; {
 
         vim = "nvim";
         vi = "nvim";
+        v = "nvim .";
       };
       history = {
         size = 10000;
@@ -33,10 +34,11 @@ in with lib; {
         plugins = [ "git" "rust" "direnv" ];
       };
       syntaxHighlighting.enable = true;
-      initExtra = lib.concatStrings [
-        # ^s é o meu prefix no tmux.
-        "bindkey '^b' history-incremental-pattern-search-backward"
-      ];
+      initExtra = ''
+        bindkey '^b' history-incremental-pattern-search-backward
+
+        eval "$(direnv hook zsh)"
+      '';
     };
   };
 }

@@ -31,16 +31,14 @@
 
   outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, agenix, ... }@inputs:
     let
-      mkSystem = extraModules:
-        nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs system;
-            pinned = import inputs.pinned {
-              inherit system;
-              config.allowUnfree = true;
-            };
+      mkSystem = system: extraModules:
+        let
+          pinned = import inputs.pinned {
+            inherit system;
+            config.allowUnfree = true;
           };
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system pinned; };
           modules = [
             home.nixosModules.home-manager
             agenix.nixosModules.default
@@ -49,13 +47,15 @@
                 ++ builtins.attrValues self.overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs system; };
+              home-manager.extraSpecialArgs = { inherit inputs system pinned; };
 
             })
           ] ++ extraModules;
         };
     in {
-      nixosConfigurations = { kirisame = mkSystem [ ./hosts/kirisame ]; };
+      nixosConfigurations = {
+        kirisame = mkSystem "x86_64-linux" [ ./hosts/kirisame ];
+      };
       overlays = import ./overlays;
     };
 

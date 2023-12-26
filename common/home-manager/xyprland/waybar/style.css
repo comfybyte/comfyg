@@ -1,9 +1,9 @@
 * {
   min-height: 0;
   margin: 0;
-  font-family: "Ubuntu Nerd Font";
-  font-size: .75rem;
-  color: #C8C093;
+  font-family: "MonaspiceKr Nerd Font";
+  font-size: .675rem;
+  color: #8C00FF;
 }
 
 #waybar {
@@ -17,20 +17,20 @@
 #pulseaudio,
 #network {
   font-weight: bolder;
-  padding: 2px 16px;
+  padding: 0 16px;
 }
 
 #cpu.warning, #cpu.critical {
   background: transparent;
-  color: #C8C093;
+  color: #8C00FF;
 }
 
 #memory.warning {
-  color: #faa;
+  color: #A000F0;
 }
 
 #memory.critical {
-  color: #d77;
+  color: #FF00AA;
 }
 
 #tray {
@@ -55,12 +55,12 @@
 
   border: 2px solid transparent;
   border-radius: 0;
-  padding: 8px 12px;
+  padding: 4px 12px;
 }
 
 
 #workspaces button.active {
-  border: 2px solid #E6C384;
+  border: 2px solid #8C00FF;
   transition: border .75s;
 }
 

@@ -40,7 +40,7 @@
 
         cpu = {
           interval = 5;
-          format = "  {usage}%";
+          format = "CPU {usage}%";
           states = {
             warning = 70;
             critical = 90;
@@ -49,7 +49,7 @@
 
         memory = {
           interval = 5;
-          format = "󰍛  {}%";
+          format = "MEM {}%";
           states = {
             warning = 70;
             critical = 90;
@@ -58,8 +58,8 @@
 
         pulseaudio = {
           scroll-step = 1;
-          format = "󰕾  {volume}%";
-          format-muted = "󰝟 {format_source}";
+          format = "VOL {volume}%";
+          format-muted = "MUT {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
 
@@ -70,7 +70,7 @@
           thermal-zone = 1;
           hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
           critical-treshold = 80;
-          format = "{temperatureC}󰔄";
+          format = "{temperatureC}°C";
           format-critical = "{temperatureC}°C!";
           interval = 60;
         };
@@ -78,7 +78,7 @@
         network = {
           interface = "enp2s0";
           interval = 2;
-          format = "{bandwidthDownBytes}   {bandwidthUpBytes} ";
+          format = "DOWN: {bandwidthDownBytes} UP: {bandwidthUpBytes}";
         };
 
         tray = {

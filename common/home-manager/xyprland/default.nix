@@ -62,14 +62,25 @@
         inherit text;
         silent = true;
       };
+      mClass = text: mkSilent "class:^(.*)(${text})(.*)$";
+      mTitle = text: mkSilent "title:^(.*)(${text})(.*)$";
     in {
-      "2" = [ "firefox" ];
-      "3" = [ "Nautilus" ];
-      "4" = [ (mkSilent "Okular") (mkSilent "title:^Deluge$") ];
-      "5" = [ (mkSilent "discord") ];
-      "6" = [ "Audacity" "krita" ];
-      "7" = [ (mkSilent "lutris") (mkSilent "title:^Steam$") ];
-      "9" = [ (mkSilent "title:^(.*)- Obsidian(.*)$") ];
+      "2" = [ (mClass "firefox") ];
+      "3" = [ (mClass "Nautilus") ];
+      "4" = [ (mClass "Okular") (mTitle "Transmission") ];
+      "5" = [ (mClass "discord") ];
+      "6" = [ (mTitle "Audacity") (mClass "krita") ];
+      "7" = [
+        (mTitle "Lutris")
+        (mTitle "Steam")
+        (mClass "riotclientux.exe")
+        (mTitle "RiotsClientsMain")
+        (mClass "leagueclientux.exe")
+        (mTitle "LeaguesofsLegends")
+        (mClass "leaguesofslegends.exe")
+        (mTitle "LeaguesofsLegendss(TM)sClient")
+      ];
+      "9" = [ (mTitle "Obsidian") ];
     };
     binds = import ./keybinds.nix;
 

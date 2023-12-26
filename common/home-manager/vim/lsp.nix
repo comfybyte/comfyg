@@ -35,11 +35,10 @@
           bufopts = { noremap = true, silent = true, buffer = bufnr }
 
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+          vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", bufopts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, bufops)
           vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
         '';
       };
@@ -51,7 +50,10 @@
           shfmt.enable = true;
           stylua.enable = true;
           taplo.enable = true;
-          prettier.enable = true;
+          prettier = {
+            enable = true;
+            disableTsServerFormatter = true;
+          };
           prettier_d_slim.enable = true;
           eslint.enable = true;
           eslint_d.enable = true;
@@ -76,7 +78,6 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       lsp-inlayhints-nvim
-      rust-vim
       (pkgs.vimUtils.buildVimPlugin {
         pname = "toggle-lsp-diagnostics-nvim";
         version = "master";

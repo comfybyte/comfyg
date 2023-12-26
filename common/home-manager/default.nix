@@ -14,5 +14,6 @@
     ./rofi
     ./obs.nix
     ./git.nix
+    ./gtk.nix
   ];
 } 

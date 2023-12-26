@@ -9,6 +9,7 @@
   };
   environment.systemPackages = with pkgs; [
       libsForQt5.okular
+      libsForQt5.kdenlive
       vlc
       xfce.ristretto
       xfce.tumbler
@@ -26,8 +27,6 @@
       librewolf
       hyprpicker
       localsend
-      deluge
-      deluge-gtk
       qpwgraph
       gnome.nautilus
       fractal

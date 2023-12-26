@@ -1,15 +1,18 @@
 let
-  sapphire = "#74c7ec";
-  cloudy = "#cff0ff";
-  red = "#f38ba8";
   black = "#000000";
   grey = "#6e738d";
-  jade = "#5FD7D7";
-  font = "Ubuntu Nerd Font 18";
+  purple = "#8C00FF";
+  violet = "#A000F0";
+  pink = "#FF00AA";
+  font = {
+    family = "MonaspiceKr Nerd Font";
+    size = "18";
+  };
 in ''
   * {
       width: 600;
-      font: "${font}";
+      font-family: "${font.family}";
+      font-size: ${font.size};
   }
 
   element-text, element-icon , mode-switcher {
@@ -20,7 +23,7 @@ in ''
   window {
       height: 360px;
       border: 2px;
-      border-color: ${sapphire};
+      border-color: ${purple};
       background-color: ${black};
   }
 
@@ -46,9 +49,9 @@ in ''
   entry {
       padding: 6px;
       margin: 16px 12px;
-      text-color: ${sapphire};
+      text-color: ${purple};
       border: 1px;
-      border-color: ${jade};
+      border-color: ${purple};
       background-color: ${black};
   }
 
@@ -64,7 +67,7 @@ in ''
   element {
       padding: 5px;
       background-color: ${black};
-      text-color: ${cloudy}  ;
+      text-color: ${purple};
   }
 
   element-icon {
@@ -73,7 +76,7 @@ in ''
 
   element selected {
       background-color: transparent;
-      text-color: ${jade};
+      text-color: ${pink};
   }
 
   mode-switcher {
@@ -96,8 +99,8 @@ in ''
   }
 
   textbox {
-      padding: 6px;
-      text-color: ${red};
+      padding: 12px;
+      text-color: ${violet};
       background-color: ${black};
   }
 ''

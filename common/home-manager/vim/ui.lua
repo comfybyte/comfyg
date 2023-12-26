@@ -1,5 +1,6 @@
 require("kanagawa").setup({
   transparent = true,
+  functionStyle = { bold = true },
   colors = {
     theme = {
       all = {
@@ -12,10 +13,6 @@ require("kanagawa").setup({
   overrides = function(colors)
     local theme = colors.theme
     return {
-      NormalFloat = { bg = "none" },
-      FloatBorder = { bg = "none" },
-      FloatTitle = { bg = "none" },
-
       TelescopeTitle = { fg = theme.ui.special, bold = true },
       TelescopePromptNormal = { bg = "none" },
       TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = "none" },

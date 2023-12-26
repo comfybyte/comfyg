@@ -23,8 +23,15 @@
     configurationLimit = 10;
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    # very lazy config
+    config = { common = { default = [ "hyprland" "gtk" ]; }; };
+  };
 
   hardware.opengl = {
     enable = true;

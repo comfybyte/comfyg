@@ -8,8 +8,9 @@
   };
   environment.systemPackages = with pkgs;
     let
-      inotify-info = inputs.inotify.packages."${system}";
-      agenix = inputs.agenix.packages."${system}";
+      forSys = set: set.packages."${system}";
+      inotify-info = forSys inputs.inotify;
+      agenix = forSys inputs.agenix;
     in [
       mako
       swww
@@ -29,7 +30,6 @@
       speechd
       toybox
       patchelf
-      dpkg
       xorg.xhost
       busybox
       qemu_full
@@ -40,6 +40,7 @@
       fd
       gnupg
       pinentry-curses
+      pulsemixer
       eza
       httpie
       wget
@@ -52,7 +53,8 @@
       gitui
       handlr-regex
       pinned.zenith
-
+      transmission
+      transmission-gtk
 
       inotify-info.default
       nix-prefetch-git
