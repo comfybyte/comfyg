@@ -53,10 +53,11 @@
           ] ++ extraModules;
         };
     in {
+      overlays = import ./overlays;
+      homeManagerModules = { parts = import ./common/parts; };
       nixosConfigurations = {
         kirisame = mkSystem "x86_64-linux" [ ./hosts/kirisame ];
       };
-      overlays = import ./overlays;
     };
 
   nixConfig = rec {
@@ -69,8 +70,8 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://hyprland.cachix.org"
     ];
-    trusted-users = [ "@wheel" ];
     trusted-substituters = substituters;
+    trusted-users = [ "@wheel" ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="

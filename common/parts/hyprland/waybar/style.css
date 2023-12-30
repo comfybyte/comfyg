@@ -1,0 +1,66 @@
+* {
+  min-height: 0;
+  margin: 0;
+  font-family: "MonaspiceKr Nerd Font";
+  font-size: .675rem;
+  color: #8C00FF;
+}
+
+#waybar {
+  background: rgba(0, 0, 0, 0.98);
+  border: 1px solid #000;
+}
+
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network {
+  font-weight: bolder;
+  padding: 0 16px;
+}
+
+#cpu.warning, #cpu.critical {
+  background: transparent;
+  color: #8C00FF;
+}
+
+#memory.warning {
+  color: #A000F0;
+}
+
+#memory.critical {
+  color: #FF00AA;
+}
+
+#tray {
+  margin: 6px 20px;
+}
+
+#clock {
+  font-weight: bolder;
+  margin-right: 12px;
+}
+
+#temperature.critical {
+  color: #f00;
+}
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button {
+  font-size: .4em;
+
+  border: 2px solid transparent;
+  border-radius: 0;
+  padding: 4px 12px;
+}
+
+
+#workspaces button.active {
+  border: 2px solid #8C00FF;
+  transition: border .75s;
+}
+

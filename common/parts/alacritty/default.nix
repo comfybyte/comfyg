@@ -1,7 +1,7 @@
 { config, lib, ... }:
-let cfg = config.inner.alacritty;
+let cfg = config.parts.alacritty;
 in with lib; {
-  options.inner.alacritty.enable = mkEnableOption "Enable alacritty.";
+  options.parts.alacritty.enable = mkEnableOption "Enable alacritty.";
 
   config = mkIf cfg.enable {
     programs.alacritty = {

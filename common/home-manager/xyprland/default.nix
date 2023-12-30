@@ -1,4 +1,4 @@
-{ ... }: {
+{
   imports = [ ./waybar ];
 
   programs.xyprland = let
