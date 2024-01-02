@@ -1,1 +1,1 @@
-{ imports = [ ./fish ]; }
+{ imports = [ ./fish ./zsh ./starship ]; }

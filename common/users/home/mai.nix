@@ -10,8 +10,11 @@ in {
     rofi.enable = true;
     vim.enable = true;
     alacritty.enable = true;
+    kitty.enable = true;
     tmux.enable = true;
     shells.fish.enable = true;
+    shells.zsh.enable = true;
+    shells.starship.enable = true;
     git = {
       enable = true;
       name = "comfybyte";

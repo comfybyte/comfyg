@@ -10,7 +10,7 @@ in {
       enable = true;
 
       shellAbbrs = {
-        nors = "nixos-rebuild switch --show-trace";
+        nors = "doas nixos-rebuild switch --show-trace";
 
         txn = "tmux new";
         txl = "tmux list-sessions";
@@ -19,6 +19,8 @@ in {
         ga = "git add";
         gs = "git status";
         gc = "git commit -m";
+
+        v = "nvim .";
       };
 
       shellAliases = {
@@ -29,7 +31,6 @@ in {
 
         vim = "nvim";
         vi = "nvim";
-        v = "nvim .";
       };
 
       shellInit = ''

@@ -5,7 +5,7 @@ let
   };
   mkFBind = text: flags: mkBind text // { inherit flags; };
 in (map (bind: mkBind bind) [
-  "$mod, return, exec, alacritty"
+  "$mod, return, exec, kitty"
   "$mod, q, killactive, "
   "$mod, n, exec, nautilus"
   "$mod, space, togglefloating, "

@@ -1,26 +1,42 @@
 { pkgs, inputs, system, pinned, ... }:
 let gaming = inputs.gaming.packages."${system}";
 in {
-  imports = [ ../../home-manager ];
-
-  inner = {
-    rofi.enable = true;
-    alacritty.enable = true;
-    vim.enable = true;
-    zsh.enable = true;
-    fish.enable = true;
-    starship.enable = true;
-    tmux.enable = true;
-    obs.enable = true;
-    gtk.enable = true;
-  };
+  imports = [ ../../parts ];
+  # imports = [ ../../home-manager ];
+  #
+  # inner = {
+  #   rofi.enable = true;
+  #   alacritty.enable = true;
+  #   vim.enable = true;
+  #   zsh.enable = true;
+  #   fish.enable = true;
+  #   starship.enable = true;
+  #   tmux.enable = true;
+  #   obs.enable = true;
+  #   gtk.enable = true;
+  # };
 
   parts = {
+    enable = true;
+    stateVersion = "23.05";
+    gtk.enable = true;
+    rofi.enable = true;
+    vim.enable = true;
+    alacritty.enable = true;
+    kitty.enable = true;
+    tmux.enable = true;
+    shells.fish.enable = true;
+    shells.zsh.enable = true;
+    shells.starship.enable = true;
     git = {
       enable = true;
       name = "comfybyte";
       email = "comfybyte@proton.me";
       key = "61143F72A8F3440A";
+    };
+    hyprland = {
+      enable = true;
+      waybar.enable = true;
     };
   };
 

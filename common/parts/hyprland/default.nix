@@ -112,7 +112,7 @@ in {
         "fcitx5"
         "waybar"
         "swww init"
-        "alacritty -e tmux new"
+        "kitty"
         "firefox"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];

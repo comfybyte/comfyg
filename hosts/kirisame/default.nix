@@ -22,6 +22,7 @@
     enable = true;
     configurationLimit = 10;
   };
+  services.logind.powerKeyLongPress = "reboot";
 
   xdg.portal = {
     enable = true;
