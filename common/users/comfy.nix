@@ -1,9 +1,9 @@
 { pkgs, ... }: {
-  users.users.mai = {
+  users.users.comfy = {
     isNormalUser = true;
-    home = "/home/mai";
+    home = "/home/comfy";
     extraGroups = [ "wheel" "docker" "wireshark" "libvirt" ];
     shell = pkgs.fish;
   };
-  home-manager.users.mai = import ./home/mai.nix;
+  home-manager.users.comfy = import ./home/comfy.nix;
 }

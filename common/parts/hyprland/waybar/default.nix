@@ -13,15 +13,15 @@ in {
         mainBar = {
           layer = "top";
           position = "top";
-          modules-left = [ "hyprland/workspaces" ];
+
+          modules-left = [ "clock" "tray" ];
+          modules-center = [ "hyprland/workspaces" ];
           modules-right = [
             "network"
             "cpu"
             "memory"
             "temperature"
             "pulseaudio"
-            "tray"
-            "clock"
           ];
 
           "wlr/workspaces" = {
@@ -39,40 +39,35 @@ in {
               "10" = "10";
             };
           };
-
           clock = {
             interval = 1;
-            format = "{:%H:%M:%S (%e %b %Y / %a)}";
+            format = "{:%a, %e %b @ %H:%M:%S}";
           };
-
           cpu = {
             interval = 5;
-            format = "CPU {usage}%";
+            format = " {usage}%";
             states = {
               warning = 70;
               critical = 90;
             };
           };
-
           memory = {
             interval = 5;
-            format = "MEM {}%";
+            format = " {}%";
             states = {
               warning = 70;
               critical = 90;
             };
           };
-
           pulseaudio = {
             scroll-step = 1;
-            format = "VOL {volume}%";
+            format = "󰋋 {volume}%";
             format-muted = "MUT {format_source}";
             format-source = " {volume}%";
             format-source-muted = "";
 
             on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-";
           };
-
           temperature = {
             thermal-zone = 1;
             hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
@@ -81,13 +76,11 @@ in {
             format-critical = "{temperatureC}°C!";
             interval = 60;
           };
-
           network = {
             interface = "enp2s0";
-            interval = 2;
-            format = "DOWN: {bandwidthDownBytes} UP: {bandwidthUpBytes}";
+            interval = 4;
+            format = "  {bandwidthDownBytes}   {bandwidthUpBytes}";
           };
-
           tray = {
             icon-size = 15;
             spacing = 10;

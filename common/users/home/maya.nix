@@ -2,19 +2,6 @@
 let gaming = inputs.gaming.packages."${system}";
 in {
   imports = [ ../../parts ];
-  # imports = [ ../../home-manager ];
-  #
-  # inner = {
-  #   rofi.enable = true;
-  #   alacritty.enable = true;
-  #   vim.enable = true;
-  #   zsh.enable = true;
-  #   fish.enable = true;
-  #   starship.enable = true;
-  #   tmux.enable = true;
-  #   obs.enable = true;
-  #   gtk.enable = true;
-  # };
 
   parts = {
     enable = true;
@@ -48,18 +35,18 @@ in {
     EDITOR = "nvim";
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = gaming.proton-ge;
+    GTK_USE_PORTAL = "1";
   };
   programs.direnv = {
     enable = true;
     package = pinned.direnv;
     nix-direnv.enable = true;
-    # hmm yes bash 3.2.1 is lower than 3.2, right right
     nix-direnv.package = pinned.nix-direnv;
   };
   qt = {
     enable = true;
     style.package = pkgs.libsForQt5.breeze-qt5;
-    style.name = "BreezeDark";
+    style.name = "Breeze";
   };
   home.pointerCursor = with pkgs; {
     name = "Catppuccin-Macchiato-Mauve-Cursors";

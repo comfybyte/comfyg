@@ -55,6 +55,7 @@
       pinned.zenith
       transmission
       transmission-gtk
+      piper
 
       inotify-info.default
       nix-prefetch-git
@@ -80,6 +81,7 @@
       virt-manager
       nixos-shell
       nix-tree
+      mlt # Terminal video editing.
 
       # should be devshells but oh well
       nodejs_18

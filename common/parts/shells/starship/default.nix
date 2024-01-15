@@ -24,7 +24,7 @@ let cfg = config.parts.shells.starship; in
         directory = {
           format = " <[$path]($style)[$read_only]($read_only_style)>";
           read_only = " <no touchie!>>";
-          truncation_length = 5;
+          truncation_length = 2;
         };
         nix_shell = {
           format = " [$state( \($name\))]($style)";

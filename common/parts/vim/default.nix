@@ -35,7 +35,6 @@ in {
         undodir = "${config.home.homeDirectory}/.cache/nvim/undodir";
         undofile = true;
         list = true;
-        # listchars.space = "⋅";
       };
 
       globals.mapleader = " ";

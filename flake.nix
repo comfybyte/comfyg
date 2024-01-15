@@ -58,6 +58,12 @@
       nixosConfigurations = {
         kirisame = mkSystem "x86_64-linux" [ ./hosts/kirisame ];
       };
+      templates = {
+        simple-rust = {
+          path = ./templates/simple-rust;
+          description = "Barebones nightly Rust project template.";
+        };
+      };
     };
 
   nixConfig = rec {

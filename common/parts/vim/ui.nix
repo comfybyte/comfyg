@@ -1,11 +1,17 @@
 { pkgs, config, lib, ... }: {
   config = lib.mkIf config.parts.vim.enable {
     programs.nixvim = {
-      colorscheme = "kanagawa";
+      colorscheme = "rose-pine";
+      colorschemes.rose-pine = {
+        enable = true;
+        style = "moon";
+        transparentBackground = true;
+        transparentFloat = true;
+      };
       plugins = {
         lualine = {
           enable = true;
-          theme = "kanagawa";
+          theme = "rose-pine";
         };
         cursorline = {
           enable = true;
@@ -18,7 +24,6 @@
         nvim-colorizer.enable = true;
       };
       extraPlugins = with pkgs.vimPlugins; [
-        kanagawa-nvim
         barbecue-nvim
         indent-blankline-nvim
       ];

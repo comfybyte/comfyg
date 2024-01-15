@@ -1,3 +1,3 @@
 {
-  imports = [ ./maya.nix ./mai.nix ];
+  imports = [ ./maya.nix ./comfy.nix ];
 }

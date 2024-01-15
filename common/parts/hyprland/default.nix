@@ -24,7 +24,7 @@ in {
           border_size = 0;
           layout = "dwindle";
           "col.active_border" =
-            "rgba(22222222) rgba(00000033) rgba(22222222) 45deg";
+            "rgba(8C00FF66) rgba(A000F044) 45deg";
           "col.inactive_border" = "rgb(000000)";
         };
         input = {
@@ -59,7 +59,7 @@ in {
         "windowsOut, 1, 7, default, slide"
         "border, 1, 10, default"
         "fade, 1, 7, default"
-        "workspaces, 1, 6, default, fade"
+        "workspaces, 1, 8, default, slide"
       ];
 
       defaultWorkspaces = let

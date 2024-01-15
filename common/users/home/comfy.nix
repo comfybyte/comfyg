@@ -28,13 +28,14 @@ in {
   };
 
   home = {
-    username = "mai";
-    homeDirectory = "/home/mai";
+    username = "comfy";
+    homeDirectory = "/home/comfy";
   };
   home.sessionVariables = {
     EDITOR = "nvim";
     PF_INFO = "ascii title os host kernel shell de uptime pkgs memory";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = gaming.proton-ge;
+    GTK_USE_PORTAL = "1";
   };
   programs.direnv = {
     enable = true;

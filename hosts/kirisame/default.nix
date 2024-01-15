@@ -66,6 +66,7 @@
       support32Bit = true;
     };
   };
+  services.ratbagd.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;

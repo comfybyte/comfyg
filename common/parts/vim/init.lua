@@ -59,8 +59,6 @@ vim.keymap.set('n', '<leader>o', builtin.oldfiles)
 
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-require("ibl").setup()
-
 require("lsp-inlayhints").setup {
   inlay_hints = {
     parameter_hints = {

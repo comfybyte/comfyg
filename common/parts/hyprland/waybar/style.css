@@ -1,9 +1,9 @@
 * {
   min-height: 0;
   margin: 0;
-  font-family: "MonaspiceKr Nerd Font";
-  font-size: .675rem;
-  color: #8C00FF;
+  font-family: "Iosevka Nerd Font";
+  font-size: .7rem;
+  color: #1A8FFF;
 }
 
 #waybar {
@@ -17,12 +17,12 @@
 #pulseaudio,
 #network {
   font-weight: bolder;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
 #cpu.warning, #cpu.critical {
   background: transparent;
-  color: #8C00FF;
+  color: #1A8FFF;
 }
 
 #memory.warning {
@@ -39,11 +39,18 @@
 
 #clock {
   font-weight: bolder;
-  margin-right: 12px;
+  border-left: 1px solid #1A8FFF;
+  padding-right: 4px;
+  padding-left: 12px;
 }
 
 #temperature.critical {
   color: #f00;
+}
+
+#pulseaudio {
+  border-right: 1px solid #1A8FFF;
+  padding-right: 16px;
 }
 
 #workspaces {
@@ -60,7 +67,7 @@
 
 
 #workspaces button.active {
-  border: 2px solid #8C00FF;
+  border: 2px solid #1A8FFF;
   transition: border .75s;
 }
 
