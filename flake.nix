@@ -61,7 +61,7 @@
       templates = {
         simple-rust = {
           path = ./templates/simple-rust;
-          description = "Barebones nightly Rust project template.";
+          description = "Barebones nightly Rust project template. (with clippy and bacon)";
         };
       };
     };

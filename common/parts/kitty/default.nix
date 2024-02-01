@@ -8,9 +8,9 @@ in {
     home.file."${themeFile}".text = import ./kanagawa.nix;
     programs.kitty = {
       enable = true;
-      font.package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
-      font.name = "Iosevka Nerd Font";
-      font.size = 17;
+      font.package = pkgs.nerdfonts.override { fonts = [ "UbuntuMono" ]; };
+      font.name = "UbuntuMono Nerd Font";
+      font.size = 18;
       settings = {
         cursor_stop_blinking_after = "0";
         background_opacity = "0.9";

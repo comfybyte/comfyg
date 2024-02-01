@@ -27,9 +27,11 @@
             clojure-lsp.enable = true;
             rust-analyzer = {
               enable = true;
-              # Use from nix-shell env instead.
+              # Use all three from nix-shell env instead.
               installCargo = false;
               installRustc = false;
+              installLanguageServer = false;
+
               # extraOptions = { procMacro.enable = false; };
             };
           };

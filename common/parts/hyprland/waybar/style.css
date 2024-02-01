@@ -3,7 +3,7 @@
   margin: 0;
   font-family: "Iosevka Nerd Font";
   font-size: .7rem;
-  color: #1A8FFF;
+  color: #EA9A97;
 }
 
 #waybar {
@@ -22,7 +22,7 @@
 
 #cpu.warning, #cpu.critical {
   background: transparent;
-  color: #1A8FFF;
+  color: #EA9A97;
 }
 
 #memory.warning {
@@ -39,7 +39,7 @@
 
 #clock {
   font-weight: bolder;
-  border-left: 1px solid #1A8FFF;
+  border-left: 1px solid #EA9A97;
   padding-right: 4px;
   padding-left: 12px;
 }
@@ -49,7 +49,7 @@
 }
 
 #pulseaudio {
-  border-right: 1px solid #1A8FFF;
+  border-right: 1px solid #EA9A97;
   padding-right: 16px;
 }
 
@@ -67,7 +67,7 @@
 
 
 #workspaces button.active {
-  border: 2px solid #1A8FFF;
+  border: 2px solid #EA9A97;
   transition: border .75s;
 }
 

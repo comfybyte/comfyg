@@ -14,21 +14,22 @@
       xfce.ristretto
       xfce.tumbler
       discord
-      audacity
-      krita
+      tenacity # Audio editor.
+      krita # Image editor.
       vivaldi
       vivaldi-ffmpeg-codecs
       libreoffice-fresh
       pinned.obsidian
       authy
-      emote
+      emote # Emoji picker.
       gparted
       firefox-devedition
+      floorp
       librewolf
-      hyprpicker
+      hyprpicker # Colour picker.
       localsend
       qpwgraph
       gnome.nautilus
-      fractal
+      fractal # Matrix client.
   ];
 }

@@ -19,7 +19,7 @@ in {
       enable = true;
       name = "comfybyte";
       email = "comfybyte@proton.me";
-      key = "61143F72A8F3440A";
+      key = "9C8577B87600DD7A";
     };
     hyprland = {
       enable = true;

@@ -39,7 +39,7 @@
       fzf
       fd
       gnupg
-      pinentry-curses
+      pinentry
       pulsemixer
       eza
       httpie
@@ -53,9 +53,11 @@
       gitui
       handlr-regex
       pinned.zenith
-      transmission
+      transmission # BitTorrent client.
       transmission-gtk
       piper
+      pulseaudio
+      pavucontrol
 
       inotify-info.default
       nix-prefetch-git
@@ -76,7 +78,7 @@
       cloc
       shellcheck
       wmctrl
-      betterdiscordctl
+      betterdiscordctl # Makes Discord's desktop client more bearable.
       p7zip
       virt-manager
       nixos-shell

@@ -5,7 +5,7 @@ let
   violet = "#A000F0";
   pink = "#FF00AA";
   font = {
-    family = "MonaspiceKr Nerd Font";
+    family = "Ubuntu Nerd Font";
     size = "18";
   };
 in ''

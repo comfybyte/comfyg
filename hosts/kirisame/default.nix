@@ -5,6 +5,8 @@
     ./hardware-configuration.nix
     ./fonts.nix
     ./security.nix
+    ./audio.nix
+    ./networking.nix
     ./packages
     ../../common/users
   ];
@@ -16,6 +18,7 @@
   nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  # rust-analyzer loves to eat up watches.
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
   boot.kernel.sysctl."kernel.sysrq" = 1;
   boot.loader.systemd-boot = {
@@ -41,12 +44,11 @@
     extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
   };
 
-  environment.shells = with pkgs; [ zsh fish nushell ];
+  environment.shells = with pkgs; [ zsh fish ];
 
   environment.pathsToLink = [ "/libexec" ];
 
   services.dbus.enable = true;
-  services.flatpak.enable = true;
   services.xserver = {
     enable = true;
     windowManager.i3 = {
@@ -57,15 +59,7 @@
     layout = "br";
     videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
   };
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-  };
+  # For mice configuration with `piper`.
   services.ratbagd.enable = true;
 
   virtualisation.docker.enable = true;
@@ -99,14 +93,6 @@
     NIXOS_OZONE_WL = "1";
     GPG_TTY = "$(tty)";
   };
-
-  networking = {
-    hostName = "kirisame";
-    networkmanager.enable = true;
-    firewall.enable = true;
-  };
-
-  services.openssh.enable = true;
 
   console = {
     font = "Lat2-Terminus16";

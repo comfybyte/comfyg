@@ -34,10 +34,10 @@ in (map (bind: mkBind bind) [
   "$mod, r, submap, resize"
 ]) ++ [
   (mkFBind
-    ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+"
+    ",XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +2%"
     "le")
   (mkFBind
-    ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-"
+    ",XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -2%"
     "le")
   (mkFBind ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     "le")

@@ -20,8 +20,8 @@ in {
         name = gtk-theme.theme;
         package = gtk-theme.pkg;
       };
-      font.package = pkgs.monaspace-krypton-nerd-font;
-      font.name = "MonaspiceKr Nerd Font";
+      font.package = pkgs.nerdfonts.override { fonts = [ "Ubuntu" ]; };
+      font.name = "Ubuntu Nerd Font";
       font.size = 15;
     };
     home.sessionVariables = { GTK_THEME = gtk-theme.theme; };

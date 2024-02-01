@@ -67,11 +67,12 @@ in {
             format-source-muted = "";
 
             on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-";
+            on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+";
           };
           temperature = {
             thermal-zone = 1;
             hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
-            critical-treshold = 80;
+            critical-treshold = 70;
             format = "{temperatureC}°C";
             format-critical = "{temperatureC}°C!";
             interval = 60;

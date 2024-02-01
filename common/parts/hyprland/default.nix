@@ -23,8 +23,7 @@ in {
           gaps_out = 0;
           border_size = 0;
           layout = "dwindle";
-          "col.active_border" =
-            "rgba(8C00FF66) rgba(A000F044) 45deg";
+          "col.active_border" = "rgba(8C00FF66) rgba(A000F044) 45deg";
           "col.inactive_border" = "rgb(000000)";
         };
         input = {
@@ -42,15 +41,15 @@ in {
       };
       monitors = [ "DP-2,1920x1080@60,0x0,1" ];
       env = {
-        "QT_QPA_PLATFORM" = "wayland;xcb";
-        "SDL_VIDEODRIVER" = "wayland";
-        "MOZ_ENABLE_WAYLAND" = "1";
-        "WLR_RENDERER_ALLOW_SOFTWARE" = "1";
-        "XDG_CURRENT_DESKTOP" = "Hyprland";
-        "XDG_SESSION_TYPE" = "wayland";
-        "XDG_SESSION_DESKTOP" = "Hyprland";
-        "GDK_BACKEND" = "wayland,x11";
-        "XCURSOR_SIZE" = "32";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        SDL_VIDEODRIVER = "wayland";
+        MOZ_ENABLE_WAYLAND = "1";
+        WLR_RENDERER_ALLOW_SOFTWARE = "1";
+        XDG_CURRENT_DESKTOP = "Hyprland";
+        XDG_SESSION_TYPE = "wayland";
+        XDG_SESSION_DESKTOP = "Hyprland";
+        GDK_BACKEND = "wayland,x11";
+        XCURSOR_SIZE = "32";
       };
 
       animation.enable = true;
@@ -70,21 +69,12 @@ in {
         mClass = text: mkSilent "class:^(.*)(${text})(.*)$";
         mTitle = text: mkSilent "title:^(.*)(${text})(.*)$";
       in {
-        "2" = [ (mClass "firefox") ];
+        "2" = [ (mClass "firefox") (mClass "floorp") ];
         "3" = [ (mClass "Nautilus") ];
         "4" = [ (mClass "Okular") (mTitle "Transmission") ];
         "5" = [ (mClass "discord") ];
         "6" = [ (mTitle "Audacity") (mClass "krita") ];
-        "7" = [
-          (mTitle "Lutris")
-          (mTitle "Steam")
-          (mClass "riotclientux.exe")
-          (mTitle "RiotsClientsMain")
-          (mClass "leagueclientux.exe")
-          (mTitle "LeaguesofsLegends")
-          (mClass "leaguesofslegends.exe")
-          (mTitle "LeaguesofsLegendss(TM)sClient")
-        ];
+        "7" = [ (mTitle "Lutris") (mTitle "Steam") ];
         "9" = [ (mTitle "Obsidian") ];
       };
       binds = import ./keybinds.nix;
@@ -104,7 +94,10 @@ in {
       };
 
       windowRulesV2 = {
-        float = [ "title:^(.*)Library(.*)$" ];
+        float = [
+          "title:^(.*)Library(.*)$"
+          "class:^(.*)xdg-desktop-portal-gtk(.*)$"
+        ];
         noborder = [ "class:^(.*)Alacritty(.*)$" ];
       };
 
@@ -113,7 +106,7 @@ in {
         "waybar"
         "swww init"
         "kitty"
-        "firefox"
+        "floorp"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
     };
