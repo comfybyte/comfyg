@@ -58,7 +58,7 @@ in {
         "windowsOut, 1, 7, default, slide"
         "border, 1, 10, default"
         "fade, 1, 7, default"
-        "workspaces, 1, 8, default, slide"
+        "workspaces, 1, 8, default, fade"
       ];
 
       defaultWorkspaces = let
