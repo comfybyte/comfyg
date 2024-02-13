@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./boot.nix
     ./fonts.nix
     ./security.nix
     ./audio.nix
@@ -17,14 +18,6 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  # rust-analyzer loves to eat up watches.
-  boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
-  boot.kernel.sysctl."kernel.sysrq" = 1;
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 10;
-  };
   services.logind.powerKeyLongPress = "reboot";
 
   xdg.portal = {

@@ -31,26 +31,26 @@
 
   outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, agenix, ... }@inputs:
     let
+      commonModules =
+        [ home.nixosModules.home-manager agenix.nixosModules.default ];
+      pinnedFor = system:
+        import inputs.pinned {
+          inherit system;
+          config.allowUnfree = true;
+        };
       mkSystem = system: extraModules:
-        let
-          pinned = import inputs.pinned {
-            inherit system;
-            config.allowUnfree = true;
-          };
+        let pinned = pinnedFor system;
         in nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system pinned; };
           modules = [
-            home.nixosModules.home-manager
-            agenix.nixosModules.default
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ nixpkgs-wl.overlay ]
                 ++ builtins.attrValues self.overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs system pinned; };
-
             })
-          ] ++ extraModules;
+          ] ++ commonModules ++ extraModules;
         };
     in {
       overlays = import ./overlays;
@@ -61,7 +61,8 @@
       templates = {
         simple-rust = {
           path = ./templates/simple-rust;
-          description = "Barebones nightly Rust project template. (with clippy and bacon)";
+          description =
+            "Barebones nightly Rust project template. (with clippy and bacon)";
         };
       };
     };
@@ -77,7 +78,8 @@
       "https://hyprland.cachix.org"
     ];
     trusted-substituters = substituters;
-    trusted-users = [ "@wheel" ];
+    allowed-users = [ "@wheel" ];
+    trusted-users = allowed-users;
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
