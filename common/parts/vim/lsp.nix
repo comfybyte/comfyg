@@ -58,7 +58,7 @@
               enable = true;
               disableTsServerFormatter = true;
             };
-            prettier_d_slim.enable = true;
+            prettierd.enable = true;
             eslint.enable = true;
             eslint_d.enable = true;
           };

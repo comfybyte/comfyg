@@ -32,7 +32,7 @@
       patchelf
       xorg.xhost
       busybox
-      qemu_full
+      # qemu_full
       nmap
       ripgrep
       jq
