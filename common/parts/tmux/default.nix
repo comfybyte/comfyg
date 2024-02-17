@@ -27,18 +27,18 @@ in with lib; {
 
 
         # Theming
-        set -g mode-style "fg=#9CCFD8,bg=#111111"
+        set -g mode-style "fg=#E0DEF4,bg=#111111"
 
-        set -g message-style "fg=#9CCFD8,bg=#111111"
-        set -g message-command-style "fg=#9CCFD8,bg=#111111"
+        set -g message-style "fg=#E0DEF4,bg=#111111"
+        set -g message-command-style "fg=#E0DEF4,bg=#111111"
 
         set -g pane-border-style "fg=#111111"
-        set -g pane-active-border-style "fg=#9CCFD8"
+        set -g pane-active-border-style "fg=#E0DEF4"
 
         set -g status "on"
         set -g status-justify "centre"
 
-        set -g status-style "fg=#9CCFD8,bg=#000000"
+        set -g status-style "fg=#E0DEF4,bg=#000000"
 
         set -g status-left-length "100"
         set -g status-right-length "100"
@@ -46,14 +46,14 @@ in with lib; {
         set -g status-left-style NONE
         set -g status-right-style NONE
 
-        set -g status-left "#[fg=#1b1d2b,bg=#9CCFD8,bold] #S #[fg=#9CCFD8,bg=#000000,nobold,nounderscore,noitalics]"
+        set -g status-left "#[fg=#1b1d2b,bg=#E0DEF4,bold] #S"
         set -g status-right ""
 
         setw -g window-status-activity-style "underscore,fg=#828bb8,bg=#000000"
         setw -g window-status-separator ""
         setw -g window-status-style "NONE,fg=#828bb8,bg=#000000"
-        setw -g window-status-format "#[fg=#000000,bg=#000000,nobold,nounderscore,noitalics]#[default] #W #F #[fg=#000000,bg=#000000,nobold,nounderscore,noitalics]"
-        setw -g window-status-current-format "#[fg=#000000,bg=##9CCFD8,nobold,nounderscore,noitalics]#[fg=#9CCFD8,bg=#111111,bold] #W #F #[fg=#111111,bg=#000000,nobold,nounderscore,noitalics]"
+        setw -g window-status-format "#[fg=#000000,bg=#000000,nobold,nounderscore,noitalics]#[default] #W #I #F #[fg=#000000,bg=#000000,nobold,nounderscore,noitalics]"
+        setw -g window-status-current-format "#[fg=#000000,bg=##E0DEF4,nobold,nounderscore,noitalics]#[fg=#E0DEF4,bg=#111111,bold] #W #F #[fg=#111111,bg=#000000,nobold,nounderscore,noitalics]"
       '';
     };
   };

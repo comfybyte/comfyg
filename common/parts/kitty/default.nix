@@ -10,10 +10,10 @@ in {
       enable = true;
       font.package = pkgs.nerdfonts.override { fonts = [ "Gohu" ]; };
       font.name = "GohuFont 11 Nerd Font";
-      font.size = 17;
+      font.size = 18;
       settings = {
         cursor_stop_blinking_after = "0";
-        background_opacity = "0.8";
+        background_opacity = "0.75";
       };
       extraConfig = ''
         include ${config.home.homeDirectory + themeFile}

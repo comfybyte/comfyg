@@ -10,7 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gaming.url = "github:fufexan/nix-gaming";
-    agenix.url = "github:ryantm/agenix";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,10 +28,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, ... }@inputs:
     let
       commonModules =
-        [ home.nixosModules.home-manager agenix.nixosModules.default ];
+        [ home.nixosModules.home-manager ];
       pinnedFor = system:
         import inputs.pinned {
           inherit system;

@@ -10,7 +10,6 @@
     let
       forSys = set: set.packages."${system}";
       inotify-info = forSys inputs.inotify;
-      agenix = forSys inputs.agenix;
     in [
       mako
       swww
@@ -72,18 +71,17 @@
       imv
       mpv
       parted
-      agenix.default
       keychain
       cachix
       cloc
       shellcheck
       wmctrl
-      betterdiscordctl # Makes Discord's desktop client more bearable.
+      betterdiscordctl
       p7zip
       virt-manager
       nixos-shell
       nix-tree
-      mlt # Terminal video editing.
+      mlt
 
       # should be devshells but oh well
       nodejs_18
