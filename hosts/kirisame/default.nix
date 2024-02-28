@@ -3,12 +3,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./boot.nix
     ./fonts.nix
-    ./security.nix
-    ./audio.nix
-    ./networking.nix
+    ./audio
     ./packages
+    ./security
+    ./networking
+    ./boot
     ../../common/users
   ];
 
@@ -17,9 +17,6 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
   nixpkgs.config.allowUnfree = true;
-
-  services.logind.powerKeyLongPress = "reboot";
-
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -29,7 +26,6 @@
     # very lazy config
     config = { common = { default = [ "hyprland" "gtk" ]; }; };
   };
-
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
@@ -38,9 +34,7 @@
   };
 
   environment.shells = with pkgs; [ zsh fish ];
-
   environment.pathsToLink = [ "/libexec" ];
-
   services.dbus.enable = true;
   services.xserver = {
     enable = true;

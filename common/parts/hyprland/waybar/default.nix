@@ -8,7 +8,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-      style = builtins.readFile ./style.css;
+      style = import ./style.nix;
       settings = {
         mainBar = {
           layer = "top";
@@ -16,13 +16,8 @@ in {
 
           modules-left = [ "clock" "tray" ];
           modules-center = [ "hyprland/workspaces" ];
-          modules-right = [
-            "network"
-            "cpu"
-            "memory"
-            "temperature"
-            "pulseaudio"
-          ];
+          modules-right =
+            [ "network" "cpu" "memory" "temperature" "pulseaudio" ];
 
           "wlr/workspaces" = {
             format = "{icon}";

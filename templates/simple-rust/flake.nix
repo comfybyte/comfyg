@@ -1,8 +1,10 @@
+# TODO: Split this into a separate repo.
 {
   description = "A comfy Rust project flake template.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -15,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, flake-utils, rust-overlay, crane, ... }:
+  outputs = { nixpkgs, flake-utils, rust-overlay, crane, treefmt-nix, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pname = "simple-rust";
@@ -32,6 +34,7 @@
         };
         cargoArtifacts = craneLib.buildDepsOnly commonArgs;
         bin = craneLib.buildPackage (commonArgs // { inherit cargoArtifacts; });
+        treeFmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       in {
         devShells.default = craneLib.devShell {
           inputsFrom = [ bin ];
@@ -50,12 +53,12 @@
         # `nix flake check`.
         checks = {
           inherit bin;
-          clippy = craneLib.cargoClippy (commonArgs // {
-            inherit cargoArtifacts;
-          });
-          fmt = craneLib.cargoFmt {
-            inherit src;
-          };
+          clippy =
+            craneLib.cargoClippy (commonArgs // { inherit cargoArtifacts; });
+          fmt = craneLib.cargoFmt { inherit src; };
         };
+
+        # `nix fmt`
+        formatter = treeFmtEval.config.build.wrapper;
       });
 }

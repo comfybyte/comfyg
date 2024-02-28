@@ -8,12 +8,12 @@ in {
     home.file."${themeFile}".text = import ./kanagawa.nix;
     programs.kitty = {
       enable = true;
-      font.package = pkgs.nerdfonts.override { fonts = [ "Gohu" ]; };
-      font.name = "GohuFont 11 Nerd Font";
-      font.size = 18;
+      font.package = pkgs.nerdfonts.override { fonts = [ "DaddyTimeMono" ]; };
+      font.name = "DaddyTimeMono Nerd Font";
+      font.size = 17;
       settings = {
         cursor_stop_blinking_after = "0";
-        background_opacity = "0.75";
+        background_opacity = "0.8";
       };
       extraConfig = ''
         include ${config.home.homeDirectory + themeFile}

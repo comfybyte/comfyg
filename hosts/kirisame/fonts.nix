@@ -3,6 +3,8 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
+    corefonts
+    vistafonts
 
     # Japanese fonts.
     ipafont
@@ -10,7 +12,7 @@
 
     # Nerd fonts.
     (nerdfonts.override {
-      fonts = [ "Iosevka" "Ubuntu" "UbuntuMono" "Terminus" ];
+      fonts = [ "Iosevka" "Ubuntu" "UbuntuMono" "Terminus" "Gohu" ];
     })
   ];
 }

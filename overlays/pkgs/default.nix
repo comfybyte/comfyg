@@ -1,4 +1,1 @@
-final: prev:
-with prev; {
-  evremap = callPackage ./evremap { };
-}
+final: prev: with prev; { evremap = callPackage ./evremap { }; }

@@ -1,4 +1,4 @@
-# Need (github:nix-community/disko).
+# Need (github:nix-community/disko). Untested.
 {
   disko.devices = {
     sda = {

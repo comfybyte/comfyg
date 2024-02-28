@@ -35,9 +35,7 @@ in {
     dosbox
     dxvk
 
-    wineWowPackages.stagingFull
-    wine64Packages.stagingFull
-    gaming.wine-ge
+    gaming.wine-tkg
     gaming.proton-ge
     osu-lazer-bin
     winetricks

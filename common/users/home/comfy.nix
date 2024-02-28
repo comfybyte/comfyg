@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, pinned, ... }:
+{ pkgs, inputs, system, stable, ... }:
 let gaming = inputs.gaming.packages."${system}";
 in {
   imports = [ ../../parts ];
@@ -40,9 +40,9 @@ in {
   programs.direnv = {
     enable = true;
     # NOTE: Pin reason: bash version fuckery.
-    package = pinned.direnv;
+    package = stable.direnv;
     nix-direnv.enable = true;
-    nix-direnv.package = pinned.nix-direnv;
+    nix-direnv.package = stable.nix-direnv;
   };
   qt = {
     enable = true;

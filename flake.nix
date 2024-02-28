@@ -1,25 +1,28 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Pinned rev of Nixpkgs before a lockfile update, in case something breaks.
-    pinned.url =
-      "github:nixos/nixpkgs/a08d6979dd7c82c4cef0dcc6ac45ab16051c1169";
-
+    stable.url = "github:nixos/nixpkgs/nixos-21.11";
+    # Home Manager.
     home = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gaming.url = "github:fufexan/nix-gaming";
+    # Nix-configured Neovim.
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # extra gaming packages.
+    gaming.url = "github:fufexan/nix-gaming";
+    # extra Wayland packages.
     nixpkgs-wl = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    inotify.url = "github:mikesart/inotify-info";
+    flake-utils.url = "github:numtide/flake-utils";
+    # formatting.
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    # rolling-release Hyprland package and configuration layer.
     hyprland.url = "github:hyprwm/Hyprland";
     xyprland = {
       url = "github:comfybyte/xyprland";
@@ -28,35 +31,60 @@
     };
   };
 
-  outputs = { self, nixpkgs, home, nixvim, nixpkgs-wl, ... }@inputs:
+  outputs = inputs@{ self, systems, nixpkgs, home, nixvim, nixpkgs-wl
+    , treefmt-nix, flake-utils, ... }:
     let
-      commonModules =
-        [ home.nixosModules.home-manager ];
-      pinnedFor = system:
-        import inputs.pinned {
+      # import stable nixpkgs for `system`.
+      stableFor = system:
+        import inputs.stable {
           inherit system;
           config.allowUnfree = true;
         };
+      # create a list of Home Manager modules for `system` where `specialArgs` are available.
+      mkHomeModules = { system, specialArgs }:
+        let stable = stableFor system;
+        in [
+          home.nixosModules.home-manager
+          ({ pkgs, ... }: {
+            home-manager = {
+              extraSpecialArgs = specialArgs // { inherit stable; };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+            };
+          })
+        ];
+      # a module with all overlays applied.
+      overlayModule = ({ pkgs, ... }: {
+        nixpkgs.overlays = [ nixpkgs-wl.overlay ]
+          ++ builtins.attrValues self.overlays;
+      });
+      # make a nixos system with `extraModules`.
       mkSystem = system: extraModules:
-        let pinned = pinnedFor system;
+        let
+          stable = stableFor system;
+          # args shared between both Home Manager and NixOS contexts.
+          specialArgs = { inherit inputs system stable; };
         in nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs system pinned; };
-          modules = [
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = [ nixpkgs-wl.overlay ]
-                ++ builtins.attrValues self.overlays;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs system pinned; };
-            })
-          ] ++ commonModules ++ extraModules;
+          inherit specialArgs;
+          modules = builtins.concatLists [
+            [ overlayModule ]
+            (mkHomeModules { inherit system specialArgs; })
+            extraModules
+          ];
         };
+      eachSystem = f:
+        nixpkgs.lib.genAttrs (import systems)
+        (system: f nixpkgs.legacyPackages.${system});
+      treefmtEval =
+        eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in {
-      overlays = import ./overlays;
-      homeManagerModules = { parts = import ./common/parts; };
       nixosConfigurations = {
         kirisame = mkSystem "x86_64-linux" [ ./hosts/kirisame ];
       };
+      overlays = import ./overlays;
+      homeManagerModules = { parts = import ./common/parts; };
+      formatter =
+        eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
       templates = {
         simple-rust = {
           path = ./templates/simple-rust;

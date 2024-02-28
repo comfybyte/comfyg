@@ -1,3 +1,1 @@
-{
-  imports = [ ./gaming.nix ./utilities.nix ./apps.nix ];
-}
+{ imports = [ ./gaming.nix ./utilities.nix ./apps.nix ]; }

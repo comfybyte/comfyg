@@ -1,6 +1,6 @@
-{ config, lib, ... }: 
-let cfg = config.parts.shells.starship; in
-{
+{ config, lib, ... }:
+let cfg = config.parts.shells.starship;
+in {
   options.parts.shells.starship.enable = lib.mkEnableOption "Enable Starship.";
 
   config = lib.mkIf cfg.enable {
@@ -26,9 +26,7 @@ let cfg = config.parts.shells.starship; in
           read_only = " <no touchie!>>";
           truncation_length = 2;
         };
-        nix_shell = {
-          format = " [$state( \($name\))]($style)";
-        };
+        nix_shell = { format = " [$state( ($name))]($style)"; };
       };
     };
   };

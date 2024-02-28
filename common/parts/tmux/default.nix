@@ -46,7 +46,7 @@ in with lib; {
         set -g status-left-style NONE
         set -g status-right-style NONE
 
-        set -g status-left "#[fg=#1b1d2b,bg=#E0DEF4,bold] #S"
+        set -g status-left "#[fg=#1b1d2b,bg=#E0DEF4,bold] <#S> "
         set -g status-right ""
 
         setw -g window-status-activity-style "underscore,fg=#828bb8,bg=#000000"
