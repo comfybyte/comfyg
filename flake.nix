@@ -41,18 +41,16 @@
           config.allowUnfree = true;
         };
       # create a list of Home Manager modules for `system` where `specialArgs` are available.
-      mkHomeModules = { system, specialArgs }:
-        let stable = stableFor system;
-        in [
-          home.nixosModules.home-manager
-          ({ pkgs, ... }: {
-            home-manager = {
-              extraSpecialArgs = specialArgs // { inherit stable; };
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-          })
-        ];
+      mkHomeModules = specialArgs: [
+        home.nixosModules.home-manager
+        ({ pkgs, ... }: {
+          home-manager = {
+            extraSpecialArgs = specialArgs;
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
+        })
+      ];
       # a module with all overlays applied.
       overlayModule = ({ pkgs, ... }: {
         nixpkgs.overlays = [ nixpkgs-wl.overlay ]
@@ -68,7 +66,7 @@
           inherit specialArgs;
           modules = builtins.concatLists [
             [ overlayModule ]
-            (mkHomeModules { inherit system specialArgs; })
+            (mkHomeModules specialArgs)
             extraModules
           ];
         };
