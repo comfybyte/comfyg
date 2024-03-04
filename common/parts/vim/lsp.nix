@@ -30,7 +30,7 @@
               # Use all three from nix-shell env instead.
               installCargo = false;
               installRustc = false;
-              installLanguageServer = false;
+              package = null;
 
               # extraOptions = { procMacro.enable = false; };
             };

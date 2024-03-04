@@ -8,8 +8,8 @@ in {
     home.file."${themeFile}".text = import ./kanagawa.nix;
     programs.kitty = {
       enable = true;
-      font.package = pkgs.nerdfonts.override { fonts = [ "DaddyTimeMono" ]; };
-      font.name = "DaddyTimeMono Nerd Font";
+      font.package = pkgs.nerdfonts.override { fonts = [ "Mononoki" ]; };
+      font.name = "Mononoki Nerd Font";
       font.size = 17;
       settings = {
         cursor_stop_blinking_after = "0";
