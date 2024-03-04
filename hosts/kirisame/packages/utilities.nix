@@ -7,6 +7,7 @@
     pinentryFlavor = "tty";
   };
   environment.systemPackages = with pkgs; [
+    stable.mesa
     mako
     swww
     wl-clipboard

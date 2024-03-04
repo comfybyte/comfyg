@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
@@ -9,4 +9,6 @@
       support32Bit = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [ qpwgraph ];
 }

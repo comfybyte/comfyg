@@ -40,7 +40,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-      # create a list of Home Manager modules for `system` where `specialArgs` are available.
+      # create a list of Home Manager modules where `specialArgs` are available.
       mkHomeModules = specialArgs: [
         home.nixosModules.home-manager
         ({ pkgs, ... }: {

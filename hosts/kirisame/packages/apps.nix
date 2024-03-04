@@ -1,17 +1,13 @@
-{ pkgs, stable, ... }: {
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  };
+{ pkgs, ... }: {
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
   };
   environment.systemPackages = with pkgs; [
-    libsForQt5.okular
-    libsForQt5.kdenlive
-    vlc
-    xfce.ristretto
+    libsForQt5.okular # PDF viewer.
+    libsForQt5.kdenlive # video editor.
+    vlc # video player.
+    xfce.ristretto # image viewer.
     xfce.tumbler
     discord
     tenacity # Audio editor.
@@ -19,7 +15,7 @@
     vivaldi
     vivaldi-ffmpeg-codecs
     libreoffice-fresh
-    stable.obsidian
+    obsidian
     authy
     emote # Emoji picker.
     gparted
@@ -28,7 +24,6 @@
     librewolf
     hyprpicker # Colour picker.
     localsend
-    qpwgraph
     gnome.nautilus
     fractal # Matrix client.
     kooha # screen recorder.
