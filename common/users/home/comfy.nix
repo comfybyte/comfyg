@@ -40,9 +40,9 @@ in {
   programs.direnv = {
     enable = true;
     # NOTE: Pin reason: bash version fuckery.
-    package = stable.direnv;
+    # package = stable.direnv;
     nix-direnv.enable = true;
-    nix-direnv.package = stable.nix-direnv;
+    # nix-direnv.package = stable.nix-direnv;
   };
   qt = {
     enable = true;
