@@ -43,7 +43,7 @@
       extraPackages = with pkgs; [ dmenu i3status ];
     };
     displayManager.lightdm.enable = false;
-    layout = "br";
+    xkb.layout = "br";
     videoDrivers = [ "video-intel" "mesa" "vulkan-intel" ];
   };
   # For mice configuration with `piper`.
